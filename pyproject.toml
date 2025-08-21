@@ -1,0 +1,11 @@
+[project]
+name = "movieedit"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "moviepy>=2.2.1",
+    "pytube>=15.0.0",
+    "pytubefix>=9.4.1",
+]
