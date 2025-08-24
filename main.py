@@ -1,13 +1,3 @@
-import math
-import os
-import re
-from pathlib import Path
-
-import moviepy as mp
-from pytubefix import YouTube
-
-# Set FFMPEG binary path for MoviePy
-os.environ["FFMPEG_BINARY"] = "/usr/bin/ffmpeg"
 
 
 def video_downloader(url: str) -> str:
@@ -30,7 +20,6 @@ def video_downloader(url: str) -> str:
 
     except Exception as e:
         print(f"An error occurred: {e}")
-        return ""
 
 
 def video_editor(input_path: str, project_name: str):
