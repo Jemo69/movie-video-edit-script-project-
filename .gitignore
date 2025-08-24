@@ -11,5 +11,11 @@ wheels/
 input/
 output/
 *.mp3
+
 *.wav
 *.mp4
+
+*.mp4
+*.pub
+jemo
+

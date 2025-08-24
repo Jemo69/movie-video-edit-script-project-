@@ -1,20 +1,23 @@
+
 import math
 import re
 from pathlib import Path
 
+
 import ffmpeg
 from pytubefix import YouTube
 
-
-def video_downloader(url: str) -> str | None:
+def video_downloader(url: str) -> str:
     """
     this function is a function that downloads a video from a url
      arg:
      url of type string
     """
     try:
+        print("start download")
         yt = YouTube(url)
         title = yt.title
+        print(title)
         sanitized_title = re.sub(r'[\\/:*?"<>|]', "", title)
         stream = yt.streams.get_highest_resolution()
         assert stream is not None
@@ -27,17 +30,24 @@ def video_downloader(url: str) -> str | None:
         return None
 
 
-def video_editor(input_path: str | None, project_name: str):
+def video_editor(input_path: str, project_name: str):
     """
+
     This function edits a video by cutting it into 30-minute segments
     and saves them in the output folder using ffmpeg-python
     """
     if input_path is None:
         return None
 
+    This function edits a video by cutting it into 15-minute segments
+    and saves them in the output folder
+    """
+
+
     try:
         output_dir = Path(f"output/{project_name}")
         output_dir.mkdir(parents=True, exist_ok=True)
+
 
         # Get video duration using ffprobe
         probe = ffmpeg.probe(input_path)
@@ -55,11 +65,13 @@ def video_editor(input_path: str | None, project_name: str):
         )
 
         # Cut the video into 30-minute segments
+
         for i in range(num_segments):
             start_time = i * segment_duration
             end_time = min(
                 (i + 1) * segment_duration, duration
             )  # Don't exceed video duration
+
 
             print(
                 f"Processing segment {i + 1}: {start_time / 60:.1f}min to {end_time / 60:.1f}min"
@@ -100,6 +112,8 @@ def video_editor(input_path: str | None, project_name: str):
     except Exception as e:
         print(f"An error occurred: {e}")
         return None
+
+
 
 
 if __name__ == "__main__":
