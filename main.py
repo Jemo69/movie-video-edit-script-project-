@@ -1,17 +1,65 @@
 
 import math
+import os 
 import re
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+from dotenv import load_dotenv
 from pathlib import Path
-
+from typing import List , Dict,  Union,  Any
 
 import ffmpeg
 from pytubefix import YouTube
+load_dotenv()
+
+def video_getter() -> Union[str , None]  :
+    """
+    this was design to go on the web and get the video 
+
+    """
+    youtube_api_key = os.getenv('YOUTUBE_API_KEY')
+    # target_id = 'rccgtphb3768'
+    target_id = 'UCL9c56uR0zI_h2K_jT0_c2g'
+    YOUTUBE_API_SERVICE_NAME: str = "youtube"
+    YOUTUBE_API_VERSION: str = "v3"
+    try:
+        youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=youtube_api_key)
+
+        # Search for active livestreams on the specified channel
+        search_response: Dict[str, Any] = youtube.search().list(
+            channelId=target_id,
+            part="snippet",
+            eventType="completed",
+            type="video",
+            maxResults=1
+        ).execute()
+
+        videos: List[Dict[str, Any]] = search_response.get("items", [])
+
+        if not videos:
+            print(f"No active livestream found for channel ID: {channel_id}")
+            return None
+
+        # Assuming the first result is the current livestream
+        video_id: str = videos[0]["id"]["videoId"]
+        live_stream_url: str = f"https://www.youtube.com/watch?v={video_id}"
+        
+        print(f"Found active livestream: {live_stream_url}")
+        return live_stream_url
+
+    except HttpError as e:
+        print(f"An HTTP error {e.resp.status} occurred: {e.content}")
+        return None
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        return None
+
 
 def video_downloader(url: str) -> str:
     """
     this function is a function that downloads a video from a url
      arg:
-     url of type string
+         url of type string
     """
     try:
         print("start download")
@@ -37,8 +85,10 @@ def video_editor(input_path: str, project_name: str):
     and saves them in the output folder using ffmpeg-python
     """
     if input_path is None:
+
         return None
 
+    """
     This function edits a video by cutting it into 15-minute segments
     and saves them in the output folder
     """
@@ -117,7 +167,8 @@ def video_editor(input_path: str, project_name: str):
 
 
 if __name__ == "__main__":
+    urlget = video_getter()
     tell_video = video_downloader(
-        "https://www.youtube.com/live/gGFQuTMHCZg?si=OTEXY3a3T0Zi0xOs"
+            urlget
     )
     video_editor(tell_video, "a-new-thing-part-3")

@@ -5,11 +5,14 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "beautifulsoup4>=4.13.5",
     "ffmpeg-python>=0.2.0",
-
+    "google-api-python-client>=2.179.0",
     "imageio-ffmpeg>=0.6.0",
-
     "moviepy>=2.2.1",
+    "python-dotenv>=1.1.1",
     "pytube>=15.0.0",
     "pytubefix>=9.4.1",
+    "requests>=2.32.5",
+    "schedule>=1.2.2",
 ]
