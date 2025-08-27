@@ -1,4 +1,4 @@
-
+import requests
 import math
 import os 
 import re
@@ -19,37 +19,35 @@ def video_getter() -> Union[str , None]  :
     """
     youtube_api_key = os.getenv('YOUTUBE_API_KEY')
     # target_id = 'rccgtphb3768'
-    target_id = 'UCL9c56uR0zI_h2K_jT0_c2g'
+    target_id = 'UC-mvrwYr8tk6Gk8H3C8r1bg'
     YOUTUBE_API_SERVICE_NAME: str = "youtube"
     YOUTUBE_API_VERSION: str = "v3"
+    base_url: str = 'https://www.googleapis.com/youtube/v3/search'
+    params: dict[str, str | int] = {
+        'part': 'snippet',
+        'channelId': target_id,
+        'eventType': 'completed',
+        'type': 'video',
+        'order': 'date',
+        'maxResults': 1,
+        'key': youtube_api_key,
+    }
+
     try:
-        youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=youtube_api_key)
+        response = requests.get(base_url, params=params)
+        response.raise_for_status()  # Raise an exception for bad status codes (4xx or 5xx)
+        data = response.json()
+        print(response)
+        print(data)
+        video_id  =  data['items'][0]['id']['videoId']
+        
+        return f'https://www.youtube.com/watch?v={video_id}' 
 
-        # Search for active livestreams on the specified channel
-        search_response: Dict[str, Any] = youtube.search().list(
-            channelId=target_id,
-            part="snippet",
-            eventType="completed",
-            type="video",
-            maxResults=1
-        ).execute()
 
-        videos: List[Dict[str, Any]] = search_response.get("items", [])
-
-        if not videos:
-            print(f"No active livestream found for channel ID: {channel_id}")
-            return None
 
         # Assuming the first result is the current livestream
-        video_id: str = videos[0]["id"]["videoId"]
-        live_stream_url: str = f"https://www.youtube.com/watch?v={video_id}"
         
-        print(f"Found active livestream: {live_stream_url}")
-        return live_stream_url
 
-    except HttpError as e:
-        print(f"An HTTP error {e.resp.status} occurred: {e.content}")
-        return None
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
         return None
