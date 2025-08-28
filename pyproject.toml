@@ -3,10 +3,13 @@ name = "movieedit"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.10"
 dependencies = [
+    "ffmpeg-python>=0.2.0",
     "imageio-ffmpeg>=0.6.0",
-    "moviepy>=2.2.1",
+    "python-dotenv>=1.1.1",
     "pytube>=15.0.0",
     "pytubefix>=9.4.1",
+    "requests>=2.32.5",
+    "schedule>=1.2.2",
 ]

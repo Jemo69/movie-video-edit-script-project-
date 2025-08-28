@@ -8,3 +8,15 @@ wheels/
 
 # Virtual environments
 .venv
+input/
+output/
+*.mp3
+
+*.wav
+*.mp4
+.env
+
+*.mp4
+*.pub
+jemo
+
