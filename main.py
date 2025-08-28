@@ -53,7 +53,7 @@ def video_getter() -> Union[str , None]  :
         return None
 
 
-def video_downloader(url: str) -> str:
+def video_downloader(url: str) -> List[str]:
     """
     this function is a function that downloads a video from a url
      arg:
@@ -65,12 +65,12 @@ def video_downloader(url: str) -> str:
         title = yt.title
         print(title)
         sanitized_title = re.sub(r'[\\/:*?"<>|]', "", title)
+        project_title = re.sub(r' ',"-", sanitized_title)
         stream = yt.streams.get_highest_resolution()
         assert stream is not None
         stream.download(output_path="input", filename=f"{sanitized_title}.mp4")
         print(f"Video downloaded successfully. {sanitized_title}")
-        return f"input/{sanitized_title}.mp4"
-
+        return [ f"input/{sanitized_title}.mp4" , project_title ]
     except Exception as e:
         print(f"An error occurred: {e}")
         return None
@@ -160,13 +160,13 @@ def video_editor(input_path: str, project_name: str):
     except Exception as e:
         print(f"An error occurred: {e}")
         return None
+def subtitle_generator():
+    pass
 
 
-
-
-if __name__ == "__main__":
+def main():
     urlget = video_getter()
-    tell_video = video_downloader(
-            urlget
-    )
-    video_editor(tell_video, "a-new-thing-part-3")
+    tell_video = video_downloader( urlget)
+    video_editor(tell_video[0],tell_video[1])
+if __name__ == "__main__":
+    main()
