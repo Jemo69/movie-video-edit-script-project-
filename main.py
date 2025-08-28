@@ -1,11 +1,11 @@
 import requests
-import math
+import smtplib
+from email.message import EmailMessage
 import os 
 import re
-from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
 from dotenv import load_dotenv
 from pathlib import Path
+
 from typing import List , Dict,  Union,  Any
 
 import ffmpeg
@@ -23,7 +23,7 @@ def video_getter() -> Union[str , None]  :
     YOUTUBE_API_SERVICE_NAME: str = "youtube"
     YOUTUBE_API_VERSION: str = "v3"
     base_url: str = 'https://www.googleapis.com/youtube/v3/search'
-    params: dict[str, str | int] = {
+    params: Dict[str, str | int] = {
         'part': 'snippet',
         'channelId': target_id,
         'eventType': 'completed',
@@ -36,10 +36,11 @@ def video_getter() -> Union[str , None]  :
     try:
         response = requests.get(base_url, params=params)
         response.raise_for_status()  # Raise an exception for bad status codes (4xx or 5xx)
-        data = response.json()
+        data   = response.json()
         print(response)
         print(data)
-        video_id  =  data['items'][0]['id']['videoId']
+
+        video_id : str  =  data['items'][0]['id']['videoId']
         
         return f'https://www.youtube.com/watch?v={video_id}' 
 
@@ -155,18 +156,42 @@ def video_editor(input_path: str, project_name: str):
                 continue
 
         print(f"Successfully created {num_segments} video segments in {output_dir}")
-        return output_dir
+        return [ output_dir , project_name]
 
     except Exception as e:
         print(f"An error occurred: {e}")
         return None
 def subtitle_generator():
     pass
+def video_notifier(project_name : str ):
+    sender_email = os.getenv('SENDER_EMAIL')
+    body = """
+    the video has finishing editing and it hope it working 
+    """
+    sender_password = os.getenv('SENDER_PASSWORD')
+    emails : List[str] = ['jemolife69@gmail.com']
+    for email in emails:
+        try: 
+            msg : EmailMessage = EmailMessage()
+            msg['Subject']=f'you are project is ready {project_name} '
+            msg['From']=sender_email
+            msg['To']=email
+            msg.set_content(body)
+            with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+                    smtp.login(sender_email , sender_password)
+                    smtp.send_message(msg)
+                    print(f'done with { email} ')    
+        except Exception as e:
+            print(e)
+
+                    
 
 
 def main():
     urlget = video_getter()
-    tell_video = video_downloader( urlget)
-    video_editor(tell_video[0],tell_video[1])
+    tell_video = video_downloader(urlget)
+    finished_product = video_editor(tell_video[0],tell_video[1])
+    noti = video_notifier(project_name=finished_product[1])
+
 if __name__ == "__main__":
     main()
