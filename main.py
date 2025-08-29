@@ -183,7 +183,7 @@ def video_notifier(project_name: str):
         return
         
     body = f"The video project '{project_name}' has finished editing."
-    emails: List[str] = ['jemolife69@gmail.com']
+    emails: List[str] = ['jemolife69@gmail.com','omoparioladavidola@gmail.com']
 
     for email in emails:
         try:
@@ -197,8 +197,8 @@ def video_notifier(project_name: str):
                 smtp.login(sender_email, sender_password)
                 smtp.send_message(msg)
             print(f"Notification email sent successfully to {email}")
-        except smtplib.SMTPAuthenticationError:
-            print(f"Failed to send email to {email}: Authentication error. Please check your email and password.")
+        except smtplib.SMTPAuthenticationError as e :
+            print(f"Failed to send email to {email}:{e} Authentication error. Please check your email and password.")
         except Exception as e:
             print(f"An error occurred while sending the email to {email}: {e}")
 
