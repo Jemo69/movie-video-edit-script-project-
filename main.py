@@ -1,29 +1,33 @@
 import requests
+import math
 import smtplib
 from email.message import EmailMessage
-import os 
+import os
 import re
 from dotenv import load_dotenv
 from pathlib import Path
-
-from typing import List , Dict,  Union,  Any
-
+from typing import List, Dict, Union, Any, Tuple
 import ffmpeg
 from pytubefix import YouTube
+
+# Load environment variables from .env file
 load_dotenv()
 
-def video_getter() -> Union[str , None]  :
+def video_getter() -> Union[str, None]:
     """
-    this was design to go on the web and get the video 
+    Fetches the URL of the latest completed video from a specified YouTube channel.
 
+    Returns:
+        Union[str, None]: The URL of the latest video, or None if an error occurs.
     """
     youtube_api_key = os.getenv('YOUTUBE_API_KEY')
-    # target_id = 'rccgtphb3768'
+    if not youtube_api_key:
+        print("Error: YOUTUBE_API_KEY not found in environment variables.")
+        return None
+
     target_id = 'UC-mvrwYr8tk6Gk8H3C8r1bg'
-    YOUTUBE_API_SERVICE_NAME: str = "youtube"
-    YOUTUBE_API_VERSION: str = "v3"
-    base_url: str = 'https://www.googleapis.com/youtube/v3/search'
-    params: Dict[str, str | int] = {
+    base_url = 'https://www.googleapis.com/youtube/v3/search'
+    params: Dict[str, Union[str, int]] = {
         'part': 'snippet',
         'channelId': target_id,
         'eventType': 'completed',
@@ -36,116 +40,114 @@ def video_getter() -> Union[str , None]  :
     try:
         response = requests.get(base_url, params=params)
         response.raise_for_status()  # Raise an exception for bad status codes (4xx or 5xx)
-        data   = response.json()
-        print(response)
-        print(data)
+        data = response.json()
 
-        video_id : str  =  data['items'][0]['id']['videoId']
-        
-        return f'https://www.youtube.com/watch?v={video_id}' 
+        if 'items' in data and data['items']:
+            video_id = data['items'][0]['id']['videoId']
+            return f'https://www.youtube.com/watch?v={video_id}'
+        else:
+            print("No videos found for the specified channel.")
+            return None
 
-
-
-        # Assuming the first result is the current livestream
-        
-
+    except requests.exceptions.RequestException as e:
+        print(f"An error occurred with the YouTube API request: {e}")
+        return None
+    except KeyError as e:
+        print(f"Error parsing YouTube API response: {e}")
+        return None
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
         return None
 
 
-def video_downloader(url: str) -> List[str]:
+def video_downloader(url: str) -> Union[Tuple[str, str], None]:
     """
-    this function is a function that downloads a video from a url
-     arg:
-         url of type string
+    Downloads a video from a given YouTube URL.
+
+    Args:
+        url (str): The URL of the YouTube video.
+
+    Returns:
+        Union[Tuple[str, str], None]: A tuple containing the file path and sanitized project title, or None if an error occurs.
     """
     try:
-        print("start download")
+        print("Starting download...")
         yt = YouTube(url)
         title = yt.title
-        print(title)
+        print(f"Video Title: {title}")
+
         sanitized_title = re.sub(r'[\\/:*?"<>|]', "", title)
-        project_title = re.sub(r' ',"-", sanitized_title)
+        project_title = re.sub(r'\s+', "-", sanitized_title)
+        
+        output_path = Path("input")
+        output_path.mkdir(exist_ok=True)
+        
+        filename = f"{sanitized_title}.mp4"
+        filepath = output_path / filename
+
         stream = yt.streams.get_highest_resolution()
-        assert stream is not None
-        stream.download(output_path="input", filename=f"{sanitized_title}.mp4")
-        print(f"Video downloaded successfully. {sanitized_title}")
-        return [ f"input/{sanitized_title}.mp4" , project_title ]
+        if stream:
+            stream.download(output_path=str(output_path), filename=filename)
+            print(f"Video downloaded successfully: {filepath}")
+            return str(filepath), project_title
+        else:
+            print("No suitable stream found for download.")
+            return None
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"An error occurred during video download: {e}")
         return None
 
 
-def video_editor(input_path: str, project_name: str):
-    """
-
-    This function edits a video by cutting it into 30-minute segments
-    and saves them in the output folder using ffmpeg-python
-    """
-    if input_path is None:
-
-        return None
-
+def video_editor(input_path: str, project_name: str) -> Union[Tuple[Path, str], None]:
     """
     This function edits a video by cutting it into 15-minute segments
-    and saves them in the output folder
-    """
+    and saves them in the output folder using ffmpeg-python.
 
+    Args:
+        input_path (str): The path to the input video file.
+        project_name (str): The name of the project.
+
+    Returns:
+        Union[Tuple[Path, str], None]: A tuple containing the output directory and project name, or None if an error occurs.
+    """
+    if not input_path:
+        print("Error: Input path is not provided.")
+        return None
 
     try:
         output_dir = Path(f"output/{project_name}")
         output_dir.mkdir(parents=True, exist_ok=True)
 
-
-        # Get video duration using ffprobe
         probe = ffmpeg.probe(input_path)
-        duration = float(probe["streams"][0]["duration"])
+        duration = float(probe['format']['duration'])
+        
+        segment_duration = 15 * 60  # 15 minutes in seconds
 
-        # Set segment duration to 30 minutes
-        segment_duration = 15 * 60  # 30 minutes = 1800 seconds
-
-        # Calculate number of segments needed
         num_segments = math.ceil(duration / segment_duration)
 
         print(f"Video duration: {duration:.2f} seconds")
-        print(
-            f"Creating {num_segments} segments of {segment_duration / 60:.1f} minutes each"
-        )
-
-        # Cut the video into 30-minute segments
+        print(f"Creating {num_segments} segments of {segment_duration / 60:.1f} minutes each")
 
         for i in range(num_segments):
             start_time = i * segment_duration
-            end_time = min(
-                (i + 1) * segment_duration, duration
-            )  # Don't exceed video duration
-
-
-            print(
-                f"Processing segment {i + 1}: {start_time / 60:.1f}min to {end_time / 60:.1f}min"
-            )
-
-            # Create output filename and full path
+            
             output_filename = f"{project_name}_segment_{i + 1:03d}.mp4"
             output_path = output_dir / output_filename
-            output_as_string = str(output_path)
 
-            print(f"Writing clip {i + 1} to {output_path}...")
+            print(f"Processing segment {i + 1}: Writing to {output_path}...")
 
-            # Use ffmpeg to cut the video segment
             try:
                 (
-                    ffmpeg.input(input_path, ss=start_time, t=end_time - start_time)
+                    ffmpeg.input(input_path, ss=start_time, t=segment_duration)
                     .output(
-                        output_as_string,
+                        str(output_path),
                         vcodec="libx264",
                         acodec="aac",
                         preset="fast",
                         crf=23,
-                        ac=2,  # Ensure audio channels are preserved
-                        ar=44100,  # Set audio sample rate
-                        ab="128k",  # Audio bitrate for better quality
+                        ac=2,
+                        ar=44100,
+                        ab="128k",
                     )
                     .overwrite_output()
                     .run(capture_stdout=True, capture_stderr=True, quiet=True)
@@ -156,42 +158,63 @@ def video_editor(input_path: str, project_name: str):
                 continue
 
         print(f"Successfully created {num_segments} video segments in {output_dir}")
-        return [ output_dir , project_name]
+        return output_dir, project_name
 
-    except Exception as e:
-        print(f"An error occurred: {e}")
+    except ffmpeg.Error as e:
+        print(f"An ffmpeg error occurred: {e.stderr.decode()}")
         return None
-def subtitle_generator():
-    pass
-def video_notifier(project_name : str ):
-    sender_email = os.getenv('SENDER_EMAIL')
-    body = """
-    the video has finishing editing and it hope it working 
+    except Exception as e:
+        print(f"An error occurred during video editing: {e}")
+        return None
+
+
+def video_notifier(project_name: str):
     """
+    Sends an email notification when the video processing is complete.
+
+    Args:
+        project_name (str): The name of the project to include in the email subject.
+    """
+    sender_email = os.getenv('SENDER_EMAIL')
     sender_password = os.getenv('SENDER_PASSWORD')
-    emails : List[str] = ['jemolife69@gmail.com']
+
+    if not sender_email or not sender_password:
+        print("Error: SENDER_EMAIL or SENDER_PASSWORD not found in environment variables.")
+        return
+        
+    body = f"The video project '{project_name}' has finished editing."
+    emails: List[str] = ['jemolife69@gmail.com']
+
     for email in emails:
-        try: 
-            msg : EmailMessage = EmailMessage()
-            msg['Subject']=f'you are project is ready {project_name} '
-            msg['From']=sender_email
-            msg['To']=email
+        try:
+            msg = EmailMessage()
+            msg['Subject'] = f'Your project is ready: {project_name}'
+            msg['From'] = sender_email
+            msg['To'] = email
             msg.set_content(body)
+
             with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-                    smtp.login(sender_email , sender_password)
-                    smtp.send_message(msg)
-                    print(f'done with { email} ')    
+                smtp.login(sender_email, sender_password)
+                smtp.send_message(msg)
+            print(f"Notification email sent successfully to {email}")
+        except smtplib.SMTPAuthenticationError:
+            print(f"Failed to send email to {email}: Authentication error. Please check your email and password.")
         except Exception as e:
-            print(e)
-
-                    
-
+            print(f"An error occurred while sending the email to {email}: {e}")
 
 def main():
-    urlget = video_getter()
-    tell_video = video_downloader(urlget)
-    finished_product = video_editor(tell_video[0],tell_video[1])
-    noti = video_notifier(project_name=finished_product[1])
+    """
+    Main function to run the video processing pipeline.
+    """
+    url = video_getter()
+    if url:
+        download_info = video_downloader(url)
+        if download_info:
+            input_path, project_title = download_info
+            editor_output = video_editor(input_path, project_title)
+            if editor_output:
+                _, project_name = editor_output
+                video_notifier(project_name=project_name)
 
 if __name__ == "__main__":
     main()
