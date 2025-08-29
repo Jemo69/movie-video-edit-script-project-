@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import List, Dict, Union, Any, Tuple
 import ffmpeg
 from pytubefix import YouTube
+import concurrent.futures
 
 # Load environment variables from .env file
 load_dotenv()
@@ -98,9 +99,46 @@ def video_downloader(url: str) -> Union[Tuple[str, str], None]:
         return None
 
 
+def process_segment(
+    input_path: str,
+    output_path: str,
+    start_time: int,
+    segment_duration: int,
+    segment_index: int,
+):
+    """
+    Processes a single video segment using ffmpeg.
+    """
+    print(f"Processing segment {segment_index + 1}: Writing to {output_path}...")
+    try:
+        (
+            ffmpeg.input(input_path, ss=start_time, t=segment_duration)
+            .output(
+                str(output_path),
+                vcodec="libx264",
+                acodec="aac",
+                preset="fast",
+                crf=23,
+                ac=2,
+                ar=44100,
+                ab="128k",
+            )
+            .overwrite_output()
+            .run(capture_stdout=True, capture_stderr=True, quiet=True)
+        )
+        print(f"Successfully created segment {segment_index + 1}")
+        return None
+    except ffmpeg.Error as e:
+        error_message = (
+            f"Error creating segment {segment_index + 1}: {e.stderr.decode()}"
+        )
+        print(error_message)
+        return error_message
+
+
 def video_editor(input_path: str, project_name: str) -> Union[Tuple[Path, str], None]:
     """
-    This function edits a video by cutting it into 15-minute segments
+    This function edits a video by cutting it into 15-minute segments in parallel
     and saves them in the output folder using ffmpeg-python.
 
     Args:
@@ -119,43 +157,39 @@ def video_editor(input_path: str, project_name: str) -> Union[Tuple[Path, str], 
         output_dir.mkdir(parents=True, exist_ok=True)
 
         probe = ffmpeg.probe(input_path)
-        duration = float(probe['format']['duration'])
-        
+        duration = float(probe["format"]["duration"])
+
         segment_duration = 15 * 60  # 15 minutes in seconds
 
         num_segments = math.ceil(duration / segment_duration)
 
         print(f"Video duration: {duration:.2f} seconds")
-        print(f"Creating {num_segments} segments of {segment_duration / 60:.1f} minutes each")
+        print(
+            f"Creating {num_segments} segments of {segment_duration / 60:.1f} minutes each"
+        )
 
-        for i in range(num_segments):
-            start_time = i * segment_duration
-            
-            output_filename = f"{project_name}_segment_{i + 1:03d}.mp4"
-            output_path = output_dir / output_filename
-
-            print(f"Processing segment {i + 1}: Writing to {output_path}...")
-
-            try:
-                (
-                    ffmpeg.input(input_path, ss=start_time, t=segment_duration)
-                    .output(
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            futures = []
+            for i in range(num_segments):
+                start_time = i * segment_duration
+                output_filename = f"{project_name}_segment_{i + 1:03d}.mp4"
+                output_path = output_dir / output_filename
+                futures.append(
+                    executor.submit(
+                        process_segment,
+                        input_path,
                         str(output_path),
-                        vcodec="libx264",
-                        acodec="aac",
-                        preset="fast",
-                        crf=23,
-                        ac=2,
-                        ar=44100,
-                        ab="128k",
+                        start_time,
+                        segment_duration,
+                        i,
                     )
-                    .overwrite_output()
-                    .run(capture_stdout=True, capture_stderr=True, quiet=True)
                 )
-                print(f"Successfully created segment {i + 1}")
-            except ffmpeg.Error as e:
-                print(f"Error creating segment {i + 1}: {e.stderr.decode()}")
-                continue
+
+            for future in concurrent.futures.as_completed(futures):
+                result = future.result()
+                if result:
+                    # Log errors but continue processing other segments
+                    print(result)
 
         print(f"Successfully created {num_segments} video segments in {output_dir}")
         return output_dir, project_name
