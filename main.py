@@ -1,8 +1,12 @@
 import requests
 import math
 import smtplib
-from email.message import EmailMessage
+# from email.message import EmailMessage
+from email.mime.multipart import MIMEMultipart
+from email.mime.application import MIMEApplication
+from email.mime.text import MIMEText
 import os
+import shutil
 import re
 from dotenv import load_dotenv
 from pathlib import Path
@@ -189,7 +193,7 @@ def video_editor(input_path: str, project_name: str) -> Union[Tuple[Path, str], 
                     )
                 )
 
-            #  this w:wq
+            #  this wait for the task
 
             for future in concurrent.futures.as_completed(futures):
                 result = future.result()
@@ -206,6 +210,19 @@ def video_editor(input_path: str, project_name: str) -> Union[Tuple[Path, str], 
     except Exception as e:
         print(f"An error occurred during video editing: {e}")
         return None
+def compressor_out_dir(project_name:str):
+    input_path = 'output' 
+    os.mkdir('final_project')
+    output_name : str = f'final_project/{project_name}_final_version'
+    archive_format : str = 'zip'
+    try : 
+        shutil.make_archive(output_name , archive_format, input_path)
+        print(f"{project_name} is done compressing ")
+    except Exception as e : 
+        print(f'there was an error :{e}')
+    finally:
+        print('done')
+    
 
 
 def video_notifier(project_name: str):
@@ -217,6 +234,9 @@ def video_notifier(project_name: str):
     """
     sender_email = os.getenv('SENDER_EMAIL')
     sender_password = os.getenv('SENDER_PASSWORD')
+    attachment = f'final_project/{project_name}_final_version.zip'
+    attachment_name = f'{project_name}_final_version.zip'
+    attachment_path = f'final_project'
 
     if not sender_email or not sender_password:
         print("Error: SENDER_EMAIL or SENDER_PASSWORD not found in environment variables.")
@@ -227,11 +247,15 @@ def video_notifier(project_name: str):
 
     for email in emails:
         try:
-            msg = EmailMessage()
+            msg = MIMEMultipart()
             msg['Subject'] = f'Your project is ready: {project_name}'
             msg['From'] = sender_email
             msg['To'] = email
-            msg.set_content(body)
+            msg.attach(MIMEText( body, 'plain' ))
+            with open(attachment_path , 'rb') as f:
+                attach_file = MIMEApplication(f.read(), _subtype='zip')
+                attach_file.add_header('Content-Disposition' , 'attachment')
+                msg.attach(attach_file)
 
             with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
                 smtp.login(sender_email, sender_password)
@@ -254,6 +278,7 @@ def main():
             editor_output = video_editor(input_path, project_title)
             if editor_output:
                 _, project_name = editor_output
+                compressor_out_dir(project_name=project_name)
                 video_notifier(project_name=project_name)
 
 if __name__ == "__main__":
