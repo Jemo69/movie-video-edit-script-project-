@@ -122,6 +122,7 @@ def process_segment(
                 ac=2,
                 ar=44100,
                 ab="128k",
+                
             )
             .overwrite_output()
             .run(capture_stdout=True, capture_stderr=True, quiet=True)
@@ -168,13 +169,16 @@ def video_editor(input_path: str, project_name: str) -> Union[Tuple[Path, str], 
             f"Creating {num_segments} segments of {segment_duration / 60:.1f} minutes each"
         )
 
+        # this createe the thread the program use 
         with concurrent.futures.ThreadPoolExecutor() as executor:
+            #
             futures = []
             for i in range(num_segments):
                 start_time = i * segment_duration
                 output_filename = f"{project_name}_segment_{i + 1:03d}.mp4"
                 output_path = output_dir / output_filename
                 futures.append(
+                    # the executor start the job 
                     executor.submit(
                         process_segment,
                         input_path,
@@ -184,6 +188,8 @@ def video_editor(input_path: str, project_name: str) -> Union[Tuple[Path, str], 
                         i,
                     )
                 )
+
+            #  this w:wq
 
             for future in concurrent.futures.as_completed(futures):
                 result = future.result()
