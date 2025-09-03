@@ -1,11 +1,14 @@
 import requests
 import math
 import smtplib
-# from email.message import EmailMessage
+
 from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
 from email.mime.text import MIMEText
+from utils import time_it 
 import os
+from db.main import create_database_connection , executes_sql_query  
+
 import shutil
 import re
 from dotenv import load_dotenv
@@ -17,8 +20,12 @@ import concurrent.futures
 
 # Load environment variables from .env file
 load_dotenv()
+conn = create_database_connection()
 
+@time_it
 def video_getter() -> Union[str, None]:
+
+
     """
     Fetches the URL of the latest completed video from a specified YouTube channel.
 
@@ -211,8 +218,10 @@ def video_editor(input_path: str, project_name: str) -> Union[Tuple[Path, str], 
         print(f"An error occurred during video editing: {e}")
         return None
 def compressor_out_dir(project_name:str):
-    input_path = 'output' 
-    os.mkdir('final_project')
+    print('compressing the output folder')
+    input_path = f'output/{project_name}/' 
+    if not os.path.exists('final_project'):
+        os.mkdir('final_project')
     output_name : str = f'final_project/{project_name}_final_version'
     archive_format : str = 'zip'
     try : 
@@ -222,6 +231,19 @@ def compressor_out_dir(project_name:str):
         print(f'there was an error :{e}')
     finally:
         print('done')
+def upload_to_cloud():
+    print('uploading to the cloud')
+    # Placeholder for cloud upload logic
+    base_url = 'https://www.googleapis.com/drive/v3'
+
+async def create_table():    
+  create_table_query: str = """
+    CREATE TABLE IF NOT EXISTS videoproject (
+        project_name VARCHAR(255) NOT NULL,
+        project_link TEXT
+    );
+    """
+  executes_sql_query( create_table_query ,  conn)
     
 
 
@@ -252,7 +274,7 @@ def video_notifier(project_name: str):
             msg['From'] = sender_email
             msg['To'] = email
             msg.attach(MIMEText( body, 'plain' ))
-            with open(attachment_path , 'rb') as f:
+            with open(attachment, 'rb') as f:
                 attach_file = MIMEApplication(f.read(), _subtype='zip')
                 attach_file.add_header('Content-Disposition' , 'attachment')
                 msg.attach(attach_file)
