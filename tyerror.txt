@@ -1,0 +1,85 @@
+error[unresolved-import]: Cannot resolve imported module `psycopg2`
+ --> db/main.py:1:8
+  |
+1 | import psycopg2
+  |        ^^^^^^^^
+2 | from dotenv import load_dotenv
+3 | import os
+  |
+info: Searched in the following paths during module resolution:
+info:   1. /home/jemo/projects/movie-video-edit-script-project- (first-party code)
+info:   2. vendored://stdlib (stdlib typeshed stubs vendored by ty)
+info:   3. /home/jemo/projects/movie-video-edit-script-project-/.venv/lib/python3.13/site-packages (site-packages)
+info: make sure your Python environment is properly configured: https://docs.astral.sh/ty/modules/#python-environment
+info: rule `unresolved-import` is enabled by default
+
+error[unresolved-import]: Module `utils` has no member `TryCatch`
+ --> db/main.py:5:19
+  |
+3 | import os
+4 |
+5 | from utils import TryCatch
+  |                   ^^^^^^^^
+6 | load_dotenv()
+  |
+info: rule `unresolved-import` is enabled by default
+
+error[unresolved-attribute]: Type `<module 'requests'>` has no attribute `exceptions`
+  --> main.py:66:12
+   |
+64 |             return None
+65 |
+66 |     except requests.exceptions.RequestException as e:
+   |            ^^^^^^^^^^^^^^^^^^^
+67 |         print(f"An error occurred with the YouTube API request: {e}")
+68 |         return None
+   |
+info: rule `unresolved-attribute` is enabled by default
+
+error[call-non-callable]: Object of type `<module 'logging'>` is not callable
+  --> storage/main.py:29:9
+   |
+27 |         blob = bucket.blob(destination_blob_name)
+28 |         blob.upload_from_filename(source_file_name)
+29 |         logging(f"File {source_file_name} uploaded to {destination_blob_name}.")
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+30 |     except Exception as e:
+31 |         logging.error(f"Error uploading file: {e}")
+   |
+info: rule `call-non-callable` is enabled by default
+
+error[unresolved-reference]: Name `Dict` used when not defined
+  --> type.py:19:17
+   |
+17 |     title: str
+18 |     description: str
+19 |     thumbnails: Dict[str, Thumbnails]
+   |                 ^^^^
+20 |     channelTitle: str
+21 |     liveBroadcastContent: str
+   |
+info: rule `unresolved-reference` is enabled by default
+
+error[unresolved-reference]: Name `List` used when not defined
+  --> type.py:56:12
+   |
+54 |     regionCode: str
+55 |     pageInfo: PageInfo
+56 |     items: List[Item]
+   |            ^^^^
+   |
+info: rule `unresolved-reference` is enabled by default
+
+error[invalid-argument-type]: Argument to class `Failure` is incorrect
+  --> utils.py:22:28
+   |
+20 | # --- Define the overall Result type ---
+21 | # This Union represents either a Success or a Failure.
+22 | Result = Union[Success[T], Failure[E]]
+   |                            ^^^^^^^^^^ Expected `Exception`, found `typing.TypeVar`
+23 |
+24 | # --- The TryCatch wrapper function ---
+   |
+info: rule `invalid-argument-type` is enabled by default
+
+Found 7 diagnostics

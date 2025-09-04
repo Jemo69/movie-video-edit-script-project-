@@ -1,0 +1,155 @@
+F401 [*] `utils.TryCatch` imported but unused
+ --> db/main.py:5:19
+  |
+3 | import os
+4 |
+5 | from utils import TryCatch
+  |                   ^^^^^^^^
+6 | load_dotenv()
+  |
+help: Remove unused import: `utils.TryCatch`
+
+F841 [*] Local variable `e` is assigned to but never used
+  --> db/main.py:24:25
+   |
+22 |         some.execute(query)
+23 |         return 'success' 
+24 |     except Exception as e: 
+   |                         ^
+25 |         if some:
+26 |             some.close
+   |
+help: Remove assignment to unused variable `e`
+
+F401 [*] `email.mime.application.MIMEApplication` imported but unused
+ --> main.py:6:36
+  |
+5 | from email.mime.multipart import MIMEMultipart
+6 | from email.mime.application import MIMEApplication
+  |                                    ^^^^^^^^^^^^^^^
+7 | from email.mime.text import MIMEText
+8 | from utils import time_it 
+  |
+help: Remove unused import: `email.mime.application.MIMEApplication`
+
+F401 [*] `typing.Any` imported but unused
+  --> main.py:17:39
+   |
+15 | from dotenv import load_dotenv
+16 | from pathlib import Path
+17 | from typing import List, Dict, Union, Any, Tuple
+   |                                       ^^^
+18 | import ffmpeg
+19 | from pytubefix import YouTube
+   |
+help: Remove unused import: `typing.Any`
+
+F841 Local variable `base_url` is assigned to but never used
+   --> main.py:239:5
+    |
+237 |     print('uploading to the cloud')
+238 |     # Placeholder for cloud upload logic
+239 |     base_url = 'https://www.googleapis.com/drive/v3'
+    |     ^^^^^^^^
+240 |
+241 | async def create_table():    
+    |
+help: Remove assignment to unused variable `base_url`
+
+F841 Local variable `attachment` is assigned to but never used
+   --> main.py:270:5
+    |
+268 |     sender_email = os.getenv('SENDER_EMAIL')
+269 |     sender_password = os.getenv('SENDER_PASSWORD')
+270 |     attachment = f'final_project/{project_name}_final_version.zip'
+    |     ^^^^^^^^^^
+271 |     attachment_name = f'{project_name}_final_version.zip'
+272 |     attachment_path = f'final_project'
+    |
+help: Remove assignment to unused variable `attachment`
+
+F841 Local variable `attachment_name` is assigned to but never used
+   --> main.py:271:5
+    |
+269 |     sender_password = os.getenv('SENDER_PASSWORD')
+270 |     attachment = f'final_project/{project_name}_final_version.zip'
+271 |     attachment_name = f'{project_name}_final_version.zip'
+    |     ^^^^^^^^^^^^^^^
+272 |     attachment_path = f'final_project'
+    |
+help: Remove assignment to unused variable `attachment_name`
+
+F841 Local variable `attachment_path` is assigned to but never used
+   --> main.py:272:5
+    |
+270 |     attachment = f'final_project/{project_name}_final_version.zip'
+271 |     attachment_name = f'{project_name}_final_version.zip'
+272 |     attachment_path = f'final_project'
+    |     ^^^^^^^^^^^^^^^
+273 |
+274 |     if not sender_email or not sender_password:
+    |
+help: Remove assignment to unused variable `attachment_path`
+
+F541 [*] f-string without any placeholders
+   --> main.py:272:23
+    |
+270 |     attachment = f'final_project/{project_name}_final_version.zip'
+271 |     attachment_name = f'{project_name}_final_version.zip'
+272 |     attachment_path = f'final_project'
+    |                       ^^^^^^^^^^^^^^^^
+273 |
+274 |     if not sender_email or not sender_password:
+    |
+help: Remove extraneous `f` prefix
+
+F821 Undefined name `Dict`
+  --> type.py:19:17
+   |
+17 |     title: str
+18 |     description: str
+19 |     thumbnails: Dict[str, Thumbnails]
+   |                 ^^^^
+20 |     channelTitle: str
+21 |     liveBroadcastContent: str
+   |
+
+F821 Undefined name `List`
+  --> type.py:56:12
+   |
+54 |     regionCode: str
+55 |     pageInfo: PageInfo
+56 |     items: List[Item]
+   |            ^^^^
+   |
+
+F811 [*] Redefinition of unused `Generic` from line 2
+ --> utils.py:2:31
+  |
+1 | from functools import wraps
+2 | from typing import TypedDict, Generic
+  |                               ------- previous definition of `Generic` here
+3 | import datetime
+4 | from typing import Any, Callable, Generic, Literal, TypedDict, TypeVar, Union
+  |                                   ^^^^^^^ `Generic` redefined here
+5 | # Define type variables for generic use
+6 | T = TypeVar('T')
+  |
+help: Remove definition: `Generic`
+
+F811 [*] Redefinition of unused `TypedDict` from line 2
+ --> utils.py:2:20
+  |
+1 | from functools import wraps
+2 | from typing import TypedDict, Generic
+  |                    --------- previous definition of `TypedDict` here
+3 | import datetime
+4 | from typing import Any, Callable, Generic, Literal, TypedDict, TypeVar, Union
+  |                                                     ^^^^^^^^^ `TypedDict` redefined here
+5 | # Define type variables for generic use
+6 | T = TypeVar('T')
+  |
+help: Remove definition: `TypedDict`
+
+Found 13 errors.
+[*] 7 fixable with the `--fix` option (4 hidden fixes can be enabled with the `--unsafe-fixes` option).

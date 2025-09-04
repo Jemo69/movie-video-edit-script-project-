@@ -1,6 +1,7 @@
 import requests
 import math
 import smtplib
+import asyncio
 
 from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
@@ -8,6 +9,8 @@ from email.mime.text import MIMEText
 from utils import time_it 
 import os
 from db.main import create_database_connection , executes_sql_query  
+from storage.main import create_bucket
+from logger import get_logger
 
 import shutil
 import re
@@ -20,6 +23,9 @@ import concurrent.futures
 
 # Load environment variables from .env file
 load_dotenv()
+logger = get_logger(__name__)
+
+create_bucket()
 conn = create_database_connection()
 
 @time_it
@@ -34,7 +40,7 @@ def video_getter() -> Union[str, None]:
     """
     youtube_api_key = os.getenv('YOUTUBE_API_KEY')
     if not youtube_api_key:
-        print("Error: YOUTUBE_API_KEY not found in environment variables.")
+        logger.error("Error: YOUTUBE_API_KEY not found in environment variables.")
         return None
 
     target_id = 'UC-mvrwYr8tk6Gk8H3C8r1bg'
@@ -58,17 +64,17 @@ def video_getter() -> Union[str, None]:
             video_id = data['items'][0]['id']['videoId']
             return f'https://www.youtube.com/watch?v={video_id}'
         else:
-            print("No videos found for the specified channel.")
+            logger.info("No videos found for the specified channel.")
             return None
 
     except requests.exceptions.RequestException as e:
-        print(f"An error occurred with the YouTube API request: {e}")
+        logger.error(f"An error occurred with the YouTube API request: {e}")
         return None
     except KeyError as e:
-        print(f"Error parsing YouTube API response: {e}")
+        logger.error(f"Error parsing YouTube API response: {e}")
         return None
     except Exception as e:
-        print(f"An unexpected error occurred: {e}")
+        logger.error(f"An unexpected error occurred: {e}")
         return None
 
 
@@ -83,10 +89,10 @@ def video_downloader(url: str) -> Union[Tuple[str, str], None]:
         Union[Tuple[str, str], None]: A tuple containing the file path and sanitized project title, or None if an error occurs.
     """
     try:
-        print("Starting download...")
+        logger.info("Starting download...")
         yt = YouTube(url)
         title = yt.title
-        print(f"Video Title: {title}")
+        logger.info(f"Video Title: {title}")
 
         sanitized_title = re.sub(r'[\\/:*?"<>|]', "", title)
         project_title = re.sub(r'\s+', "-", sanitized_title)
@@ -100,13 +106,13 @@ def video_downloader(url: str) -> Union[Tuple[str, str], None]:
         stream = yt.streams.get_highest_resolution()
         if stream:
             stream.download(output_path=str(output_path), filename=filename)
-            print(f"Video downloaded successfully: {filepath}")
+            logger.info(f"Video downloaded successfully: {filepath}")
             return str(filepath), project_title
         else:
-            print("No suitable stream found for download.")
+            logger.info("No suitable stream found for download.")
             return None
     except Exception as e:
-        print(f"An error occurred during video download: {e}")
+        logger.error(f"An error occurred during video download: {e}")
         return None
 
 
@@ -120,7 +126,7 @@ def process_segment(
     """
     Processes a single video segment using ffmpeg.
     """
-    print(f"Processing segment {segment_index + 1}: Writing to {output_path}...")
+    logger.info(f"Processing segment {segment_index + 1}: Writing to {output_path}...")
     try:
         (
             ffmpeg.input(input_path, ss=start_time, t=segment_duration)
@@ -138,13 +144,13 @@ def process_segment(
             .overwrite_output()
             .run(capture_stdout=True, capture_stderr=True, quiet=True)
         )
-        print(f"Successfully created segment {segment_index + 1}")
+        logger.info(f"Successfully created segment {segment_index + 1}")
         return None
     except ffmpeg.Error as e:
         error_message = (
             f"Error creating segment {segment_index + 1}: {e.stderr.decode()}"
         )
-        print(error_message)
+        logger.error(error_message)
         return error_message
 
 
@@ -161,7 +167,7 @@ def video_editor(input_path: str, project_name: str) -> Union[Tuple[Path, str], 
         Union[Tuple[Path, str], None]: A tuple containing the output directory and project name, or None if an error occurs.
     """
     if not input_path:
-        print("Error: Input path is not provided.")
+        logger.error("Error: Input path is not provided.")
         return None
 
     try:
@@ -175,8 +181,8 @@ def video_editor(input_path: str, project_name: str) -> Union[Tuple[Path, str], 
 
         num_segments = math.ceil(duration / segment_duration)
 
-        print(f"Video duration: {duration:.2f} seconds")
-        print(
+        logger.info(f"Video duration: {duration:.2f} seconds")
+        logger.info(
             f"Creating {num_segments} segments of {segment_duration / 60:.1f} minutes each"
         )
 
@@ -206,19 +212,19 @@ def video_editor(input_path: str, project_name: str) -> Union[Tuple[Path, str], 
                 result = future.result()
                 if result:
                     # Log errors but continue processing other segments
-                    print(result)
+                    logger.error(result)
 
-        print(f"Successfully created {num_segments} video segments in {output_dir}")
+        logger.info(f"Successfully created {num_segments} video segments in {output_dir}")
         return output_dir, project_name
 
     except ffmpeg.Error as e:
-        print(f"An ffmpeg error occurred: {e.stderr.decode()}")
+        logger.error(f"An ffmpeg error occurred: {e.stderr.decode()}")
         return None
     except Exception as e:
-        print(f"An error occurred during video editing: {e}")
+        logger.error(f"An error occurred during video editing: {e}")
         return None
 def compressor_out_dir(project_name:str):
-    print('compressing the output folder')
+    logger.info('compressing the output folder')
     input_path = f'output/{project_name}/' 
     if not os.path.exists('final_project'):
         os.mkdir('final_project')
@@ -226,13 +232,13 @@ def compressor_out_dir(project_name:str):
     archive_format : str = 'zip'
     try : 
         shutil.make_archive(output_name , archive_format, input_path)
-        print(f"{project_name} is done compressing ")
+        logger.info(f"{project_name} is done compressing ")
     except Exception as e : 
-        print(f'there was an error :{e}')
+        logger.error(f'there was an error :{e}')
     finally:
-        print('done')
+        logger.info('done')
 def upload_to_cloud():
-    print('uploading to the cloud')
+    logger.info('uploading to the cloud')
     # Placeholder for cloud upload logic
     base_url = 'https://www.googleapis.com/drive/v3'
 
@@ -244,6 +250,15 @@ async def create_table():
     );
     """
   executes_sql_query( create_table_query ,  conn)
+async def create_user():
+    create_user_query: str = """
+        CREATE TABLE IF NOT EXISTS users (
+            user_id SERIAL PRIMARY KEY,
+            email VARCHAR(255) UNIQUE NOT NULL,
+            password_hash TEXT NOT NULL
+        );
+        """
+    executes_sql_query( create_user_query ,  conn)
     
 
 
@@ -261,7 +276,7 @@ def video_notifier(project_name: str):
     attachment_path = f'final_project'
 
     if not sender_email or not sender_password:
-        print("Error: SENDER_EMAIL or SENDER_PASSWORD not found in environment variables.")
+        logger.error("Error: SENDER_EMAIL or SENDER_PASSWORD not found in environment variables.")
         return
         
     body = f"The video project '{project_name}' has finished editing."
@@ -274,24 +289,23 @@ def video_notifier(project_name: str):
             msg['From'] = sender_email
             msg['To'] = email
             msg.attach(MIMEText( body, 'plain' ))
-            with open(attachment, 'rb') as f:
-                attach_file = MIMEApplication(f.read(), _subtype='zip')
-                attach_file.add_header('Content-Disposition' , 'attachment')
-                msg.attach(attach_file)
 
             with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
                 smtp.login(sender_email, sender_password)
                 smtp.send_message(msg)
-            print(f"Notification email sent successfully to {email}")
+            logger.info(f"Notification email sent successfully to {email}")
         except smtplib.SMTPAuthenticationError:
-            print(f"Failed to send email to {email}: Authentication error. Please check your email and password.")
+            logger.error(f"Failed to send email to {email}: Authentication error. Please check your email and password.")
         except Exception as e:
-            print(f"An error occurred while sending the email to {email}: {e}")
+            logger.error(f"An error occurred while sending the email to {email}: {e}")
 
-def main():
+
+async def main():
     """
     Main function to run the video processing pipeline.
     """
+    await create_table()
+    await create_user()
     url = video_getter()
     if url:
         download_info = video_downloader(url)
@@ -304,4 +318,4 @@ def main():
                 video_notifier(project_name=project_name)
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
