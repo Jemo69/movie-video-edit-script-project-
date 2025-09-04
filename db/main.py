@@ -1,4 +1,4 @@
-import psycopg2
+import psycopg
 from dotenv import load_dotenv
 import os
 
@@ -13,20 +13,23 @@ def create_database_connection():
     this the database connection function
     """
     try:
-        conn_string = os.getenv('DATABASE_URL')
-        if not conn_string:
-            raise ValueError("DATABASE_URL not found in environment variables.")
-        conn =  psycopg2.connect(conn_string)  
-        conn.autocommit = True
-        cursor = conn.cursor
-        return cursor
-    except psycopg2.Error as e:
-        logger.error(f"Error connecting to the database: {e}")
-        return None
+        with psycopg.connect(
+        host=os.getenv( 'PGHOST' ),
+        dbname=os.getenv( 'PGDATABASE' ),
+        user=os.getenv( 'PGUSER' ),
+        password=os.getenv( 'PGPASSWORD' ),
+        sslmode=os.getenv( 'PGSSLMODE' ),
+        channel_binding=os.getenv( 'PGCHANNELBINDING' )
+    ) as conn:
+            print("Connection successful!")
+            return conn
+    except psycopg.OperationalError as e:
+        print(f"Connection failed: {e}")
 
 def executes_sql_query(query  :str , some):
     try:
         some.execute(query)
+        logger.info("the query has finished ")
         return 'success' 
     except Exception as e: 
         logger.error(f"Error executing query: {e}")

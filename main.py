@@ -4,7 +4,6 @@ import smtplib
 import asyncio
 
 from email.mime.multipart import MIMEMultipart
-from email.mime.application import MIMEApplication
 from email.mime.text import MIMEText
 from utils import time_it 
 import os
@@ -25,8 +24,6 @@ import concurrent.futures
 load_dotenv()
 logger = get_logger(__name__)
 
-create_bucket()
-conn = create_database_connection()
 
 @time_it
 def video_getter() -> Union[str, None]:
@@ -242,7 +239,7 @@ def upload_to_cloud():
     # Placeholder for cloud upload logic
     base_url = 'https://www.googleapis.com/drive/v3'
 
-async def create_table():    
+async def create_table(conn):    
   create_table_query: str = """
     CREATE TABLE IF NOT EXISTS videoproject (
         project_name VARCHAR(255) NOT NULL,
@@ -250,7 +247,7 @@ async def create_table():
     );
     """
   executes_sql_query( create_table_query ,  conn)
-async def create_user():
+async def create_user(conn):
     create_user_query: str = """
         CREATE TABLE IF NOT EXISTS users (
             user_id SERIAL PRIMARY KEY,
@@ -300,22 +297,30 @@ def video_notifier(project_name: str):
             logger.error(f"An error occurred while sending the email to {email}: {e}")
 
 
+
+
+
+
+@time_it
 async def main():
     """
     Main function to run the video processing pipeline.
     """
-    await create_table()
-    await create_user()
-    url = video_getter()
-    if url:
-        download_info = video_downloader(url)
-        if download_info:
-            input_path, project_title = download_info
-            editor_output = video_editor(input_path, project_title)
-            if editor_output:
-                _, project_name = editor_output
-                compressor_out_dir(project_name=project_name)
-                video_notifier(project_name=project_name)
+
+    create_bucket()
+    conn = create_database_connection()
+    # await create_table(conn)
+    # await create_user(conn)
+    # url = video_getter()
+    # if url:
+    #     download_info = video_downloader(url)
+    #     if download_info:
+    #         input_path, project_title = download_info
+    #         editor_output = video_editor(input_path, project_title)
+    #         if editor_output:
+    #             _, project_name = editor_output
+    #             compressor_out_dir(project_name=project_name)
+    #             video_notifier(project_name=project_name)
 
 if __name__ == "__main__":
     asyncio.run(main())
