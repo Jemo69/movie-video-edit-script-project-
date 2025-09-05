@@ -13,14 +13,8 @@ def create_database_connection():
     this the database connection function
     """
     try:
-        with psycopg.connect(
-        host=os.getenv( 'PGHOST' ),
-        dbname=os.getenv( 'PGDATABASE' ),
-        user=os.getenv( 'PGUSER' ),
-        password=os.getenv( 'PGPASSWORD' ),
-        sslmode=os.getenv( 'PGSSLMODE' ),
-        channel_binding=os.getenv( 'PGCHANNELBINDING' )
-    ) as conn:
+        conn_string = os.getenv("PGDATABASE_URL")
+        with psycopg.connect(conn_string) as conn:
             print("Connection successful!")
             return conn
     except psycopg.OperationalError as e:

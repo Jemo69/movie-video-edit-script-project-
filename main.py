@@ -307,7 +307,7 @@ async def main():
     Main function to run the video processing pipeline.
     """
 
-    create_bucket()
+    # create_bucket()
     conn = create_database_connection()
     # await create_table(conn)
     # await create_user(conn)
