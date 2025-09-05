@@ -13,7 +13,7 @@ def create_bucket():
         storage_client = storage.Client()
         checker = storage_client.list_buckets()
         bucket_list = [bucket for bucket in checker]
-        if bucket_name not in bucket_list:
+        if bucket_name  in bucket_list:
             bucket = storage_client.bucket(bucket_name)
             bucket.location = "US"
             bucket = storage_client.create_bucket(bucket)

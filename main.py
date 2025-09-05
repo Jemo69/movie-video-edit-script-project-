@@ -307,20 +307,20 @@ async def main():
     Main function to run the video processing pipeline.
     """
 
-    # create_bucket()
+    create_bucket()
     conn = create_database_connection()
-    # await create_table(conn)
-    # await create_user(conn)
-    # url = video_getter()
-    # if url:
-    #     download_info = video_downloader(url)
-    #     if download_info:
-    #         input_path, project_title = download_info
-    #         editor_output = video_editor(input_path, project_title)
-    #         if editor_output:
-    #             _, project_name = editor_output
-    #             compressor_out_dir(project_name=project_name)
-    #             video_notifier(project_name=project_name)
+    await create_table(conn)
+    await create_user(conn)
+    url = video_getter()
+    if url:
+        download_info = video_downloader(url)
+        if download_info:
+            input_path, project_title = download_info
+            editor_output = video_editor(input_path, project_title)
+            if editor_output:
+                _, project_name = editor_output
+                compressor_out_dir(project_name=project_name)
+                video_notifier(project_name=project_name)
 
 if __name__ == "__main__":
     asyncio.run(main())
