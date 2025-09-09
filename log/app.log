@@ -5150,3 +5150,46 @@ Exiting normally, received signal 2.
 2025-09-08 20:33:22,193 - __main__ - INFO - Successfully created segment 4
 2025-09-08 20:33:34,474 - __main__ - INFO - Successfully created segment 3
 2025-09-08 20:34:18,606 - __main__ - INFO - Successfully created segment 2
+2025-09-08 20:59:18,659 - storage.main - ERROR - An unexpected error occurred during bucket creation: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+2025-09-08 20:59:18,669 - db.main - ERROR - Error executing query: auth_token not provided and TURSO_AUTH_TOKEN is not set
+2025-09-08 20:59:18,670 - db.main - ERROR - Error executing query: auth_token not provided and TURSO_AUTH_TOKEN is not set
+2025-09-08 20:59:19,252 - __main__ - INFO - Starting download...
+2025-09-08 20:59:19,881 - __main__ - INFO - Video Title: SEPTEMBER THANKSGIVING SERVICE || PST OLADIIPO OMOPARIOLA
+2025-09-08 20:59:19,895 - __main__ - INFO - Video downloaded successfully: input/SEPTEMBER THANKSGIVING SERVICE  PST OLADIIPO OMOPARIOLA.mp4
+2025-09-08 20:59:20,825 - __main__ - INFO - Video duration: 6051.54 seconds
+2025-09-08 20:59:20,825 - __main__ - INFO - Creating 7 segments of 15.0 minutes each
+2025-09-08 20:59:20,833 - __main__ - INFO - Processing segment 1: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_001.mp4...
+2025-09-08 20:59:20,833 - __main__ - INFO - Processing segment 2: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_002.mp4...
+2025-09-08 20:59:20,835 - __main__ - INFO - Processing segment 3: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_003.mp4...
+2025-09-08 20:59:20,837 - __main__ - INFO - Processing segment 4: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_004.mp4...
+2025-09-08 20:59:20,837 - __main__ - INFO - Processing segment 5: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_005.mp4...
+2025-09-08 20:59:20,839 - __main__ - INFO - Processing segment 6: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_006.mp4...
+2025-09-08 20:59:20,844 - __main__ - INFO - Processing segment 7: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_007.mp4...
+2025-09-08 20:59:37,854 - db.main - ERROR - Error executing query: auth_token not provided and TURSO_AUTH_TOKEN is not set
+2025-09-08 20:59:37,855 - db.main - ERROR - Error executing query: auth_token not provided and TURSO_AUTH_TOKEN is not set
+2025-09-09 15:56:15,081 - db.main - ERROR - Error executing query: auth_token not provided and TURSO_AUTH_TOKEN is not set
+2025-09-09 15:56:15,082 - db.main - ERROR - Error executing query: auth_token not provided and TURSO_AUTH_TOKEN is not set
+2025-09-09 16:00:23,631 - db.main - ERROR - Error executing query: auth_token not provided and TURSO_AUTH_TOKEN is not set
+2025-09-09 16:00:23,633 - db.main - ERROR - Error executing query: auth_token not provided and TURSO_AUTH_TOKEN is not set
+2025-09-09 16:00:38,168 - db.main - ERROR - Error executing query: auth_token not provided and TURSO_AUTH_TOKEN is not set
+2025-09-09 16:00:38,169 - db.main - ERROR - Error executing query: auth_token not provided and TURSO_AUTH_TOKEN is not set
+2025-09-09 16:05:36,798 - db.main - ERROR - Error executing query: 'TursoConnection' object has no attribute 'startswith'
+2025-09-09 16:05:36,799 - db.main - ERROR - Error executing query: 'TursoConnection' object has no attribute 'startswith'
+2025-09-09 16:11:58,120 - db.main - ERROR - Error executing query: 'TursoConnection' object has no attribute 'startswith'
+2025-09-09 16:11:58,122 - db.main - ERROR - Error executing query: 'TursoConnection' object has no attribute 'startswith'
+2025-09-09 16:19:49,333 - db.main - ERROR - Error executing query: 'TursoConnection' object has no attribute 'startswith'
+2025-09-09 16:19:49,335 - db.main - ERROR - Error executing query: 'TursoConnection' object has no attribute 'startswith'
+2025-09-09 16:23:26,936 - db.main - ERROR - Error executing query: 'TursoConnection' object has no attribute 'startswith'
+2025-09-09 16:23:26,938 - db.main - ERROR - Error executing query: 'TursoConnection' object has no attribute 'startswith'
+2025-09-09 16:27:40,191 - db.main - ERROR - Error executing query: 'TursoConnection' object has no attribute 'startswith'
+2025-09-09 16:27:40,193 - db.main - ERROR - Error executing query: 'TursoConnection' object has no attribute 'startswith'
+2025-09-09 17:06:52,083 - db.main - INFO - Table 'video' created successfully
+2025-09-09 17:06:52,088 - db.main - INFO - Table 'Users' created successfully
+2025-09-09 17:16:13,562 - db.main - ERROR - Error creating table 'video': module 'libsql_client' has no attribute 'connect'
+2025-09-09 17:16:13,563 - db.main - ERROR - Error creating table 'Users': module 'libsql_client' has no attribute 'connect'
+2025-09-09 17:24:25,830 - db.main - ERROR - Error creating table 'video': module 'libsql_client' has no attribute 'connect'
+2025-09-09 17:24:25,832 - db.main - ERROR - Error creating table 'Users': module 'libsql_client' has no attribute 'connect'
+2025-09-09 17:28:27,309 - db.main - ERROR - Error creating table 'video': object HranaClient can't be used in 'await' expression
+2025-09-09 17:28:27,311 - db.main - ERROR - Error creating table 'Users': object HranaClient can't be used in 'await' expression
+2025-09-09 17:38:06,748 - db.main - ERROR - Error creating table 'video': object HranaClient can't be used in 'await' expression
+2025-09-09 17:38:06,756 - db.main - ERROR - Error creating table 'Users': object HranaClient can't be used in 'await' expression
