@@ -1,4 +1,5 @@
-import psycopg
+from turso_python.connection import TursoConnection
+from turso_python.crud import TursoCRUD , TursoSchemaManager
 from dotenv import load_dotenv
 import os
 
@@ -13,23 +14,26 @@ def create_database_connection():
     this the database connection function
     """
     try:
-        conn_string = os.getenv("PGDATABASE_URL")
-        with psycopg.connect(conn_string) as conn:
-            print("Connection successful!")
-            return conn
-    except psycopg.OperationalError as e:
+
+        database_url = os.getenv('TURSO_DATABASE_URL')
+        authtoken = os.getenv('TURSO_TOKEN')
+        conn= TursoConnection(
+            database_url=database_url,
+            authtoken=authtoken
+        )
+        return conn
+    except Exception as e:
         print(f"Connection failed: {e}")
 
-def executes_sql_query(query  :str , some):
+def schema_generator(query  :dict[str , str] , name : str ):
     try:
-        some.execute(query)
+        some = create_database_connection()
+        schema_manager = TursoSchemaManager(some)
+        schema_manager.create_table(name ,query)
         logger.info("the query has finished ")
         return 'success' 
     except Exception as e: 
         logger.error(f"Error executing query: {e}")
-        if some:
-            some.close()
-            return None
 
     
 

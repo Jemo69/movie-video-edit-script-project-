@@ -4400,3 +4400,751 @@ Exiting normally, received signal 2.
 2025-09-04 22:07:51,301 - storage.main - ERROR - An unexpected error occurred during bucket creation: File /data/data/com.termux/files/home/projects/movie-video-edit-script-project-/key.json was not found.
 2025-09-04 22:10:05,450 - storage.main - ERROR - An unexpected error occurred during bucket creation: File /data/data/com.termux/files/home/projects/movie-video-edit-script-project-/key.json was not found.
 2025-09-04 22:10:41,839 - storage.main - INFO - Bucket movie-edit created.
+2025-09-08 08:43:18,389 - storage.main - ERROR - An unexpected error occurred during bucket creation: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+2025-09-08 08:43:18,393 - db.main - ERROR - Error executing query: create_client() got an unexpected keyword argument 'authtoken'
+2025-09-08 19:12:48,588 - storage.main - ERROR - An unexpected error occurred during bucket creation: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+2025-09-08 19:14:03,181 - storage.main - ERROR - An unexpected error occurred during bucket creation: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+2025-09-08 19:14:03,185 - db.main - ERROR - Error executing query: name 'psycopg' is not defined
+2025-09-08 19:14:03,187 - db.main - ERROR - Error executing query: name 'psycopg' is not defined
+2025-09-08 19:14:03,966 - __main__ - INFO - Starting download...
+2025-09-08 19:14:04,664 - __main__ - INFO - Video Title: SEPTEMBER THANKSGIVING SERVICE || PST OLADIIPO OMOPARIOLA
+2025-09-08 19:17:16,661 - __main__ - INFO - Video downloaded successfully: input/SEPTEMBER THANKSGIVING SERVICE  PST OLADIIPO OMOPARIOLA.mp4
+2025-09-08 19:17:18,022 - __main__ - INFO - Video duration: 6051.54 seconds
+2025-09-08 19:17:18,023 - __main__ - INFO - Creating 7 segments of 15.0 minutes each
+2025-09-08 19:17:18,052 - __main__ - INFO - Processing segment 1: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_001.mp4...
+2025-09-08 19:17:18,055 - __main__ - INFO - Processing segment 2: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_002.mp4...
+2025-09-08 19:17:18,062 - __main__ - INFO - Processing segment 3: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_003.mp4...
+2025-09-08 19:17:18,074 - __main__ - INFO - Processing segment 4: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_004.mp4...
+2025-09-08 19:17:18,080 - __main__ - INFO - Processing segment 5: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_005.mp4...
+2025-09-08 19:17:18,085 - __main__ - INFO - Processing segment 6: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_006.mp4...
+2025-09-08 19:17:18,087 - __main__ - INFO - Processing segment 7: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_007.mp4...
+2025-09-08 19:19:09,689 - storage.main - ERROR - An unexpected error occurred during bucket creation: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+2025-09-08 19:19:09,693 - db.main - ERROR - Error executing query: name 'psycopg' is not defined
+2025-09-08 19:19:09,694 - db.main - ERROR - Error executing query: name 'psycopg' is not defined
+2025-09-08 19:19:10,250 - __main__ - INFO - Starting download...
+2025-09-08 19:19:10,938 - __main__ - INFO - Video Title: SEPTEMBER THANKSGIVING SERVICE || PST OLADIIPO OMOPARIOLA
+2025-09-08 19:19:10,961 - __main__ - INFO - Video downloaded successfully: input/SEPTEMBER THANKSGIVING SERVICE  PST OLADIIPO OMOPARIOLA.mp4
+2025-09-08 19:19:12,199 - __main__ - INFO - Video duration: 6051.54 seconds
+2025-09-08 19:19:12,200 - __main__ - INFO - Creating 7 segments of 15.0 minutes each
+2025-09-08 19:19:12,218 - __main__ - INFO - Processing segment 1: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_001.mp4...
+2025-09-08 19:19:12,222 - __main__ - INFO - Processing segment 2: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_002.mp4...
+2025-09-08 19:19:12,233 - __main__ - INFO - Processing segment 3: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_003.mp4...
+2025-09-08 19:19:12,245 - __main__ - INFO - Processing segment 4: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_004.mp4...
+2025-09-08 19:19:12,259 - __main__ - INFO - Processing segment 5: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_005.mp4...
+2025-09-08 19:19:12,267 - __main__ - INFO - Processing segment 6: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_006.mp4...
+2025-09-08 19:19:12,279 - __main__ - INFO - Processing segment 7: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_007.mp4...
+2025-09-08 19:29:09,216 - storage.main - ERROR - An unexpected error occurred during bucket creation: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+2025-09-08 19:29:09,232 - db.main - ERROR - Error executing query: name 'psycopg' is not defined
+2025-09-08 19:29:09,234 - db.main - ERROR - Error executing query: name 'psycopg' is not defined
+2025-09-08 19:29:09,923 - __main__ - INFO - Starting download...
+2025-09-08 19:29:10,586 - __main__ - INFO - Video Title: SEPTEMBER THANKSGIVING SERVICE || PST OLADIIPO OMOPARIOLA
+2025-09-08 19:29:10,601 - __main__ - INFO - Video downloaded successfully: input/SEPTEMBER THANKSGIVING SERVICE  PST OLADIIPO OMOPARIOLA.mp4
+2025-09-08 19:29:11,927 - __main__ - INFO - Video duration: 6051.54 seconds
+2025-09-08 19:29:11,928 - __main__ - INFO - Creating 7 segments of 15.0 minutes each
+2025-09-08 19:29:11,938 - __main__ - INFO - Processing segment 1: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_001.mp4...
+2025-09-08 19:29:11,939 - __main__ - INFO - Processing segment 2: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_002.mp4...
+2025-09-08 19:29:11,940 - __main__ - INFO - Processing segment 3: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_003.mp4...
+2025-09-08 19:29:11,942 - __main__ - INFO - Processing segment 4: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_004.mp4...
+2025-09-08 19:29:11,944 - __main__ - INFO - Processing segment 5: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_005.mp4...
+2025-09-08 19:29:11,945 - __main__ - INFO - Processing segment 6: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_006.mp4...
+2025-09-08 19:29:11,950 - __main__ - INFO - Processing segment 7: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_007.mp4...
+2025-09-08 19:47:40,025 - storage.main - ERROR - An unexpected error occurred during bucket creation: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+2025-09-08 19:47:40,038 - db.main - ERROR - Error executing query: name 'psycopg' is not defined
+2025-09-08 19:47:40,042 - db.main - ERROR - Error executing query: name 'psycopg' is not defined
+2025-09-08 19:47:40,698 - __main__ - INFO - Starting download...
+2025-09-08 19:47:41,413 - __main__ - INFO - Video Title: SEPTEMBER THANKSGIVING SERVICE || PST OLADIIPO OMOPARIOLA
+2025-09-08 19:47:41,437 - __main__ - INFO - Video downloaded successfully: input/SEPTEMBER THANKSGIVING SERVICE  PST OLADIIPO OMOPARIOLA.mp4
+2025-09-08 19:47:43,058 - __main__ - INFO - Video duration: 6051.54 seconds
+2025-09-08 19:47:43,060 - __main__ - INFO - Creating 7 segments of 15.0 minutes each
+2025-09-08 19:47:43,121 - __main__ - INFO - Processing segment 1: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_001.mp4...
+2025-09-08 19:47:43,134 - __main__ - INFO - Processing segment 2: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_002.mp4...
+2025-09-08 19:47:43,140 - __main__ - INFO - Processing segment 3: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_003.mp4...
+2025-09-08 19:47:43,148 - __main__ - INFO - Processing segment 4: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_004.mp4...
+2025-09-08 19:47:43,151 - __main__ - INFO - Processing segment 5: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_005.mp4...
+2025-09-08 19:47:43,157 - __main__ - INFO - Processing segment 6: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_006.mp4...
+2025-09-08 19:47:43,160 - __main__ - INFO - Processing segment 7: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_007.mp4...
+2025-09-08 19:47:43,703 - __main__ - ERROR - Error creating segment 4: 
+2025-09-08 19:47:43,707 - __main__ - ERROR - Error creating segment 4: 
+2025-09-08 19:47:43,749 - __main__ - ERROR - Error creating segment 6: ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Android (12470979, +pgo, +bolt, +lto, +mlgo, based on r522817c) clang version 18.0.3 (https://android.googlesource.com/toolchain/llvm-project d8003a456d14a3deb8054cdaa529ffbf02d9b262)
+  configuration: --arch=aarch64 --as=aarch64-linux-android-clang --cc=aarch64-linux-android-clang --cxx=aarch64-linux-android-clang++ --nm=llvm-nm --ar=llvm-ar --ranlib=llvm-ranlib --pkg-config=/home/builder/.termux-build/_cache/android-r27c-api-29-v1/bin/pkg-config --strip=llvm-strip --cross-prefix=aarch64-linux-android- --disable-indevs --disable-outdevs --enable-indev=lavfi --disable-static --disable-symver --enable-cross-compile --enable-gnutls --enable-gpl --enable-version3 --enable-jni --enable-lcms2 --enable-libaom --enable-libass --enable-libbluray --enable-libdav1d --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libharfbuzz --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenmpt --enable-libopus --enable-librav1e --enable-librubberband --enable-libsoxr --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtheora --enable-libv4l2 --enable-libvidstab --enable-libvmaf --enable-libvo-amrwbenc --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-mediacodec --enable-opencl --enable-shared --prefix=/data/data/com.termux/files/usr --target-os=android --disable-vulkan --enable-neon --disable-libfdk-aac
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0xb40000733429c280] reached eof, corrupted STCO atom
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0xb40000733429c280] error reading header
+[in#0 @ 0xb400007334294a00] Error opening input: End of file
+Error opening input file input/SEPTEMBER THANKSGIVING SERVICE  PST OLADIIPO OMOPARIOLA.mp4.
+Error opening input files: End of file
+Exiting normally, received signal 2.
+
+2025-09-08 19:47:43,751 - __main__ - ERROR - Error creating segment 6: ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Android (12470979, +pgo, +bolt, +lto, +mlgo, based on r522817c) clang version 18.0.3 (https://android.googlesource.com/toolchain/llvm-project d8003a456d14a3deb8054cdaa529ffbf02d9b262)
+  configuration: --arch=aarch64 --as=aarch64-linux-android-clang --cc=aarch64-linux-android-clang --cxx=aarch64-linux-android-clang++ --nm=llvm-nm --ar=llvm-ar --ranlib=llvm-ranlib --pkg-config=/home/builder/.termux-build/_cache/android-r27c-api-29-v1/bin/pkg-config --strip=llvm-strip --cross-prefix=aarch64-linux-android- --disable-indevs --disable-outdevs --enable-indev=lavfi --disable-static --disable-symver --enable-cross-compile --enable-gnutls --enable-gpl --enable-version3 --enable-jni --enable-lcms2 --enable-libaom --enable-libass --enable-libbluray --enable-libdav1d --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libharfbuzz --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenmpt --enable-libopus --enable-librav1e --enable-librubberband --enable-libsoxr --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtheora --enable-libv4l2 --enable-libvidstab --enable-libvmaf --enable-libvo-amrwbenc --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-mediacodec --enable-opencl --enable-shared --prefix=/data/data/com.termux/files/usr --target-os=android --disable-vulkan --enable-neon --disable-libfdk-aac
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0xb40000733429c280] reached eof, corrupted STCO atom
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0xb40000733429c280] error reading header
+[in#0 @ 0xb400007334294a00] Error opening input: End of file
+Error opening input file input/SEPTEMBER THANKSGIVING SERVICE  PST OLADIIPO OMOPARIOLA.mp4.
+Error opening input files: End of file
+Exiting normally, received signal 2.
+
+2025-09-08 19:47:43,759 - __main__ - ERROR - Error creating segment 7: ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Android (12470979, +pgo, +bolt, +lto, +mlgo, based on r522817c) clang version 18.0.3 (https://android.googlesource.com/toolchain/llvm-project d8003a456d14a3deb8054cdaa529ffbf02d9b262)
+  configuration: --arch=aarch64 --as=aarch64-linux-android-clang --cc=aarch64-linux-android-clang --cxx=aarch64-linux-android-clang++ --nm=llvm-nm --ar=llvm-ar --ranlib=llvm-ranlib --pkg-config=/home/builder/.termux-build/_cache/android-r27c-api-29-v1/bin/pkg-config --strip=llvm-strip --cross-prefix=aarch64-linux-android- --disable-indevs --disable-outdevs --enable-indev=lavfi --disable-static --disable-symver --enable-cross-compile --enable-gnutls --enable-gpl --enable-version3 --enable-jni --enable-lcms2 --enable-libaom --enable-libass --enable-libbluray --enable-libdav1d --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libharfbuzz --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenmpt --enable-libopus --enable-librav1e --enable-librubberband --enable-libsoxr --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtheora --enable-libv4l2 --enable-libvidstab --enable-libvmaf --enable-libvo-amrwbenc --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-mediacodec --enable-opencl --enable-shared --prefix=/data/data/com.termux/files/usr --target-os=android --disable-vulkan --enable-neon --disable-libfdk-aac
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0xb40000716069c280] reached eof, corrupted STCO atom
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0xb40000716069c280] error reading header
+[in#0 @ 0xb400007160694a00] Error opening input: End of file
+Error opening input file input/SEPTEMBER THANKSGIVING SERVICE  PST OLADIIPO OMOPARIOLA.mp4.
+Error opening input files: End of file
+Exiting normally, received signal 2.
+
+2025-09-08 19:47:43,763 - __main__ - ERROR - Error creating segment 7: ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Android (12470979, +pgo, +bolt, +lto, +mlgo, based on r522817c) clang version 18.0.3 (https://android.googlesource.com/toolchain/llvm-project d8003a456d14a3deb8054cdaa529ffbf02d9b262)
+  configuration: --arch=aarch64 --as=aarch64-linux-android-clang --cc=aarch64-linux-android-clang --cxx=aarch64-linux-android-clang++ --nm=llvm-nm --ar=llvm-ar --ranlib=llvm-ranlib --pkg-config=/home/builder/.termux-build/_cache/android-r27c-api-29-v1/bin/pkg-config --strip=llvm-strip --cross-prefix=aarch64-linux-android- --disable-indevs --disable-outdevs --enable-indev=lavfi --disable-static --disable-symver --enable-cross-compile --enable-gnutls --enable-gpl --enable-version3 --enable-jni --enable-lcms2 --enable-libaom --enable-libass --enable-libbluray --enable-libdav1d --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libharfbuzz --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenmpt --enable-libopus --enable-librav1e --enable-librubberband --enable-libsoxr --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtheora --enable-libv4l2 --enable-libvidstab --enable-libvmaf --enable-libvo-amrwbenc --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-mediacodec --enable-opencl --enable-shared --prefix=/data/data/com.termux/files/usr --target-os=android --disable-vulkan --enable-neon --disable-libfdk-aac
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0xb40000716069c280] reached eof, corrupted STCO atom
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0xb40000716069c280] error reading header
+[in#0 @ 0xb400007160694a00] Error opening input: End of file
+Error opening input file input/SEPTEMBER THANKSGIVING SERVICE  PST OLADIIPO OMOPARIOLA.mp4.
+Error opening input files: End of file
+Exiting normally, received signal 2.
+
+2025-09-08 19:47:43,830 - __main__ - ERROR - Error creating segment 5: ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Android (12470979, +pgo, +bolt, +lto, +mlgo, based on r522817c) clang version 18.0.3 (https://android.googlesource.com/toolchain/llvm-project d8003a456d14a3deb8054cdaa529ffbf02d9b262)
+  configuration: --arch=aarch64 --as=aarch64-linux-android-clang --cc=aarch64-linux-android-clang --cxx=aarch64-linux-android-clang++ --nm=llvm-nm --ar=llvm-ar --ranlib=llvm-ranlib --pkg-config=/home/builder/.termux-build/_cache/android-r27c-api-29-v1/bin/pkg-config --strip=llvm-strip --cross-prefix=aarch64-linux-android- --disable-indevs --disable-outdevs --enable-indev=lavfi --disable-static --disable-symver --enable-cross-compile --enable-gnutls --enable-gpl --enable-version3 --enable-jni --enable-lcms2 --enable-libaom --enable-libass --enable-libbluray --enable-libdav1d --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libharfbuzz --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenmpt --enable-libopus --enable-librav1e --enable-librubberband --enable-libsoxr --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtheora --enable-libv4l2 --enable-libvidstab --enable-libvmaf --enable-libvo-amrwbenc --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-mediacodec --enable-opencl --enable-shared --prefix=/data/data/com.termux/files/usr --target-os=android --disable-vulkan --enable-neon --disable-libfdk-aac
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'input/SEPTEMBER THANKSGIVING SERVICE  PST OLADIIPO OMOPARIOLA.mp4':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 0
+    compatible_brands: isommp42
+    creation_time   : 2025-09-08T04:56:30.000000Z
+    encoder         : Google
+  Duration: 01:40:51.54, start: 0.000000, bitrate: 486 kb/s
+  Stream #0:0[0x1](und): Video: h264 (Main) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 640x360 [SAR 1:1 DAR 16:9], 435 kb/s, 29.97 fps, 29.97 tbr, 30k tbn (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+  Stream #0:1[0x2](eng): Audio: aac (HE-AAC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 48 kb/s (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> h264 (libx264))
+  Stream #0:1 -> #0:1 (aac (native) -> aac (native))
+Press [q] to stop, [?] for help
+[af#0:1 @ 0xb4000071a8ca18c0] No filtered frames for output stream, trying to initialize anyway.
+[vf#0:0 @ 0xb4000071a8c50dc0] No filtered frames for output stream, trying to initialize anyway.
+[libx264 @ 0xb400007268623c00] using SAR=1/1
+[libx264 @ 0xb400007268623c00] using cpu capabilities: ARMv8 NEON
+[libx264 @ 0xb400007268623c00] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0xb400007268623c00] 264 - core 164 - H.264/MPEG-4 AVC codec - Copyleft 2003-2024 - http://www.videolan.org/x264.html - options: cabac=1 ref=2 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=6 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=11 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=1 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=30 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to 'output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_005.mp4':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 0
+    compatible_brands: isommp42
+    encoder         : Lavf61.7.100
+  Stream #0:0(und): Video: h264 (avc1 / 0x31637661), yuv420p(progressive), 640x360 [SAR 1:1 DAR 16:9], q=2-31, 29.97 fps, 30k tbn (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 libx264
+      Side data:
+        cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+  Stream #0:1(eng): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 128 kb/s (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 aac
+[out#0/mp4 @ 0xb4000071a8c410c0] video:0KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+[out#0/mp4 @ 0xb4000071a8c410c0] Output file is empty, nothing was encoded(check -ss / -t / -frames parameters if used)
+frame=    0 fps=0.0 q=0.0 Lsize=       0KiB time=N/A bitrate=N/A speed=N/A    
+[aac @ 0xb400007268626600] Qavg: nan
+Exiting normally, received signal 2.
+
+2025-09-08 19:47:43,833 - __main__ - ERROR - Error creating segment 5: ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Android (12470979, +pgo, +bolt, +lto, +mlgo, based on r522817c) clang version 18.0.3 (https://android.googlesource.com/toolchain/llvm-project d8003a456d14a3deb8054cdaa529ffbf02d9b262)
+  configuration: --arch=aarch64 --as=aarch64-linux-android-clang --cc=aarch64-linux-android-clang --cxx=aarch64-linux-android-clang++ --nm=llvm-nm --ar=llvm-ar --ranlib=llvm-ranlib --pkg-config=/home/builder/.termux-build/_cache/android-r27c-api-29-v1/bin/pkg-config --strip=llvm-strip --cross-prefix=aarch64-linux-android- --disable-indevs --disable-outdevs --enable-indev=lavfi --disable-static --disable-symver --enable-cross-compile --enable-gnutls --enable-gpl --enable-version3 --enable-jni --enable-lcms2 --enable-libaom --enable-libass --enable-libbluray --enable-libdav1d --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libharfbuzz --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenmpt --enable-libopus --enable-librav1e --enable-librubberband --enable-libsoxr --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtheora --enable-libv4l2 --enable-libvidstab --enable-libvmaf --enable-libvo-amrwbenc --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-mediacodec --enable-opencl --enable-shared --prefix=/data/data/com.termux/files/usr --target-os=android --disable-vulkan --enable-neon --disable-libfdk-aac
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'input/SEPTEMBER THANKSGIVING SERVICE  PST OLADIIPO OMOPARIOLA.mp4':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 0
+    compatible_brands: isommp42
+    creation_time   : 2025-09-08T04:56:30.000000Z
+    encoder         : Google
+  Duration: 01:40:51.54, start: 0.000000, bitrate: 486 kb/s
+  Stream #0:0[0x1](und): Video: h264 (Main) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 640x360 [SAR 1:1 DAR 16:9], 435 kb/s, 29.97 fps, 29.97 tbr, 30k tbn (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+  Stream #0:1[0x2](eng): Audio: aac (HE-AAC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 48 kb/s (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> h264 (libx264))
+  Stream #0:1 -> #0:1 (aac (native) -> aac (native))
+Press [q] to stop, [?] for help
+[af#0:1 @ 0xb4000071a8ca18c0] No filtered frames for output stream, trying to initialize anyway.
+[vf#0:0 @ 0xb4000071a8c50dc0] No filtered frames for output stream, trying to initialize anyway.
+[libx264 @ 0xb400007268623c00] using SAR=1/1
+[libx264 @ 0xb400007268623c00] using cpu capabilities: ARMv8 NEON
+[libx264 @ 0xb400007268623c00] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0xb400007268623c00] 264 - core 164 - H.264/MPEG-4 AVC codec - Copyleft 2003-2024 - http://www.videolan.org/x264.html - options: cabac=1 ref=2 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=6 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=11 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=1 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=30 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to 'output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_005.mp4':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 0
+    compatible_brands: isommp42
+    encoder         : Lavf61.7.100
+  Stream #0:0(und): Video: h264 (avc1 / 0x31637661), yuv420p(progressive), 640x360 [SAR 1:1 DAR 16:9], q=2-31, 29.97 fps, 30k tbn (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 libx264
+      Side data:
+        cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+  Stream #0:1(eng): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 128 kb/s (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 aac
+[out#0/mp4 @ 0xb4000071a8c410c0] video:0KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+[out#0/mp4 @ 0xb4000071a8c410c0] Output file is empty, nothing was encoded(check -ss / -t / -frames parameters if used)
+frame=    0 fps=0.0 q=0.0 Lsize=       0KiB time=N/A bitrate=N/A speed=N/A    
+[aac @ 0xb400007268626600] Qavg: nan
+Exiting normally, received signal 2.
+
+2025-09-08 19:47:44,282 - __main__ - ERROR - Error creating segment 1: ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Android (12470979, +pgo, +bolt, +lto, +mlgo, based on r522817c) clang version 18.0.3 (https://android.googlesource.com/toolchain/llvm-project d8003a456d14a3deb8054cdaa529ffbf02d9b262)
+  configuration: --arch=aarch64 --as=aarch64-linux-android-clang --cc=aarch64-linux-android-clang --cxx=aarch64-linux-android-clang++ --nm=llvm-nm --ar=llvm-ar --ranlib=llvm-ranlib --pkg-config=/home/builder/.termux-build/_cache/android-r27c-api-29-v1/bin/pkg-config --strip=llvm-strip --cross-prefix=aarch64-linux-android- --disable-indevs --disable-outdevs --enable-indev=lavfi --disable-static --disable-symver --enable-cross-compile --enable-gnutls --enable-gpl --enable-version3 --enable-jni --enable-lcms2 --enable-libaom --enable-libass --enable-libbluray --enable-libdav1d --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libharfbuzz --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenmpt --enable-libopus --enable-librav1e --enable-librubberband --enable-libsoxr --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtheora --enable-libv4l2 --enable-libvidstab --enable-libvmaf --enable-libvo-amrwbenc --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-mediacodec --enable-opencl --enable-shared --prefix=/data/data/com.termux/files/usr --target-os=android --disable-vulkan --enable-neon --disable-libfdk-aac
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0xb400007d4629c280] Could not find codec parameters for stream 0 (Video: h264 (avc1 / 0x31637661), none, 640x360, 435 kb/s): unspecified pixel format
+Consider increasing the value for the 'analyzeduration' (0) and 'probesize' (5000000) options
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'input/SEPTEMBER THANKSGIVING SERVICE  PST OLADIIPO OMOPARIOLA.mp4':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 0
+    compatible_brands: isommp42
+    creation_time   : 2025-09-08T04:56:30.000000Z
+  Duration: 01:40:51.54, start: 0.000000, bitrate: 486 kb/s
+  Stream #0:0[0x1](und): Video: h264 (avc1 / 0x31637661), none, 640x360, 435 kb/s, 29.97 fps, 29.97 tbr, 30k tbn (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+  Stream #0:1[0x2](eng): Audio: aac (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 48 kb/s (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> h264 (libx264))
+  Stream #0:1 -> #0:1 (aac (native) -> aac (native))
+Press [q] to stop, [?] for help
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0xb400007d4629c280] stream 0, offset 0x1cd2db: partial file
+[in#0/mov,mp4,m4a,3gp,3g2,mj2 @ 0xb400007d46294a00] Error during demuxing: Immediate exit requested
+Cannot determine format of input 0:0 after EOF
+[vf#0:0 @ 0xb400007d4628fb40] Task finished with error code: -1094995529 (Invalid data found when processing input)
+[vf#0:0 @ 0xb400007d4628fb40] Terminating thread with return code -1094995529 (Invalid data found when processing input)
+[af#0:1 @ 0xb400007c8aaa18c0] No filtered frames for output stream, trying to initialize anyway.
+[vost#0:0/libx264 @ 0xb400007c8aa56000] Could not open encoder before EOF
+[vost#0:0/libx264 @ 0xb400007c8aa56000] Task finished with error code: -22 (Invalid argument)
+[vost#0:0/libx264 @ 0xb400007c8aa56000] Terminating thread with return code -22 (Invalid argument)
+[out#0/mp4 @ 0xb400007c8aa410c0] Nothing was written into output file, because at least one of its streams received no packets.
+frame=    0 fps=0.0 q=0.0 Lsize=       0KiB time=N/A bitrate=N/A speed=N/A    
+[aac @ 0xb400007d46226600] Qavg: nan
+Exiting normally, received signal 2.
+
+2025-09-08 19:47:44,285 - __main__ - ERROR - Error creating segment 1: ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Android (12470979, +pgo, +bolt, +lto, +mlgo, based on r522817c) clang version 18.0.3 (https://android.googlesource.com/toolchain/llvm-project d8003a456d14a3deb8054cdaa529ffbf02d9b262)
+  configuration: --arch=aarch64 --as=aarch64-linux-android-clang --cc=aarch64-linux-android-clang --cxx=aarch64-linux-android-clang++ --nm=llvm-nm --ar=llvm-ar --ranlib=llvm-ranlib --pkg-config=/home/builder/.termux-build/_cache/android-r27c-api-29-v1/bin/pkg-config --strip=llvm-strip --cross-prefix=aarch64-linux-android- --disable-indevs --disable-outdevs --enable-indev=lavfi --disable-static --disable-symver --enable-cross-compile --enable-gnutls --enable-gpl --enable-version3 --enable-jni --enable-lcms2 --enable-libaom --enable-libass --enable-libbluray --enable-libdav1d --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libharfbuzz --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenmpt --enable-libopus --enable-librav1e --enable-librubberband --enable-libsoxr --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtheora --enable-libv4l2 --enable-libvidstab --enable-libvmaf --enable-libvo-amrwbenc --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-mediacodec --enable-opencl --enable-shared --prefix=/data/data/com.termux/files/usr --target-os=android --disable-vulkan --enable-neon --disable-libfdk-aac
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0xb400007d4629c280] Could not find codec parameters for stream 0 (Video: h264 (avc1 / 0x31637661), none, 640x360, 435 kb/s): unspecified pixel format
+Consider increasing the value for the 'analyzeduration' (0) and 'probesize' (5000000) options
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'input/SEPTEMBER THANKSGIVING SERVICE  PST OLADIIPO OMOPARIOLA.mp4':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 0
+    compatible_brands: isommp42
+    creation_time   : 2025-09-08T04:56:30.000000Z
+  Duration: 01:40:51.54, start: 0.000000, bitrate: 486 kb/s
+  Stream #0:0[0x1](und): Video: h264 (avc1 / 0x31637661), none, 640x360, 435 kb/s, 29.97 fps, 29.97 tbr, 30k tbn (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+  Stream #0:1[0x2](eng): Audio: aac (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 48 kb/s (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> h264 (libx264))
+  Stream #0:1 -> #0:1 (aac (native) -> aac (native))
+Press [q] to stop, [?] for help
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0xb400007d4629c280] stream 0, offset 0x1cd2db: partial file
+[in#0/mov,mp4,m4a,3gp,3g2,mj2 @ 0xb400007d46294a00] Error during demuxing: Immediate exit requested
+Cannot determine format of input 0:0 after EOF
+[vf#0:0 @ 0xb400007d4628fb40] Task finished with error code: -1094995529 (Invalid data found when processing input)
+[vf#0:0 @ 0xb400007d4628fb40] Terminating thread with return code -1094995529 (Invalid data found when processing input)
+[af#0:1 @ 0xb400007c8aaa18c0] No filtered frames for output stream, trying to initialize anyway.
+[vost#0:0/libx264 @ 0xb400007c8aa56000] Could not open encoder before EOF
+[vost#0:0/libx264 @ 0xb400007c8aa56000] Task finished with error code: -22 (Invalid argument)
+[vost#0:0/libx264 @ 0xb400007c8aa56000] Terminating thread with return code -22 (Invalid argument)
+[out#0/mp4 @ 0xb400007c8aa410c0] Nothing was written into output file, because at least one of its streams received no packets.
+frame=    0 fps=0.0 q=0.0 Lsize=       0KiB time=N/A bitrate=N/A speed=N/A    
+[aac @ 0xb400007d46226600] Qavg: nan
+Exiting normally, received signal 2.
+
+2025-09-08 19:47:44,711 - __main__ - ERROR - Error creating segment 2: ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Android (12470979, +pgo, +bolt, +lto, +mlgo, based on r522817c) clang version 18.0.3 (https://android.googlesource.com/toolchain/llvm-project d8003a456d14a3deb8054cdaa529ffbf02d9b262)
+  configuration: --arch=aarch64 --as=aarch64-linux-android-clang --cc=aarch64-linux-android-clang --cxx=aarch64-linux-android-clang++ --nm=llvm-nm --ar=llvm-ar --ranlib=llvm-ranlib --pkg-config=/home/builder/.termux-build/_cache/android-r27c-api-29-v1/bin/pkg-config --strip=llvm-strip --cross-prefix=aarch64-linux-android- --disable-indevs --disable-outdevs --enable-indev=lavfi --disable-static --disable-symver --enable-cross-compile --enable-gnutls --enable-gpl --enable-version3 --enable-jni --enable-lcms2 --enable-libaom --enable-libass --enable-libbluray --enable-libdav1d --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libharfbuzz --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenmpt --enable-libopus --enable-librav1e --enable-librubberband --enable-libsoxr --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtheora --enable-libv4l2 --enable-libvidstab --enable-libvmaf --enable-libvo-amrwbenc --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-mediacodec --enable-opencl --enable-shared --prefix=/data/data/com.termux/files/usr --target-os=android --disable-vulkan --enable-neon --disable-libfdk-aac
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'input/SEPTEMBER THANKSGIVING SERVICE  PST OLADIIPO OMOPARIOLA.mp4':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 0
+    compatible_brands: isommp42
+    creation_time   : 2025-09-08T04:56:30.000000Z
+    encoder         : Google
+  Duration: 01:40:51.54, start: 0.000000, bitrate: 486 kb/s
+  Stream #0:0[0x1](und): Video: h264 (Main) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 640x360 [SAR 1:1 DAR 16:9], 435 kb/s, 29.97 fps, 29.97 tbr, 30k tbn (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+  Stream #0:1[0x2](eng): Audio: aac (HE-AAC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 48 kb/s (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> h264 (libx264))
+  Stream #0:1 -> #0:1 (aac (native) -> aac (native))
+Press [q] to stop, [?] for help
+[libx264 @ 0xb400007d4e023c00] using SAR=1/1
+[libx264 @ 0xb400007d4e023c00] using cpu capabilities: ARMv8 NEON
+[libx264 @ 0xb400007d4e023c00] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0xb400007d4e023c00] 264 - core 164 - H.264/MPEG-4 AVC codec - Copyleft 2003-2024 - http://www.videolan.org/x264.html - options: cabac=1 ref=2 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=6 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=11 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=1 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=30 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to 'output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_002.mp4':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 0
+    compatible_brands: isommp42
+    encoder         : Lavf61.7.100
+  Stream #0:0(und): Video: h264 (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 640x360 [SAR 1:1 DAR 16:9], q=2-31, 29.97 fps, 30k tbn (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 libx264
+      Side data:
+        cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+  Stream #0:1(eng): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 128 kb/s (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 aac
+[out#0/mp4 @ 0xb400007c90a410c0] video:39KiB audio:37KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 5.526346%
+frame=   81 fps=0.0 q=-1.0 Lsize=      80KiB time=00:00:02.32 bitrate= 280.8kbits/s speed=2.48x    
+[libx264 @ 0xb400007d4e023c00] frame I:1     Avg QP:21.09  size: 32000
+[libx264 @ 0xb400007d4e023c00] frame P:20    Avg QP:20.01  size:   296
+[libx264 @ 0xb400007d4e023c00] frame B:60    Avg QP:28.49  size:    21
+[libx264 @ 0xb400007d4e023c00] consecutive B-frames:  1.2%  0.0%  0.0% 98.8%
+[libx264 @ 0xb400007d4e023c00] mb I  I16..4: 10.3% 30.7% 59.0%
+[libx264 @ 0xb400007d4e023c00] mb P  I16..4:  0.2%  0.2%  0.0%  P16..4:  4.8%  0.3%  0.3%  0.0%  0.0%    skip:94.3%
+[libx264 @ 0xb400007d4e023c00] mb B  I16..4:  0.0%  0.0%  0.0%  B16..8:  0.1%  0.0%  0.0%  direct: 0.1%  skip:99.8%  L0:70.8% L1:29.2% BI: 0.0%
+[libx264 @ 0xb400007d4e023c00] 8x8 transform intra:31.6% inter:61.0%
+[libx264 @ 0xb400007d4e023c00] coded y,uvDC,uvAC intra: 64.5% 76.1% 53.7% inter: 0.4% 1.0% 0.2%
+[libx264 @ 0xb400007d4e023c00] i16 v,h,dc,p: 27% 63%  4%  6%
+[libx264 @ 0xb400007d4e023c00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 20% 52% 16%  1%  2%  1%  3%  1%  4%
+[libx264 @ 0xb400007d4e023c00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 14% 45%  7%  5%  4%  3%  9%  4%  9%
+[libx264 @ 0xb400007d4e023c00] i8c dc,h,v,p: 32% 52%  8%  8%
+[libx264 @ 0xb400007d4e023c00] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0xb400007d4e023c00] ref P L0: 93.3%  6.7%
+[libx264 @ 0xb400007d4e023c00] ref B L0: 89.1% 10.9%
+[libx264 @ 0xb400007d4e023c00] ref B L1: 89.5% 10.5%
+[libx264 @ 0xb400007d4e023c00] kb/s:116.00
+[aac @ 0xb400007d4e026600] Qavg: 928.271
+Exiting normally, received signal 2.
+
+2025-09-08 19:47:44,713 - __main__ - ERROR - Error creating segment 2: ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Android (12470979, +pgo, +bolt, +lto, +mlgo, based on r522817c) clang version 18.0.3 (https://android.googlesource.com/toolchain/llvm-project d8003a456d14a3deb8054cdaa529ffbf02d9b262)
+  configuration: --arch=aarch64 --as=aarch64-linux-android-clang --cc=aarch64-linux-android-clang --cxx=aarch64-linux-android-clang++ --nm=llvm-nm --ar=llvm-ar --ranlib=llvm-ranlib --pkg-config=/home/builder/.termux-build/_cache/android-r27c-api-29-v1/bin/pkg-config --strip=llvm-strip --cross-prefix=aarch64-linux-android- --disable-indevs --disable-outdevs --enable-indev=lavfi --disable-static --disable-symver --enable-cross-compile --enable-gnutls --enable-gpl --enable-version3 --enable-jni --enable-lcms2 --enable-libaom --enable-libass --enable-libbluray --enable-libdav1d --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libharfbuzz --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenmpt --enable-libopus --enable-librav1e --enable-librubberband --enable-libsoxr --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtheora --enable-libv4l2 --enable-libvidstab --enable-libvmaf --enable-libvo-amrwbenc --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-mediacodec --enable-opencl --enable-shared --prefix=/data/data/com.termux/files/usr --target-os=android --disable-vulkan --enable-neon --disable-libfdk-aac
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'input/SEPTEMBER THANKSGIVING SERVICE  PST OLADIIPO OMOPARIOLA.mp4':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 0
+    compatible_brands: isommp42
+    creation_time   : 2025-09-08T04:56:30.000000Z
+    encoder         : Google
+  Duration: 01:40:51.54, start: 0.000000, bitrate: 486 kb/s
+  Stream #0:0[0x1](und): Video: h264 (Main) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 640x360 [SAR 1:1 DAR 16:9], 435 kb/s, 29.97 fps, 29.97 tbr, 30k tbn (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+  Stream #0:1[0x2](eng): Audio: aac (HE-AAC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 48 kb/s (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> h264 (libx264))
+  Stream #0:1 -> #0:1 (aac (native) -> aac (native))
+Press [q] to stop, [?] for help
+[libx264 @ 0xb400007d4e023c00] using SAR=1/1
+[libx264 @ 0xb400007d4e023c00] using cpu capabilities: ARMv8 NEON
+[libx264 @ 0xb400007d4e023c00] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0xb400007d4e023c00] 264 - core 164 - H.264/MPEG-4 AVC codec - Copyleft 2003-2024 - http://www.videolan.org/x264.html - options: cabac=1 ref=2 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=6 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=11 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=1 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=30 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to 'output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_002.mp4':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 0
+    compatible_brands: isommp42
+    encoder         : Lavf61.7.100
+  Stream #0:0(und): Video: h264 (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 640x360 [SAR 1:1 DAR 16:9], q=2-31, 29.97 fps, 30k tbn (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 libx264
+      Side data:
+        cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+  Stream #0:1(eng): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 128 kb/s (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 aac
+[out#0/mp4 @ 0xb400007c90a410c0] video:39KiB audio:37KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 5.526346%
+frame=   81 fps=0.0 q=-1.0 Lsize=      80KiB time=00:00:02.32 bitrate= 280.8kbits/s speed=2.48x    
+[libx264 @ 0xb400007d4e023c00] frame I:1     Avg QP:21.09  size: 32000
+[libx264 @ 0xb400007d4e023c00] frame P:20    Avg QP:20.01  size:   296
+[libx264 @ 0xb400007d4e023c00] frame B:60    Avg QP:28.49  size:    21
+[libx264 @ 0xb400007d4e023c00] consecutive B-frames:  1.2%  0.0%  0.0% 98.8%
+[libx264 @ 0xb400007d4e023c00] mb I  I16..4: 10.3% 30.7% 59.0%
+[libx264 @ 0xb400007d4e023c00] mb P  I16..4:  0.2%  0.2%  0.0%  P16..4:  4.8%  0.3%  0.3%  0.0%  0.0%    skip:94.3%
+[libx264 @ 0xb400007d4e023c00] mb B  I16..4:  0.0%  0.0%  0.0%  B16..8:  0.1%  0.0%  0.0%  direct: 0.1%  skip:99.8%  L0:70.8% L1:29.2% BI: 0.0%
+[libx264 @ 0xb400007d4e023c00] 8x8 transform intra:31.6% inter:61.0%
+[libx264 @ 0xb400007d4e023c00] coded y,uvDC,uvAC intra: 64.5% 76.1% 53.7% inter: 0.4% 1.0% 0.2%
+[libx264 @ 0xb400007d4e023c00] i16 v,h,dc,p: 27% 63%  4%  6%
+[libx264 @ 0xb400007d4e023c00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 20% 52% 16%  1%  2%  1%  3%  1%  4%
+[libx264 @ 0xb400007d4e023c00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 14% 45%  7%  5%  4%  3%  9%  4%  9%
+[libx264 @ 0xb400007d4e023c00] i8c dc,h,v,p: 32% 52%  8%  8%
+[libx264 @ 0xb400007d4e023c00] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0xb400007d4e023c00] ref P L0: 93.3%  6.7%
+[libx264 @ 0xb400007d4e023c00] ref B L0: 89.1% 10.9%
+[libx264 @ 0xb400007d4e023c00] ref B L1: 89.5% 10.5%
+[libx264 @ 0xb400007d4e023c00] kb/s:116.00
+[aac @ 0xb400007d4e026600] Qavg: 928.271
+Exiting normally, received signal 2.
+
+2025-09-08 19:47:44,886 - __main__ - ERROR - Error creating segment 3: ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Android (12470979, +pgo, +bolt, +lto, +mlgo, based on r522817c) clang version 18.0.3 (https://android.googlesource.com/toolchain/llvm-project d8003a456d14a3deb8054cdaa529ffbf02d9b262)
+  configuration: --arch=aarch64 --as=aarch64-linux-android-clang --cc=aarch64-linux-android-clang --cxx=aarch64-linux-android-clang++ --nm=llvm-nm --ar=llvm-ar --ranlib=llvm-ranlib --pkg-config=/home/builder/.termux-build/_cache/android-r27c-api-29-v1/bin/pkg-config --strip=llvm-strip --cross-prefix=aarch64-linux-android- --disable-indevs --disable-outdevs --enable-indev=lavfi --disable-static --disable-symver --enable-cross-compile --enable-gnutls --enable-gpl --enable-version3 --enable-jni --enable-lcms2 --enable-libaom --enable-libass --enable-libbluray --enable-libdav1d --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libharfbuzz --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenmpt --enable-libopus --enable-librav1e --enable-librubberband --enable-libsoxr --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtheora --enable-libv4l2 --enable-libvidstab --enable-libvmaf --enable-libvo-amrwbenc --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-mediacodec --enable-opencl --enable-shared --prefix=/data/data/com.termux/files/usr --target-os=android --disable-vulkan --enable-neon --disable-libfdk-aac
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'input/SEPTEMBER THANKSGIVING SERVICE  PST OLADIIPO OMOPARIOLA.mp4':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 0
+    compatible_brands: isommp42
+    creation_time   : 2025-09-08T04:56:30.000000Z
+    encoder         : Google
+  Duration: 01:40:51.54, start: 0.000000, bitrate: 486 kb/s
+  Stream #0:0[0x1](und): Video: h264 (Main) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 640x360 [SAR 1:1 DAR 16:9], 435 kb/s, 29.97 fps, 29.97 tbr, 30k tbn (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+  Stream #0:1[0x2](eng): Audio: aac (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 48 kb/s (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> h264 (libx264))
+  Stream #0:1 -> #0:1 (aac (native) -> aac (native))
+Press [q] to stop, [?] for help
+[libx264 @ 0xb4000070e3e23c00] using SAR=1/1
+[libx264 @ 0xb4000070e3e23c00] using cpu capabilities: ARMv8 NEON
+[libx264 @ 0xb4000070e3e23c00] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0xb4000070e3e23c00] 264 - core 164 - H.264/MPEG-4 AVC codec - Copyleft 2003-2024 - http://www.videolan.org/x264.html - options: cabac=1 ref=2 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=6 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=11 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=1 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=30 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to 'output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_003.mp4':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 0
+    compatible_brands: isommp42
+    encoder         : Lavf61.7.100
+  Stream #0:0(und): Video: h264 (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 640x360 [SAR 1:1 DAR 16:9], q=2-31, 29.97 fps, 30k tbn (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 libx264
+      Side data:
+        cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+  Stream #0:1(eng): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 128 kb/s (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 aac
+[out#0/mp4 @ 0xb4000070203410c0] video:120KiB audio:37KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 2.638821%
+frame=   79 fps= 74 q=-1.0 Lsize=     161KiB time=00:00:02.33 bitrate= 565.3kbits/s speed=2.18x    
+[libx264 @ 0xb4000070e3e23c00] frame I:1     Avg QP:19.53  size: 27280
+[libx264 @ 0xb4000070e3e23c00] frame P:21    Avg QP:22.39  size:  3541
+[libx264 @ 0xb4000070e3e23c00] frame B:57    Avg QP:29.02  size:   357
+[libx264 @ 0xb4000070e3e23c00] consecutive B-frames:  1.3%  5.1%  7.6% 86.1%
+[libx264 @ 0xb4000070e3e23c00] mb I  I16..4: 11.7% 41.7% 46.5%
+[libx264 @ 0xb4000070e3e23c00] mb P  I16..4:  0.8%  2.2%  1.0%  P16..4: 27.6%  6.6%  5.4%  0.0%  0.0%    skip:56.5%
+[libx264 @ 0xb4000070e3e23c00] mb B  I16..4:  0.1%  0.2%  0.1%  B16..8:  6.9%  1.5%  0.3%  direct: 3.1%  skip:87.7%  L0:43.7% L1:47.2% BI: 9.1%
+[libx264 @ 0xb4000070e3e23c00] 8x8 transform intra:49.5% inter:45.2%
+[libx264 @ 0xb4000070e3e23c00] coded y,uvDC,uvAC intra: 75.8% 77.1% 43.8% inter: 5.0% 8.9% 2.4%
+[libx264 @ 0xb4000070e3e23c00] i16 v,h,dc,p: 22% 27% 15% 35%
+[libx264 @ 0xb4000070e3e23c00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 25% 18% 25%  5%  4%  6%  5%  7%  6%
+[libx264 @ 0xb4000070e3e23c00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 23% 14% 14%  8%  7% 14%  4% 12%  4%
+[libx264 @ 0xb4000070e3e23c00] i8c dc,h,v,p: 53% 18% 22%  7%
+[libx264 @ 0xb4000070e3e23c00] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0xb4000070e3e23c00] ref P L0: 82.0% 18.0%
+[libx264 @ 0xb4000070e3e23c00] ref B L0: 83.7% 16.3%
+[libx264 @ 0xb4000070e3e23c00] ref B L1: 94.0%  6.0%
+[libx264 @ 0xb4000070e3e23c00] kb/s:361.03
+[aac @ 0xb4000070e3e26600] Qavg: 304.776
+Exiting normally, received signal 2.
+
+2025-09-08 19:47:44,891 - __main__ - ERROR - Error creating segment 3: ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Android (12470979, +pgo, +bolt, +lto, +mlgo, based on r522817c) clang version 18.0.3 (https://android.googlesource.com/toolchain/llvm-project d8003a456d14a3deb8054cdaa529ffbf02d9b262)
+  configuration: --arch=aarch64 --as=aarch64-linux-android-clang --cc=aarch64-linux-android-clang --cxx=aarch64-linux-android-clang++ --nm=llvm-nm --ar=llvm-ar --ranlib=llvm-ranlib --pkg-config=/home/builder/.termux-build/_cache/android-r27c-api-29-v1/bin/pkg-config --strip=llvm-strip --cross-prefix=aarch64-linux-android- --disable-indevs --disable-outdevs --enable-indev=lavfi --disable-static --disable-symver --enable-cross-compile --enable-gnutls --enable-gpl --enable-version3 --enable-jni --enable-lcms2 --enable-libaom --enable-libass --enable-libbluray --enable-libdav1d --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libharfbuzz --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenmpt --enable-libopus --enable-librav1e --enable-librubberband --enable-libsoxr --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtheora --enable-libv4l2 --enable-libvidstab --enable-libvmaf --enable-libvo-amrwbenc --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-mediacodec --enable-opencl --enable-shared --prefix=/data/data/com.termux/files/usr --target-os=android --disable-vulkan --enable-neon --disable-libfdk-aac
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'input/SEPTEMBER THANKSGIVING SERVICE  PST OLADIIPO OMOPARIOLA.mp4':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 0
+    compatible_brands: isommp42
+    creation_time   : 2025-09-08T04:56:30.000000Z
+    encoder         : Google
+  Duration: 01:40:51.54, start: 0.000000, bitrate: 486 kb/s
+  Stream #0:0[0x1](und): Video: h264 (Main) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 640x360 [SAR 1:1 DAR 16:9], 435 kb/s, 29.97 fps, 29.97 tbr, 30k tbn (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+  Stream #0:1[0x2](eng): Audio: aac (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 48 kb/s (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> h264 (libx264))
+  Stream #0:1 -> #0:1 (aac (native) -> aac (native))
+Press [q] to stop, [?] for help
+[libx264 @ 0xb4000070e3e23c00] using SAR=1/1
+[libx264 @ 0xb4000070e3e23c00] using cpu capabilities: ARMv8 NEON
+[libx264 @ 0xb4000070e3e23c00] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0xb4000070e3e23c00] 264 - core 164 - H.264/MPEG-4 AVC codec - Copyleft 2003-2024 - http://www.videolan.org/x264.html - options: cabac=1 ref=2 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=6 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=11 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=1 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=30 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to 'output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_003.mp4':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 0
+    compatible_brands: isommp42
+    encoder         : Lavf61.7.100
+  Stream #0:0(und): Video: h264 (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 640x360 [SAR 1:1 DAR 16:9], q=2-31, 29.97 fps, 30k tbn (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 libx264
+      Side data:
+        cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+  Stream #0:1(eng): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 128 kb/s (default)
+      Metadata:
+        creation_time   : 2025-09-08T04:56:30.000000Z
+        handler_name    : ISO Media file produced by Google Inc. Created on: 09/07/2025.
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.101 aac
+[out#0/mp4 @ 0xb4000070203410c0] video:120KiB audio:37KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 2.638821%
+frame=   79 fps= 74 q=-1.0 Lsize=     161KiB time=00:00:02.33 bitrate= 565.3kbits/s speed=2.18x    
+[libx264 @ 0xb4000070e3e23c00] frame I:1     Avg QP:19.53  size: 27280
+[libx264 @ 0xb4000070e3e23c00] frame P:21    Avg QP:22.39  size:  3541
+[libx264 @ 0xb4000070e3e23c00] frame B:57    Avg QP:29.02  size:   357
+[libx264 @ 0xb4000070e3e23c00] consecutive B-frames:  1.3%  5.1%  7.6% 86.1%
+[libx264 @ 0xb4000070e3e23c00] mb I  I16..4: 11.7% 41.7% 46.5%
+[libx264 @ 0xb4000070e3e23c00] mb P  I16..4:  0.8%  2.2%  1.0%  P16..4: 27.6%  6.6%  5.4%  0.0%  0.0%    skip:56.5%
+[libx264 @ 0xb4000070e3e23c00] mb B  I16..4:  0.1%  0.2%  0.1%  B16..8:  6.9%  1.5%  0.3%  direct: 3.1%  skip:87.7%  L0:43.7% L1:47.2% BI: 9.1%
+[libx264 @ 0xb4000070e3e23c00] 8x8 transform intra:49.5% inter:45.2%
+[libx264 @ 0xb4000070e3e23c00] coded y,uvDC,uvAC intra: 75.8% 77.1% 43.8% inter: 5.0% 8.9% 2.4%
+[libx264 @ 0xb4000070e3e23c00] i16 v,h,dc,p: 22% 27% 15% 35%
+[libx264 @ 0xb4000070e3e23c00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 25% 18% 25%  5%  4%  6%  5%  7%  6%
+[libx264 @ 0xb4000070e3e23c00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 23% 14% 14%  8%  7% 14%  4% 12%  4%
+[libx264 @ 0xb4000070e3e23c00] i8c dc,h,v,p: 53% 18% 22%  7%
+[libx264 @ 0xb4000070e3e23c00] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0xb4000070e3e23c00] ref P L0: 82.0% 18.0%
+[libx264 @ 0xb4000070e3e23c00] ref B L0: 83.7% 16.3%
+[libx264 @ 0xb4000070e3e23c00] ref B L1: 94.0%  6.0%
+[libx264 @ 0xb4000070e3e23c00] kb/s:361.03
+[aac @ 0xb4000070e3e26600] Qavg: 304.776
+Exiting normally, received signal 2.
+
+2025-09-08 19:47:44,910 - __main__ - INFO - Successfully created 7 video segments in output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA
+2025-09-08 19:47:44,913 - __main__ - INFO - compressing the output folder
+2025-09-08 19:47:45,480 - __main__ - INFO - done
+2025-09-08 19:49:23,899 - storage.main - ERROR - An unexpected error occurred during bucket creation: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+2025-09-08 19:49:23,918 - db.main - ERROR - Error executing query: database_url not provided and TURSO_DATABASE_URL is not set
+2025-09-08 19:49:23,923 - db.main - ERROR - Error executing query: database_url not provided and TURSO_DATABASE_URL is not set
+2025-09-08 19:49:24,642 - __main__ - INFO - Starting download...
+2025-09-08 19:49:25,341 - __main__ - INFO - Video Title: SEPTEMBER THANKSGIVING SERVICE || PST OLADIIPO OMOPARIOLA
+2025-09-08 19:49:25,356 - __main__ - INFO - Video downloaded successfully: input/SEPTEMBER THANKSGIVING SERVICE  PST OLADIIPO OMOPARIOLA.mp4
+2025-09-08 19:49:26,246 - __main__ - INFO - Video duration: 6051.54 seconds
+2025-09-08 19:49:26,247 - __main__ - INFO - Creating 7 segments of 15.0 minutes each
+2025-09-08 19:49:26,269 - __main__ - INFO - Processing segment 1: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_001.mp4...
+2025-09-08 19:49:26,279 - __main__ - INFO - Processing segment 2: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_002.mp4...
+2025-09-08 19:49:26,288 - __main__ - INFO - Processing segment 3: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_003.mp4...
+2025-09-08 19:49:26,300 - __main__ - INFO - Processing segment 4: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_004.mp4...
+2025-09-08 19:49:26,303 - __main__ - INFO - Processing segment 5: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_005.mp4...
+2025-09-08 19:49:26,314 - __main__ - INFO - Processing segment 6: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_006.mp4...
+2025-09-08 19:49:26,318 - __main__ - INFO - Processing segment 7: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_007.mp4...
+2025-09-08 19:58:02,668 - storage.main - INFO - Bucket movie-edit created.
+2025-09-08 19:58:02,684 - db.main - ERROR - Error executing query: database_url not provided and TURSO_DATABASE_URL is not set
+2025-09-08 19:58:02,687 - db.main - ERROR - Error executing query: database_url not provided and TURSO_DATABASE_URL is not set
+2025-09-08 19:58:03,290 - __main__ - INFO - Starting download...
+2025-09-08 19:58:03,933 - __main__ - INFO - Video Title: SEPTEMBER THANKSGIVING SERVICE || PST OLADIIPO OMOPARIOLA
+2025-09-08 19:58:03,955 - __main__ - INFO - Video downloaded successfully: input/SEPTEMBER THANKSGIVING SERVICE  PST OLADIIPO OMOPARIOLA.mp4
+2025-09-08 19:58:05,604 - __main__ - INFO - Video duration: 6051.54 seconds
+2025-09-08 19:58:05,605 - __main__ - INFO - Creating 7 segments of 15.0 minutes each
+2025-09-08 19:58:05,617 - __main__ - INFO - Processing segment 1: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_001.mp4...
+2025-09-08 19:58:05,619 - __main__ - INFO - Processing segment 2: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_002.mp4...
+2025-09-08 19:58:05,623 - __main__ - INFO - Processing segment 3: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_003.mp4...
+2025-09-08 19:58:05,631 - __main__ - INFO - Processing segment 4: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_004.mp4...
+2025-09-08 19:58:05,637 - __main__ - INFO - Processing segment 5: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_005.mp4...
+2025-09-08 19:58:05,641 - __main__ - INFO - Processing segment 6: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_006.mp4...
+2025-09-08 19:58:05,646 - __main__ - INFO - Processing segment 7: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_007.mp4...
+2025-09-08 20:03:34,163 - storage.main - ERROR - An unexpected error occurred during bucket creation: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+2025-09-08 20:03:34,180 - db.main - ERROR - Error executing query: database_url not provided and TURSO_DATABASE_URL is not set
+2025-09-08 20:03:34,184 - db.main - ERROR - Error executing query: database_url not provided and TURSO_DATABASE_URL is not set
+2025-09-08 20:03:34,867 - __main__ - INFO - Starting download...
+2025-09-08 20:03:35,488 - __main__ - INFO - Video Title: SEPTEMBER THANKSGIVING SERVICE || PST OLADIIPO OMOPARIOLA
+2025-09-08 20:03:35,505 - __main__ - INFO - Video downloaded successfully: input/SEPTEMBER THANKSGIVING SERVICE  PST OLADIIPO OMOPARIOLA.mp4
+2025-09-08 20:03:36,863 - __main__ - INFO - Video duration: 6051.54 seconds
+2025-09-08 20:03:36,866 - __main__ - INFO - Creating 7 segments of 15.0 minutes each
+2025-09-08 20:03:36,897 - __main__ - INFO - Processing segment 1: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_001.mp4...
+2025-09-08 20:03:36,907 - __main__ - INFO - Processing segment 2: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_002.mp4...
+2025-09-08 20:03:36,912 - __main__ - INFO - Processing segment 3: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_003.mp4...
+2025-09-08 20:03:36,917 - __main__ - INFO - Processing segment 5: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_005.mp4...
+2025-09-08 20:03:36,914 - __main__ - INFO - Processing segment 4: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_004.mp4...
+2025-09-08 20:03:36,926 - __main__ - INFO - Processing segment 6: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_006.mp4...
+2025-09-08 20:03:36,930 - __main__ - INFO - Processing segment 7: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_007.mp4...
+2025-09-08 20:21:27,386 - storage.main - ERROR - An unexpected error occurred during bucket creation: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+2025-09-08 20:21:27,397 - db.main - ERROR - Error executing query: auth_token not provided and TURSO_AUTH_TOKEN is not set
+2025-09-08 20:21:27,399 - db.main - ERROR - Error executing query: auth_token not provided and TURSO_AUTH_TOKEN is not set
+2025-09-08 20:21:27,953 - __main__ - INFO - Starting download...
+2025-09-08 20:21:28,565 - __main__ - INFO - Video Title: SEPTEMBER THANKSGIVING SERVICE || PST OLADIIPO OMOPARIOLA
+2025-09-08 20:21:28,569 - __main__ - INFO - Video downloaded successfully: input/SEPTEMBER THANKSGIVING SERVICE  PST OLADIIPO OMOPARIOLA.mp4
+2025-09-08 20:21:29,545 - __main__ - INFO - Video duration: 6051.54 seconds
+2025-09-08 20:21:29,546 - __main__ - INFO - Creating 7 segments of 15.0 minutes each
+2025-09-08 20:21:29,550 - __main__ - INFO - Processing segment 1: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_001.mp4...
+2025-09-08 20:21:29,551 - __main__ - INFO - Processing segment 2: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_002.mp4...
+2025-09-08 20:21:29,552 - __main__ - INFO - Processing segment 3: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_003.mp4...
+2025-09-08 20:21:29,555 - __main__ - INFO - Processing segment 4: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_004.mp4...
+2025-09-08 20:21:29,556 - __main__ - INFO - Processing segment 5: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_005.mp4...
+2025-09-08 20:21:29,557 - __main__ - INFO - Processing segment 6: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_006.mp4...
+2025-09-08 20:21:29,559 - __main__ - INFO - Processing segment 7: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_007.mp4...
+2025-09-08 20:31:07,873 - __main__ - INFO - Successfully created segment 7
+2025-09-08 20:33:22,193 - __main__ - INFO - Successfully created segment 4

@@ -7,7 +7,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from utils import time_it 
 import os
-from db.main import create_database_connection , executes_sql_query  
+from db.main import create_database_connection , schema_generator  
 from storage.main import create_bucket
 from logger import get_logger
 
@@ -238,24 +238,23 @@ def upload_to_cloud():
     logger.info('uploading to the cloud')
     # Placeholder for cloud upload logic
     base_url = 'https://www.googleapis.com/drive/v3'
+    raise NotImplementedError("this is under review")
 
-async def create_table(conn):    
-  create_table_query: str = """
-    CREATE TABLE IF NOT EXISTS videoproject (
-        project_name VARCHAR(255) NOT NULL,
-        project_link TEXT
-    );
-    """
-  executes_sql_query( create_table_query ,  conn)
-async def create_user(conn):
-    create_user_query: str = """
-        CREATE TABLE IF NOT EXISTS users (
-            user_id SERIAL PRIMARY KEY,
-            email VARCHAR(255) UNIQUE NOT NULL,
-            password_hash TEXT NOT NULL
-        );
-        """
-    executes_sql_query( create_user_query ,  conn)
+async def create_table():    
+    schema = {
+        'video_name' : 'VARCHAR(255) NOT NULL',
+        "project_link": "TEXT"
+    }
+    schema_generator(query=schema , name='video')
+    
+async def create_user():
+    schema =  {
+        'user_id':'SERIAL PRIMARY KEY',
+        'name':'VARCHAR(255)',
+        'email': 'VARCHAR(255) UNIQUE NOT NULL',
+        "password_hash":'TEXT NOT NULL'
+    }
+    schema_generator(query=schema , name="Users")
     
 
 
@@ -308,9 +307,10 @@ async def main():
     """
 
     create_bucket()
-    conn = create_database_connection()
-    await create_table(conn)
-    await create_user(conn)
+    await asyncio.gather(
+        create_table(),
+        create_user()
+    )
     url = video_getter()
     if url:
         download_info = video_downloader(url)
