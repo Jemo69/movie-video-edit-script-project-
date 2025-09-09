@@ -5148,3 +5148,5 @@ Exiting normally, received signal 2.
 2025-09-08 20:21:29,559 - __main__ - INFO - Processing segment 7: Writing to output/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/SEPTEMBER-THANKSGIVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_007.mp4...
 2025-09-08 20:31:07,873 - __main__ - INFO - Successfully created segment 7
 2025-09-08 20:33:22,193 - __main__ - INFO - Successfully created segment 4
+2025-09-08 20:33:34,474 - __main__ - INFO - Successfully created segment 3
+2025-09-08 20:34:18,606 - __main__ - INFO - Successfully created segment 2
