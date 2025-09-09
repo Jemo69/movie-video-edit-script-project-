@@ -5193,3 +5193,14 @@ Exiting normally, received signal 2.
 2025-09-09 17:28:27,311 - db.main - ERROR - Error creating table 'Users': object HranaClient can't be used in 'await' expression
 2025-09-09 17:38:06,748 - db.main - ERROR - Error creating table 'video': object HranaClient can't be used in 'await' expression
 2025-09-09 17:38:06,756 - db.main - ERROR - Error creating table 'Users': object HranaClient can't be used in 'await' expression
+2025-09-09 21:47:51,642 - __main__ - ERROR - Error creating table 'video': object HranaClient can't be used in 'await' expression
+2025-09-09 21:47:51,643 - __main__ - ERROR - Error creating table 'Users': object HranaClient can't be used in 'await' expression
+2025-09-09 21:48:42,702 - __main__ - ERROR - Error creating table 'video': 505, message='Invalid response status', url='wss://movie-edit-jemo69.aws-us-west-2.turso.io'
+2025-09-09 21:48:42,758 - __main__ - ERROR - Error creating table 'Users': 505, message='Invalid response status', url='wss://movie-edit-jemo69.aws-us-west-2.turso.io'
+2025-09-09 21:50:48,417 - __main__ - ERROR - Error creating table 'video': 505, message='Invalid response status', url='wss://movie-edit-jemo69.aws-us-west-2.turso.io'
+2025-09-09 21:50:48,421 - __main__ - ERROR - Error creating table 'Users': 505, message='Invalid response status', url='wss://movie-edit-jemo69.aws-us-west-2.turso.io'
+2025-09-09 21:53:04,099 - __main__ - INFO - Table 'video' created successfully
+2025-09-09 21:53:04,383 - __main__ - INFO - Table 'Users' created successfully
+2025-09-09 21:53:30,310 - __main__ - INFO - Table 'video' created successfully
+2025-09-09 21:53:30,540 - __main__ - INFO - Table 'Users' created successfully
+2025-09-09 21:53:30,766 - __main__ - INFO - Tables in database: ['video', 'Users']
