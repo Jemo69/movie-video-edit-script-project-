@@ -246,6 +246,7 @@ async def create_video_table():
         "project_link": "TEXT"
     }
     await create_table(table_name='video',columns=schema)
+    create_table(table_name='video',columns=schema)
     
 async def create_user_table():
     schema =  {
@@ -255,7 +256,7 @@ async def create_user_table():
         "password_hash":'TEXT NOT NULL'
     }
 
-    await create_table(table_name='Users',columns=schema)
+    create_table(table_name='Users',columns=schema)
     
 
 

@@ -5255,3 +5255,13 @@ Exiting normally, received signal 2.
 2025-09-11 19:19:53,270 - db.main - ERROR - Failed to retrieve table names.
 2025-09-11 19:19:58,478 - db.main - ERROR - 'builtins.Cursor' object is not iterable
 2025-09-11 19:19:58,479 - db.main - ERROR - Failed to retrieve table names.
+2025-09-11 19:23:05,553 - storage.main - ERROR - An unexpected error occurred during bucket creation: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+2025-09-11 19:23:20,980 - db.main - ERROR - 'builtins.Cursor' object is not iterable
+2025-09-11 19:23:20,981 - db.main - ERROR - Failed to retrieve table names.
+2025-09-11 19:23:27,999 - db.main - ERROR - 'builtins.Cursor' object is not iterable
+2025-09-11 19:23:27,999 - db.main - ERROR - Failed to retrieve table names.
+2025-09-11 19:24:30,027 - storage.main - ERROR - An unexpected error occurred during bucket creation: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+2025-09-11 19:24:34,979 - db.main - ERROR - 'builtins.Cursor' object is not iterable
+2025-09-11 19:24:34,980 - db.main - ERROR - Failed to retrieve table names.
+2025-09-11 19:24:40,679 - db.main - ERROR - 'builtins.Cursor' object is not iterable
+2025-09-11 19:24:40,679 - db.main - ERROR - Failed to retrieve table names.
