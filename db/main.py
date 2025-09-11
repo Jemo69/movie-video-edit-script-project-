@@ -26,7 +26,7 @@ def create_database_connection():
 
 
 
-async def get_table_names () -> List[str] | None:
+def get_table_names () -> List[str] | None:
     """
     Connects to a LibSQL database and retrieves a list of all table names.
     
@@ -40,19 +40,19 @@ async def get_table_names () -> List[str] | None:
     """
     try:
         db = create_database_connection()
-        query_result = await db.execute("SELECT name FROM sqlite_master WHERE type='table';")
+        query_result =  db.execute("SELECT name FROM sqlite_master WHERE type='table';")
         table_names = [row["name"] for row in query_result]
         return table_names
     except Exception as e:
          logger.error(msg=e)
 
-async def create_table(table_name: str, columns: Dict[str, str]) -> str | None:
+def create_table(table_name: str, columns: Dict[str, str]) -> str | None:
     """
     Creates a table in the database.
     """
     try:
         conn = create_database_connection()
-        tables = await get_table_names()
+        tables =  get_table_names()
         if not tables:
             logger.error("Failed to retrieve table names.")
             return None

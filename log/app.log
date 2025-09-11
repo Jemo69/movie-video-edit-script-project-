@@ -5245,3 +5245,13 @@ Exiting normally, received signal 2.
 2025-09-10 19:55:16,827 - db.main - ERROR - Failed to retrieve table names.
 2025-09-10 19:55:18,538 - db.main - ERROR - object builtins.Cursor can't be used in 'await' expression
 2025-09-10 19:55:18,538 - db.main - ERROR - Failed to retrieve table names.
+2025-09-11 19:17:27,727 - storage.main - ERROR - An unexpected error occurred during bucket creation: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+2025-09-11 19:17:33,791 - db.main - ERROR - object builtins.Cursor can't be used in 'await' expression
+2025-09-11 19:17:33,793 - db.main - ERROR - Failed to retrieve table names.
+2025-09-11 19:17:36,927 - db.main - ERROR - object builtins.Cursor can't be used in 'await' expression
+2025-09-11 19:17:36,927 - db.main - ERROR - Failed to retrieve table names.
+2025-09-11 19:19:31,899 - storage.main - ERROR - An unexpected error occurred during bucket creation: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+2025-09-11 19:19:53,268 - db.main - ERROR - 'builtins.Cursor' object is not iterable
+2025-09-11 19:19:53,270 - db.main - ERROR - Failed to retrieve table names.
+2025-09-11 19:19:58,478 - db.main - ERROR - 'builtins.Cursor' object is not iterable
+2025-09-11 19:19:58,479 - db.main - ERROR - Failed to retrieve table names.
