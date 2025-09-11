@@ -89,6 +89,8 @@ async def main() -> None:
 
     await create_table(table_name='video', columns=video_schema)
     await create_table(table_name='Users', columns=users_schema)
+    create_table(table_name='video', columns=video_schema)
+    create_table(table_name='Users', columns=users_schema)
 
 if __name__ == "__main__":
     asyncio.run(main())
