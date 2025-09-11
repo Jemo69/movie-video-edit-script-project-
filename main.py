@@ -307,7 +307,7 @@ async def main():
     Main function to run the video processing pipeline.
     """
 
-    # create_bucket()
+    create_bucket()
     await asyncio.gather(
         create_video_table(),
         create_user_table()

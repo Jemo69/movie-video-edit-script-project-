@@ -5204,3 +5204,44 @@ Exiting normally, received signal 2.
 2025-09-09 21:53:30,310 - __main__ - INFO - Table 'video' created successfully
 2025-09-09 21:53:30,540 - __main__ - INFO - Table 'Users' created successfully
 2025-09-09 21:53:30,766 - __main__ - INFO - Tables in database: ['video', 'Users']
+2025-09-10 19:15:47,003 - db.main - INFO - Table 'video' created successfully
+2025-09-10 19:15:48,708 - db.main - INFO - Table 'Users' created successfully
+2025-09-10 19:33:33,361 - db.main - ERROR - object builtins.Cursor can't be used in 'await' expression
+2025-09-10 19:33:33,363 - db.main - ERROR - Failed to retrieve table names.
+2025-09-10 19:33:35,240 - db.main - ERROR - object builtins.Cursor can't be used in 'await' expression
+2025-09-10 19:33:35,241 - db.main - ERROR - Failed to retrieve table names.
+2025-09-10 19:36:17,866 - storage.main - ERROR - An unexpected error occurred during bucket creation: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+2025-09-10 19:36:19,878 - db.main - ERROR - object builtins.Cursor can't be used in 'await' expression
+2025-09-10 19:36:19,878 - db.main - ERROR - Failed to retrieve table names.
+2025-09-10 19:36:21,737 - db.main - ERROR - object builtins.Cursor can't be used in 'await' expression
+2025-09-10 19:36:21,737 - db.main - ERROR - Failed to retrieve table names.
+2025-09-10 19:43:17,348 - storage.main - ERROR - An unexpected error occurred during bucket creation: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+2025-09-10 19:43:19,492 - db.main - ERROR - object builtins.Cursor can't be used in 'await' expression
+2025-09-10 19:43:19,493 - db.main - ERROR - Failed to retrieve table names.
+2025-09-10 19:43:21,201 - db.main - ERROR - object builtins.Cursor can't be used in 'await' expression
+2025-09-10 19:43:21,202 - db.main - ERROR - Failed to retrieve table names.
+2025-09-10 19:43:49,253 - storage.main - ERROR - An unexpected error occurred during bucket creation: File ~/projects/movie-video-edit-script-project-/googlekey.json was not found.
+2025-09-10 19:43:50,941 - db.main - ERROR - object builtins.Cursor can't be used in 'await' expression
+2025-09-10 19:43:50,941 - db.main - ERROR - Failed to retrieve table names.
+2025-09-10 19:43:52,816 - db.main - ERROR - object builtins.Cursor can't be used in 'await' expression
+2025-09-10 19:43:52,816 - db.main - ERROR - Failed to retrieve table names.
+2025-09-10 19:47:29,198 - storage.main - ERROR - An unexpected error occurred during bucket creation: File ~/projects/movie-video-edit-script-project-/googlekey.json was not found.
+2025-09-10 19:47:31,005 - db.main - ERROR - object builtins.Cursor can't be used in 'await' expression
+2025-09-10 19:47:31,006 - db.main - ERROR - Failed to retrieve table names.
+2025-09-10 19:47:32,726 - db.main - ERROR - object builtins.Cursor can't be used in 'await' expression
+2025-09-10 19:47:32,727 - db.main - ERROR - Failed to retrieve table names.
+2025-09-10 19:48:27,057 - storage.main - ERROR - An unexpected error occurred during bucket creation: File ~/projects/movie-video-edit-script-project-/googlekey.json was not found.
+2025-09-10 19:48:28,974 - db.main - ERROR - object builtins.Cursor can't be used in 'await' expression
+2025-09-10 19:48:28,974 - db.main - ERROR - Failed to retrieve table names.
+2025-09-10 19:48:30,510 - db.main - ERROR - object builtins.Cursor can't be used in 'await' expression
+2025-09-10 19:48:30,510 - db.main - ERROR - Failed to retrieve table names.
+2025-09-10 19:54:18,851 - storage.main - ERROR - An unexpected error occurred during bucket creation: File /path/to/your/service-account-key.json was not found.
+2025-09-10 19:54:20,856 - db.main - ERROR - object builtins.Cursor can't be used in 'await' expression
+2025-09-10 19:54:20,857 - db.main - ERROR - Failed to retrieve table names.
+2025-09-10 19:54:22,737 - db.main - ERROR - object builtins.Cursor can't be used in 'await' expression
+2025-09-10 19:54:22,737 - db.main - ERROR - Failed to retrieve table names.
+2025-09-10 19:55:15,116 - storage.main - ERROR - An unexpected error occurred during bucket creation: File /path/to/your/service-account-key.json was not found.
+2025-09-10 19:55:16,827 - db.main - ERROR - object builtins.Cursor can't be used in 'await' expression
+2025-09-10 19:55:16,827 - db.main - ERROR - Failed to retrieve table names.
+2025-09-10 19:55:18,538 - db.main - ERROR - object builtins.Cursor can't be used in 'await' expression
+2025-09-10 19:55:18,538 - db.main - ERROR - Failed to retrieve table names.
