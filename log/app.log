@@ -5265,3 +5265,12 @@ Exiting normally, received signal 2.
 2025-09-11 19:24:34,980 - db.main - ERROR - Failed to retrieve table names.
 2025-09-11 19:24:40,679 - db.main - ERROR - 'builtins.Cursor' object is not iterable
 2025-09-11 19:24:40,679 - db.main - ERROR - Failed to retrieve table names.
+2025-09-12 02:26:19,975 - __main__ - INFO - Database initialized successfully.
+2025-09-12 02:33:19,426 - __main__ - INFO - Database initialized successfully.
+2025-09-12 02:40:20,570 - database - INFO - Initializing Tortoise ORM...
+2025-09-12 02:40:20,582 - database - INFO - Tortoise ORM initialized.
+2025-09-12 02:40:20,582 - database - INFO - Generating schemas...
+2025-09-12 02:40:20,587 - database - INFO - Schemas generated.
+2025-09-12 02:40:20,587 - __main__ - INFO - Database initialized successfully.
+2025-09-12 10:46:45,841 - storage.main - ERROR - An unexpected error occurred during bucket creation: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+2025-09-12 10:50:36,577 - storage.main - ERROR - An unexpected error occurred during bucket creation: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.

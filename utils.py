@@ -1,21 +1,21 @@
 from functools import wraps
-from typing import TypedDict, Generic
+from typing import Generic, TypeVar, Union, Callable, Any, Literal
 import datetime
-from typing import Any, Callable, Generic, Literal, TypedDict, TypeVar, Union
+
 # Define type variables for generic use
 T = TypeVar('T')
 E = TypeVar('E', bound=Exception)
 
-# --- Define the Success and Failure types using TypedDict ---
-# 'data' will hold the successful result.
-class Success(TypedDict, Generic[T]):
-    data: T
-    error: Literal[None] # Use Literal[None] to be explicit about no error
+# --- Define the Success and Failure classes ---
+class Success(Generic[T]):
+    def __init__(self, data: T):
+        self.data = data
+        self.error: Literal[None] = None
 
-# 'error' will hold the exception on failure.
-class Failure(TypedDict, Generic[E]):
-    data: Literal[None] # Use Literal[None] to be explicit about no data
-    error: E
+class Failure(Generic[E]):
+    def __init__(self, error: E):
+        self.data: Literal[None] = None
+        self.error = error
 
 # --- Define the overall Result type ---
 # This Union represents either a Success or a Failure.
@@ -36,10 +36,11 @@ def try_catch(func: Callable[..., T], *args: Any, **kwargs: Any) -> Result[T, Ex
     """
     try:
         data = func(*args, **kwargs)
-        return Success(data=data, error=None)
+        return Success(data=data)
     except Exception as e:
         print(f"An error occurred: {e}")
-        return Failure(data=None, error=e)
+        return Failure(error=e)
+
 def time_it(func):
     @wraps(func)
     def wrapper(*args, **kwargs):

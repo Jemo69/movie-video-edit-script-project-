@@ -7,7 +7,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from utils import time_it 
 import os
-from db.main import   create_table  
+from database import init_db
 from storage.main import create_bucket
 from logger import get_logger
 
@@ -240,26 +240,6 @@ def upload_to_cloud():
     base_url = 'https://www.googleapis.com/drive/v3'
     raise NotImplementedError("this is under review")
 
-async def create_video_table():    
-    schema = {
-        'video_name' : 'VARCHAR(255) NOT NULL',
-        "project_link": "TEXT"
-    }
-    await create_table(table_name='video',columns=schema)
-    create_table(table_name='video',columns=schema)
-    
-async def create_user_table():
-    schema =  {
-        'user_id':'SERIAL PRIMARY KEY',
-        'name':'VARCHAR(255)',
-        'email': 'VARCHAR(255) UNIQUE NOT NULL',
-        "password_hash":'TEXT NOT NULL'
-    }
-
-    create_table(table_name='Users',columns=schema)
-    
-
-
 def video_notifier(project_name: str):
     """
     Sends an email notification when the video processing is complete.
@@ -308,11 +288,9 @@ async def main():
     Main function to run the video processing pipeline.
     """
 
+    await init_db()
     create_bucket()
-    await asyncio.gather(
-        create_video_table(),
-        create_user_table()
-    )
+
     # url = video_getter()
     # if url:
     #     download_info = video_downloader(url)
