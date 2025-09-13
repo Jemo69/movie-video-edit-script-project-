@@ -244,10 +244,9 @@ async def upload_to_db( project_name:str):
         if download_link:
             logger.info(f'Download link: {download_link}')
             # Save to database
-            video = Video.create(video_name=project_name,project_link=download_link)
-            video.save()
+            await Video.create(video_name=project_name, project_link=download_link)
             logger.info('Video entry saved to database.')
-            return download_link  
+            return download_link
 
     except Exception as e:
         logger.error(f'Error uploading to cloud: {e}')
