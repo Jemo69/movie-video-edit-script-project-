@@ -30,14 +30,21 @@ def create_bucket():
         logger.error(f"An unexpected error occurred during bucket creation: {e}")
         return None
 
-async def upload_blob(bucket, source_file_name, destination_blob_name):
+async def upload_blob( source_file_name, destination_blob_name):
     """
     Uploads a file to the bucket.
     """
     try:
+        bucket_name = "movie-edit"  # Replace with your bucket name
+        bucket = create_bucket()
         blob = bucket.blob(destination_blob_name)
         blob.upload_from_filename(source_file_name)
         logger.info(f"File {source_file_name} uploaded to {destination_blob_name}.")
+        url = blob.generate_signed_url(
+            version="v4",
+            expiration=expiration_time,
+            method="GET",
+        )
     except Exception as e:
         logger.error(f"Error uploading file: {e}")
         return None
