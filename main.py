@@ -8,14 +8,15 @@ from email.mime.text import MIMEText
 from utils import time_it 
 import os
 from database import init_db
-from storage.main import create_bucket
+from storage.main import   upload_blob
 from logger import get_logger
+from models import Video
 
 import shutil
 import re
 from dotenv import load_dotenv
 from pathlib import Path
-from typing import List, Dict, Union, Any, Tuple
+from typing import List, Dict, Union, Any, Tuple 
 import ffmpeg
 from pytubefix import YouTube
 import concurrent.futures
@@ -234,13 +235,26 @@ def compressor_out_dir(project_name:str):
         logger.error(f'there was an error :{e}')
     finally:
         logger.info('done')
-def upload_to_cloud():
+async def upload_to_db( project_name:str):
     logger.info('uploading to the cloud')
     # Placeholder for cloud upload logic
-    base_url = 'https://www.googleapis.com/drive/v3'
-    raise NotImplementedError("this is under review")
+    try:
+        download_link = await upload_blob(f'final_project/{project_name}_final_version.zip', f'{project_name}_project_final_version.zip')
+        logger.info('Upload to cloud completed successfully.')
+        if download_link:
+            logger.info(f'Download link: {download_link}')
+            # Save to database
+            video = Video.create(video_name=project_name,project_link=download_link)
+            video.save()
+            logger.info('Video entry saved to database.')
+            return download_link  
 
-def video_notifier(project_name: str):
+    except Exception as e:
+        logger.error(f'Error uploading to cloud: {e}')
+
+
+
+def video_notifier(project_name: str , download_link : str | None = None):
     """
     Sends an email notification when the video processing is complete.
 
@@ -257,25 +271,47 @@ def video_notifier(project_name: str):
         logger.error("Error: SENDER_EMAIL or SENDER_PASSWORD not found in environment variables.")
         return
         
-    body = f"The video project '{project_name}' has finished editing."
-    emails: List[str] = ['jemolife69@gmail.com']
+    error_body = f"The video project '{project_name}' has finished editing."
 
-    for email in emails:
-        try:
-            msg = MIMEMultipart()
-            msg['Subject'] = f'Your project is ready: {project_name}'
-            msg['From'] = sender_email
-            msg['To'] = email
-            msg.attach(MIMEText( body, 'plain' ))
+    download_body = f"The video project '{project_name}' has finished editing. the link to download it is : {download_link}" 
+    if download_link :
 
-            with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-                smtp.login(sender_email, sender_password)
-                smtp.send_message(msg)
-            logger.info(f"Notification email sent successfully to {email}")
-        except smtplib.SMTPAuthenticationError:
-            logger.error(f"Failed to send email to {email}: Authentication error. Please check your email and password.")
-        except Exception as e:
-            logger.error(f"An error occurred while sending the email to {email}: {e}")
+        emails: List[str] = ['jemolife69@gmail.com' , 'omoparioladavidola@gmail.com']
+        for email in emails:
+            try:
+                msg = MIMEMultipart()
+                msg['Subject'] = f'Your project is ready: {project_name}'
+                msg['From'] = sender_email
+                msg['To'] = email
+                msg.attach(MIMEText( download_body, 'plain' ))
+
+                with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+                    smtp.login(sender_email, sender_password)
+                    smtp.send_message(msg)
+                logger.info(f"Notification email sent successfully to {email}")
+            except smtplib.SMTPAuthenticationError:
+                logger.error(f"Failed to send email to {email}: Authentication error. Please check your email and password.")
+            except Exception as e:
+                logger.error(f"An error occurred while sending the email to {email}: {e}")
+    else :
+
+        emails: List[str] = ['jemolife69@gmail.com']
+        for email in emails:
+            try:
+                msg = MIMEMultipart()
+                msg['Subject'] = f'eror on the project : {project_name}'
+                msg['From'] = sender_email
+                msg['To'] = email
+                msg.attach(MIMEText( error_body, 'plain' ))
+
+                with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+                    smtp.login(sender_email, sender_password)
+                    smtp.send_message(msg)
+                logger.info(f"Notification email sent successfully to {email}")
+            except smtplib.SMTPAuthenticationError:
+                logger.error(f"Failed to send email to {email}: Authentication error. Please check your email and password.")
+            except Exception as e:
+                logger.error(f"An error occurred while sending the email to {email}: {e}")
 
 
 
@@ -289,18 +325,17 @@ async def main():
     """
 
     await init_db()
-    create_bucket()
-
-    # url = video_getter()
-    # if url:
-    #     download_info = video_downloader(url)
-    #     if download_info:
-    #         input_path, project_title = download_info
-    #         editor_output = video_editor(input_path, project_title)
-    #         if editor_output:
-    #             _, project_name = editor_output
-    #             compressor_out_dir(project_name=project_name)
-    #             video_notifier(project_name=project_name)
+    url = video_getter()
+    if url:
+        download_info = video_downloader(url)
+        if download_info:
+            input_path, project_title = download_info
+            editor_output = video_editor(input_path, project_title)
+            if editor_output:
+                _, project_name = editor_output
+                compressor_out_dir(project_name=project_name)
+                download_link   = await upload_to_db(project_name=project_name)
+                video_notifier(project_name=project_name, download_link=download_link)
 
 if __name__ == "__main__":
     asyncio.run(main())

@@ -1,30 +1,50 @@
 import os
-import re
 from tortoise import Tortoise
 from dotenv import load_dotenv
+from urllib.parse import urlparse
 
 load_dotenv()
 
-async def init_db():
+def get_tortoise_config():
     db_url = os.getenv("NEON_DATABASE_URL")
-    # Remove the unsupported parameters from the URL
-    db_url = re.sub(r'\?.*', '', db_url)
+    if not db_url:
+        return None
 
-    await Tortoise.init(
-        db_url=db_url,
-        modules={"models": ["models"]}
-    )
+    parsed_url = urlparse(db_url)
+    
+    credentials = {
+        "host": parsed_url.hostname,
+        "port": parsed_url.port or 5432,
+        "user": parsed_url.username,
+        "password": parsed_url.password,
+        "database": parsed_url.path.lstrip('/'),
+        "ssl": "require"
+    }
+
+    return {
+        "connections": {
+            "default": {
+                "engine": "tortoise.backends.asyncpg",
+                "credentials": credentials,
+            }
+        },
+        "apps": {
+            "models": {
+                "models": ["models", "aerich.models"],
+                "default_connection": "default",
+            }
+        },
+    }
+
+async def init_db():
+    config = get_tortoise_config()
+    if not config:
+        raise ValueError("NEON_DATABASE_URL environment variable not set or empty. Please check your .env file.")
+    
+    app_config = config.copy()
+    app_config["apps"]["models"]["models"] = ["models"]
+
+    await Tortoise.init(config=app_config)
     await Tortoise.generate_schemas()
 
-raw_db_url = os.getenv("NEON_DATABASE_URL")
-clean_db_url = re.sub(r'\?.*', '', raw_db_url) if raw_db_url else None
-
-TORTOISE_ORM = {
-    "connections": {"default": clean_db_url},
-    "apps": {
-        "models": {
-            "models": ["models", "aerich.models"],
-            "default_connection": "default",
-        },
-    },
-}
+TORTOISE_ORM = get_tortoise_config()
