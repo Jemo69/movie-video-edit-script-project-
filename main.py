@@ -319,6 +319,7 @@ def video_notifier(project_name: str , download_link : str | None = None):
 
 @time_it
 async def main():
+
     """
     Main function to run the video processing pipeline.
     """
