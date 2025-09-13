@@ -19,3 +19,10 @@ schedule==1.2.2
 typing-extensions==4.14.1
 urllib3==2.5.0
 yarl==1.20.1
+libsql-client
+tortoise-orm
+aiosqlite
+aerich
+google-cloud-storage
+asyncpg
+anyio>=4.0.0

@@ -1,20 +1,35 @@
 import requests
 import math
 import smtplib
-from email.message import EmailMessage
+import asyncio
+
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from utils import time_it 
 import os
+from database import init_db
+from storage.main import   upload_blob
+from logger import get_logger
+from models import Video
+
+import shutil
 import re
 from dotenv import load_dotenv
 from pathlib import Path
-from typing import List, Dict, Union, Any, Tuple
+from typing import List, Dict, Union, Any, Tuple 
 import ffmpeg
 from pytubefix import YouTube
 import concurrent.futures
 
 # Load environment variables from .env file
 load_dotenv()
+logger = get_logger(__name__)
 
+
+@time_it
 def video_getter() -> Union[str, None]:
+
+
     """
     Fetches the URL of the latest completed video from a specified YouTube channel.
 
@@ -23,7 +38,7 @@ def video_getter() -> Union[str, None]:
     """
     youtube_api_key = os.getenv('YOUTUBE_API_KEY')
     if not youtube_api_key:
-        print("Error: YOUTUBE_API_KEY not found in environment variables.")
+        logger.error("Error: YOUTUBE_API_KEY not found in environment variables.")
         return None
 
     target_id = 'UC-mvrwYr8tk6Gk8H3C8r1bg'
@@ -47,17 +62,17 @@ def video_getter() -> Union[str, None]:
             video_id = data['items'][0]['id']['videoId']
             return f'https://www.youtube.com/watch?v={video_id}'
         else:
-            print("No videos found for the specified channel.")
+            logger.info("No videos found for the specified channel.")
             return None
 
     except requests.exceptions.RequestException as e:
-        print(f"An error occurred with the YouTube API request: {e}")
+        logger.error(f"An error occurred with the YouTube API request: {e}")
         return None
     except KeyError as e:
-        print(f"Error parsing YouTube API response: {e}")
+        logger.error(f"Error parsing YouTube API response: {e}")
         return None
     except Exception as e:
-        print(f"An unexpected error occurred: {e}")
+        logger.error(f"An unexpected error occurred: {e}")
         return None
 
 
@@ -72,10 +87,10 @@ def video_downloader(url: str) -> Union[Tuple[str, str], None]:
         Union[Tuple[str, str], None]: A tuple containing the file path and sanitized project title, or None if an error occurs.
     """
     try:
-        print("Starting download...")
+        logger.info("Starting download...")
         yt = YouTube(url)
         title = yt.title
-        print(f"Video Title: {title}")
+        logger.info(f"Video Title: {title}")
 
         sanitized_title = re.sub(r'[\\/:*?"<>|]', "", title)
         project_title = re.sub(r'\s+', "-", sanitized_title)
@@ -89,13 +104,13 @@ def video_downloader(url: str) -> Union[Tuple[str, str], None]:
         stream = yt.streams.get_highest_resolution()
         if stream:
             stream.download(output_path=str(output_path), filename=filename)
-            print(f"Video downloaded successfully: {filepath}")
+            logger.info(f"Video downloaded successfully: {filepath}")
             return str(filepath), project_title
         else:
-            print("No suitable stream found for download.")
+            logger.info("No suitable stream found for download.")
             return None
     except Exception as e:
-        print(f"An error occurred during video download: {e}")
+        logger.error(f"An error occurred during video download: {e}")
         return None
 
 
@@ -109,7 +124,7 @@ def process_segment(
     """
     Processes a single video segment using ffmpeg.
     """
-    print(f"Processing segment {segment_index + 1}: Writing to {output_path}...")
+    logger.info(f"Processing segment {segment_index + 1}: Writing to {output_path}...")
     try:
         (
             ffmpeg.input(input_path, ss=start_time, t=segment_duration)
@@ -122,17 +137,18 @@ def process_segment(
                 ac=2,
                 ar=44100,
                 ab="128k",
+                
             )
             .overwrite_output()
             .run(capture_stdout=True, capture_stderr=True, quiet=True)
         )
-        print(f"Successfully created segment {segment_index + 1}")
+        logger.info(f"Successfully created segment {segment_index + 1}")
         return None
     except ffmpeg.Error as e:
         error_message = (
             f"Error creating segment {segment_index + 1}: {e.stderr.decode()}"
         )
-        print(error_message)
+        logger.error(error_message)
         return error_message
 
 
@@ -149,7 +165,7 @@ def video_editor(input_path: str, project_name: str) -> Union[Tuple[Path, str], 
         Union[Tuple[Path, str], None]: A tuple containing the output directory and project name, or None if an error occurs.
     """
     if not input_path:
-        print("Error: Input path is not provided.")
+        logger.error("Error: Input path is not provided.")
         return None
 
     try:
@@ -163,18 +179,21 @@ def video_editor(input_path: str, project_name: str) -> Union[Tuple[Path, str], 
 
         num_segments = math.ceil(duration / segment_duration)
 
-        print(f"Video duration: {duration:.2f} seconds")
-        print(
+        logger.info(f"Video duration: {duration:.2f} seconds")
+        logger.info(
             f"Creating {num_segments} segments of {segment_duration / 60:.1f} minutes each"
         )
 
+        # this createe the thread the program use 
         with concurrent.futures.ThreadPoolExecutor() as executor:
+            #
             futures = []
             for i in range(num_segments):
                 start_time = i * segment_duration
                 output_filename = f"{project_name}_segment_{i + 1:03d}.mp4"
                 output_path = output_dir / output_filename
                 futures.append(
+                    # the executor start the job 
                     executor.submit(
                         process_segment,
                         input_path,
@@ -185,24 +204,56 @@ def video_editor(input_path: str, project_name: str) -> Union[Tuple[Path, str], 
                     )
                 )
 
+            #  this wait for the task
+
             for future in concurrent.futures.as_completed(futures):
                 result = future.result()
                 if result:
                     # Log errors but continue processing other segments
-                    print(result)
+                    logger.error(result)
 
-        print(f"Successfully created {num_segments} video segments in {output_dir}")
+        logger.info(f"Successfully created {num_segments} video segments in {output_dir}")
         return output_dir, project_name
 
     except ffmpeg.Error as e:
-        print(f"An ffmpeg error occurred: {e.stderr.decode()}")
+        logger.error(f"An ffmpeg error occurred: {e.stderr.decode()}")
         return None
     except Exception as e:
-        print(f"An error occurred during video editing: {e}")
+        logger.error(f"An error occurred during video editing: {e}")
         return None
+def compressor_out_dir(project_name:str):
+    logger.info('compressing the output folder')
+    input_path = f'output/{project_name}/' 
+    if not os.path.exists('final_project'):
+        os.mkdir('final_project')
+    output_name : str = f'final_project/{project_name}_final_version'
+    archive_format : str = 'zip'
+    try : 
+        shutil.make_archive(output_name , archive_format, input_path)
+        logger.info(f"{project_name} is done compressing ")
+    except Exception as e : 
+        logger.error(f'there was an error :{e}')
+    finally:
+        logger.info('done')
+async def upload_to_db( project_name:str):
+    logger.info('uploading to the cloud')
+    # Placeholder for cloud upload logic
+    try:
+        download_link = await upload_blob(f'final_project/{project_name}_final_version.zip', f'{project_name}_project_final_version.zip')
+        logger.info('Upload to cloud completed successfully.')
+        if download_link:
+            logger.info(f'Download link: {download_link}')
+            # Save to database
+            await Video.create(video_name=project_name, project_link=download_link)
+            logger.info('Video entry saved to database.')
+            return download_link
+
+    except Exception as e:
+        logger.error(f'Error uploading to cloud: {e}')
 
 
-def video_notifier(project_name: str):
+
+def video_notifier(project_name: str , download_link : str | None = None):
     """
     Sends an email notification when the video processing is complete.
 
@@ -211,35 +262,69 @@ def video_notifier(project_name: str):
     """
     sender_email = os.getenv('SENDER_EMAIL')
     sender_password = os.getenv('SENDER_PASSWORD')
+    attachment = f'final_project/{project_name}_final_version.zip'
+    attachment_name = f'{project_name}_final_version.zip'
+    attachment_path = f'final_project'
 
     if not sender_email or not sender_password:
-        print("Error: SENDER_EMAIL or SENDER_PASSWORD not found in environment variables.")
+        logger.error("Error: SENDER_EMAIL or SENDER_PASSWORD not found in environment variables.")
         return
         
-    body = f"The video project '{project_name}' has finished editing."
-    emails: List[str] = ['jemolife69@gmail.com','omoparioladavidola@gmail.com']
+    error_body = f"The video project '{project_name}' has finished editing."
 
-    for email in emails:
-        try:
-            msg = EmailMessage()
-            msg['Subject'] = f'Your project is ready: {project_name}'
-            msg['From'] = sender_email
-            msg['To'] = email
-            msg.set_content(body)
+    download_body = f"The video project '{project_name}' has finished editing. the link to download it is : {download_link}" 
+    if download_link :
 
-            with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-                smtp.login(sender_email, sender_password)
-                smtp.send_message(msg)
-            print(f"Notification email sent successfully to {email}")
-        except smtplib.SMTPAuthenticationError as e :
-            print(f"Failed to send email to {email}:{e} Authentication error. Please check your email and password.")
-        except Exception as e:
-            print(f"An error occurred while sending the email to {email}: {e}")
+        emails: List[str] = ['jemolife69@gmail.com' , 'omoparioladavidola@gmail.com']
+        for email in emails:
+            try:
+                msg = MIMEMultipart()
+                msg['Subject'] = f'Your project is ready: {project_name}'
+                msg['From'] = sender_email
+                msg['To'] = email
+                msg.attach(MIMEText( download_body, 'plain' ))
 
-def main():
+                with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+                    smtp.login(sender_email, sender_password)
+                    smtp.send_message(msg)
+                logger.info(f"Notification email sent successfully to {email}")
+            except smtplib.SMTPAuthenticationError:
+                logger.error(f"Failed to send email to {email}: Authentication error. Please check your email and password.")
+            except Exception as e:
+                logger.error(f"An error occurred while sending the email to {email}: {e}")
+    else :
+
+        emails: List[str] = ['jemolife69@gmail.com']
+        for email in emails:
+            try:
+                msg = MIMEMultipart()
+                msg['Subject'] = f'eror on the project : {project_name}'
+                msg['From'] = sender_email
+                msg['To'] = email
+                msg.attach(MIMEText( error_body, 'plain' ))
+
+                with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+                    smtp.login(sender_email, sender_password)
+                    smtp.send_message(msg)
+                logger.info(f"Notification email sent successfully to {email}")
+            except smtplib.SMTPAuthenticationError:
+                logger.error(f"Failed to send email to {email}: Authentication error. Please check your email and password.")
+            except Exception as e:
+                logger.error(f"An error occurred while sending the email to {email}: {e}")
+
+
+
+
+
+
+@time_it
+async def main():
+
     """
     Main function to run the video processing pipeline.
     """
+
+    await init_db()
     url = video_getter()
     if url:
         download_info = video_downloader(url)
@@ -248,7 +333,9 @@ def main():
             editor_output = video_editor(input_path, project_title)
             if editor_output:
                 _, project_name = editor_output
-                video_notifier(project_name=project_name)
+                compressor_out_dir(project_name=project_name)
+                download_link   = await upload_to_db(project_name=project_name)
+                video_notifier(project_name=project_name, download_link=download_link)
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
