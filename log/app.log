@@ -5274,3 +5274,5 @@ Exiting normally, received signal 2.
 2025-09-12 02:40:20,587 - __main__ - INFO - Database initialized successfully.
 2025-09-12 10:46:45,841 - storage.main - ERROR - An unexpected error occurred during bucket creation: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
 2025-09-12 10:50:36,577 - storage.main - ERROR - An unexpected error occurred during bucket creation: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+2025-09-17 18:52:31,893 - __main__ - INFO - Starting download...
+2025-09-17 18:52:35,000 - __main__ - INFO - Video Title: SECRET OF INCREASE || PST AKIN-BABALOLA ADEBUKOLA
