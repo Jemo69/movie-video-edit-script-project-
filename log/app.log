@@ -5274,3 +5274,37 @@ Exiting normally, received signal 2.
 2025-09-12 02:40:20,587 - __main__ - INFO - Database initialized successfully.
 2025-09-12 10:46:45,841 - storage.main - ERROR - An unexpected error occurred during bucket creation: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
 2025-09-12 10:50:36,577 - storage.main - ERROR - An unexpected error occurred during bucket creation: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+2025-09-17 20:07:00,614 - database - INFO - Attempting database connection (attempt 1/5)
+2025-09-17 20:07:20,939 - database - WARNING - Database connection failed on attempt 1: [Errno 104] Connection reset by peer
+2025-09-17 20:07:20,939 - database - INFO - Retrying in 1.13 seconds...
+2025-09-17 20:07:22,072 - database - INFO - Attempting database connection (attempt 2/5)
+2025-09-17 20:07:42,189 - database - WARNING - Database connection failed on attempt 2: [Errno 104] Connection reset by peer
+2025-09-17 20:07:42,189 - database - INFO - Retrying in 2.12 seconds...
+2025-09-17 20:07:44,309 - database - INFO - Attempting database connection (attempt 3/5)
+2025-09-17 20:08:04,458 - database - WARNING - Database connection failed on attempt 3: [Errno 104] Connection reset by peer
+2025-09-17 20:08:04,458 - database - INFO - Retrying in 4.18 seconds...
+2025-09-17 20:08:08,641 - database - INFO - Attempting database connection (attempt 4/5)
+2025-09-17 20:08:28,781 - database - WARNING - Database connection failed on attempt 4: [Errno 104] Connection reset by peer
+2025-09-17 20:08:28,782 - database - INFO - Retrying in 8.04 seconds...
+2025-09-17 20:08:36,831 - database - INFO - Attempting database connection (attempt 5/5)
+2025-09-17 20:08:56,937 - database - WARNING - Database connection failed on attempt 5: [Errno 104] Connection reset by peer
+2025-09-17 20:08:56,937 - database - ERROR - All database connection attempts failed
+2025-09-17 21:07:29,491 - database - INFO - Attempting database connection (attempt 1/5)
+2025-09-17 21:07:50,436 - database - WARNING - Database connection failed on attempt 1: [Errno 104] Connection reset by peer
+2025-09-17 21:07:50,436 - database - INFO - Retrying in 1.20 seconds...
+2025-09-17 21:07:51,633 - database - INFO - Attempting database connection (attempt 2/5)
+2025-09-17 21:08:11,958 - database - WARNING - Database connection failed on attempt 2: [Errno 104] Connection reset by peer
+2025-09-17 21:08:11,959 - database - INFO - Retrying in 2.05 seconds...
+2025-09-17 21:08:14,009 - database - INFO - Attempting database connection (attempt 3/5)
+2025-09-17 21:08:34,161 - database - WARNING - Database connection failed on attempt 3: [Errno 104] Connection reset by peer
+2025-09-17 21:08:34,161 - database - INFO - Retrying in 4.55 seconds...
+2025-09-17 21:08:38,716 - database - INFO - Attempting database connection (attempt 4/5)
+2025-09-17 21:08:58,805 - database - WARNING - Database connection failed on attempt 4: [Errno 104] Connection reset by peer
+2025-09-17 21:08:58,806 - database - INFO - Retrying in 9.27 seconds...
+2025-09-17 21:09:08,086 - database - INFO - Attempting database connection (attempt 5/5)
+2025-09-17 21:09:28,432 - database - WARNING - Database connection failed on attempt 5: [Errno 104] Connection reset by peer
+2025-09-17 21:09:28,433 - database - ERROR - All database connection attempts failed
+2025-09-22 19:00:08,845 - database - INFO - Attempting database connection (attempt 1/5)
+2025-09-22 19:00:29,648 - database - WARNING - Database connection failed on attempt 1: [Errno 104] Connection reset by peer
+2025-09-22 19:00:29,649 - database - INFO - Retrying in 1.04 seconds...
+2025-09-22 19:00:30,687 - database - INFO - Attempting database connection (attempt 2/5)
