@@ -1,25 +1,16 @@
-# Python-generated files
-__pycache__/
-*.py[oc]
-build/
-dist/
-wheels/
-*.egg-info
-
-# Virtual environments
-.venv
-input/
-output/
-*.mp3
-final_project/
-
-*.wav
-*.mp4
+# Environment variables
 .env
 
-*.mp4
-*.pub
-jemo
-googlekey.json
-key.json
+# Database files
+*.db
+*.sqlite3
 
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE and editor files
+.vscode/
+.idea/
