@@ -7,7 +7,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from utils import time_it 
 import os
-from database import init_db
+from database import init_db, SessionLocal
 from storage.main import   upload_blob
 from logger import get_logger
 from models import Video
@@ -26,10 +26,7 @@ load_dotenv()
 logger = get_logger(__name__)
 
 
-@time_it
 def video_getter() -> Union[str, None]:
-
-
     """
     Fetches the URL of the latest completed video from a specified YouTube channel.
 
@@ -244,7 +241,10 @@ async def upload_to_db( project_name:str):
         if download_link:
             logger.info(f'Download link: {download_link}')
             # Save to database
-            await Video.create(video_name=project_name, project_link=download_link)
+            with SessionLocal() as session: # Get a session
+                new_video = Video(video_name=project_name, project_link=download_link) # Create Video object
+                session.add(new_video) # Add to session
+                session.commit() # Commit the session
             logger.info('Video entry saved to database.')
             return download_link
 
@@ -270,7 +270,7 @@ def video_notifier(project_name: str , download_link : str | None = None):
         logger.error("Error: SENDER_EMAIL or SENDER_PASSWORD not found in environment variables.")
         return
         
-    error_body = f"The video project '{project_name}' has finished editing."
+    error_body = f"The video project '{project_name}' has finished editing. the download likn was not found"
 
     download_body = f"The video project '{project_name}' has finished editing. the link to download it is : {download_link}" 
     if download_link :
@@ -298,7 +298,7 @@ def video_notifier(project_name: str , download_link : str | None = None):
         for email in emails:
             try:
                 msg = MIMEMultipart()
-                msg['Subject'] = f'eror on the project : {project_name}'
+                msg['Subject'] = f'error on the project : {project_name}'
                 msg['From'] = sender_email
                 msg['To'] = email
                 msg.attach(MIMEText( error_body, 'plain' ))
@@ -324,7 +324,7 @@ async def main():
     Main function to run the video processing pipeline.
     """
 
-    await init_db()
+    init_db()
     url = video_getter()
     if url:
         download_info = video_downloader(url)

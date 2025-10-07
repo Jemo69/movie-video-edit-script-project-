@@ -1,8 +1,13 @@
 from google.cloud import storage
 from logger import get_logger
 import google
+import os
 
 logger = get_logger(__name__)
+
+# Set the GOOGLE_APPLICATION_CREDENTIALS environment variable
+# Assuming googlekey.json is in the root directory of the project
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "key.json"
 
 def create_bucket():
     """
@@ -11,16 +16,18 @@ def create_bucket():
     try:
         bucket_name = "movie-edit"  # Replace with your bucket name
         storage_client = storage.Client()
-        checker = storage_client.list_buckets()
-        bucket_list = [bucket for bucket in checker]
-        if bucket_name  in bucket_list:
+        
+        # Check if the bucket already exists
+        bucket = storage_client.lookup_bucket(bucket_name)
+        if bucket:
+            bucket = storage_client.get_bucket(bucket_name)
+            logger.info(f"Bucket {bucket.name} already exists.")
+            return bucket
+        else:
+            # Create the bucket if it doesn't exist
             bucket = storage_client.bucket(bucket_name)
             bucket.location = "US"
             bucket = storage_client.create_bucket(bucket)
-            logger.info(f"Bucket {bucket.name} created.")
-            return bucket
-        else:
-            bucket = storage_client.get_bucket(bucket_name)
             logger.info(f"Bucket {bucket.name} created.")
             return bucket
     except google.api_core.exceptions.Forbidden as e:
