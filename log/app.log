@@ -5274,3 +5274,143 @@ Exiting normally, received signal 2.
 2025-09-12 02:40:20,587 - __main__ - INFO - Database initialized successfully.
 2025-09-12 10:46:45,841 - storage.main - ERROR - An unexpected error occurred during bucket creation: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
 2025-09-12 10:50:36,577 - storage.main - ERROR - An unexpected error occurred during bucket creation: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+2025-10-06 19:45:20,629 - __main__ - INFO - Starting download...
+2025-10-06 19:45:46,798 - __main__ - INFO - Video Title: OCTOBER THANKSGVING SERVICE || PST OLADIIPO OMOPARIOLA
+2025-10-06 19:51:55,758 - __main__ - INFO - Video downloaded successfully: input/OCTOBER THANKSGVING SERVICE  PST OLADIIPO OMOPARIOLA.mp4
+2025-10-06 19:51:56,178 - __main__ - INFO - Video duration: 6782.46 seconds
+2025-10-06 19:51:56,178 - __main__ - INFO - Creating 8 segments of 15.0 minutes each
+2025-10-06 19:51:56,182 - __main__ - INFO - Processing segment 1: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_001.mp4...
+2025-10-06 19:51:56,184 - __main__ - INFO - Processing segment 2: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_002.mp4...
+2025-10-06 19:51:56,186 - __main__ - INFO - Processing segment 3: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_003.mp4...
+2025-10-06 19:51:56,186 - __main__ - INFO - Processing segment 4: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_004.mp4...
+2025-10-06 19:51:56,187 - __main__ - INFO - Processing segment 5: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_005.mp4...
+2025-10-06 19:51:56,188 - __main__ - INFO - Processing segment 6: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_006.mp4...
+2025-10-06 19:51:56,189 - __main__ - INFO - Processing segment 7: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_007.mp4...
+2025-10-06 19:51:56,191 - __main__ - INFO - Processing segment 8: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_008.mp4...
+2025-10-06 19:55:21,386 - __main__ - INFO - Successfully created segment 8
+2025-10-06 19:57:27,393 - __main__ - INFO - Successfully created segment 6
+2025-10-06 19:58:17,139 - __main__ - INFO - Successfully created segment 5
+2025-10-06 19:58:23,787 - __main__ - INFO - Successfully created segment 4
+2025-10-06 19:58:32,532 - __main__ - INFO - Successfully created segment 3
+2025-10-06 19:59:04,174 - __main__ - INFO - Successfully created segment 7
+2025-10-06 19:59:07,841 - __main__ - INFO - Successfully created segment 2
+2025-10-06 19:59:11,693 - __main__ - INFO - Successfully created segment 1
+2025-10-06 19:59:11,696 - __main__ - INFO - Successfully created 8 video segments in output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA
+2025-10-06 19:59:11,697 - __main__ - INFO - compressing the output folder
+2025-10-06 19:59:23,531 - __main__ - INFO - OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA is done compressing 
+2025-10-06 19:59:23,531 - __main__ - INFO - done
+2025-10-06 19:59:23,531 - __main__ - INFO - uploading to the cloud
+2025-10-06 19:59:35,352 - storage.main - ERROR - An unexpected error occurred during bucket creation: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+2025-10-06 19:59:35,353 - storage.main - ERROR - Error uploading file: 'NoneType' object has no attribute 'blob'
+2025-10-06 19:59:35,353 - __main__ - INFO - Upload to cloud completed successfully.
+2025-10-06 19:59:40,173 - __main__ - INFO - Notification email sent successfully to jemolife69@gmail.com
+2025-10-06 20:55:18,755 - storage.main - INFO - Bucket movie-edit created.
+2025-10-06 20:55:18,757 - storage.main - WARNING - Could not create bucket: 403 Permission denied. This might be due to billing issues.
+2025-10-06 20:55:18,758 - storage.main - INFO - Bucket <MagicMock name='Client().get_bucket().name' id='136942645167504'> created.
+2025-10-06 20:55:26,822 - storage.main - INFO - Bucket movie-edit already exists.
+2025-10-06 20:55:26,824 - storage.main - INFO - Bucket <MagicMock name='Client().get_bucket().name' id='137346827261600'> already exists.
+2025-10-06 20:55:26,826 - storage.main - INFO - Bucket <MagicMock name='Client().get_bucket().name' id='137346827264960'> already exists.
+2025-10-06 20:55:41,720 - storage.main - INFO - Bucket movie-edit already exists.
+2025-10-06 20:55:41,721 - storage.main - WARNING - Could not create bucket: 403 Permission denied. This might be due to billing issues.
+2025-10-06 20:55:41,721 - storage.main - INFO - Bucket movie-edit created.
+2025-10-06 20:55:48,199 - storage.main - INFO - Bucket movie-edit already exists.
+2025-10-06 20:55:48,200 - storage.main - WARNING - Could not create bucket: 403 Permission denied. This might be due to billing issues.
+2025-10-06 20:55:48,201 - storage.main - INFO - Bucket movie-edit created.
+2025-10-06 20:59:03,213 - storage.main - INFO - Bucket movie-edit already exists.
+2025-10-06 20:59:03,214 - storage.main - WARNING - Could not create bucket: 403 Permission denied. This might be due to billing issues.
+2025-10-06 20:59:03,215 - storage.main - INFO - Bucket movie-edit created.
+2025-10-06 21:04:36,486 - __main__ - INFO - Starting download...
+2025-10-06 21:05:01,604 - __main__ - INFO - Video Title: OCTOBER THANKSGVING SERVICE || PST OLADIIPO OMOPARIOLA
+2025-10-06 21:05:01,610 - __main__ - INFO - Video downloaded successfully: input/OCTOBER THANKSGVING SERVICE  PST OLADIIPO OMOPARIOLA.mp4
+2025-10-06 21:05:01,972 - __main__ - INFO - Video duration: 6782.46 seconds
+2025-10-06 21:05:01,972 - __main__ - INFO - Creating 8 segments of 15.0 minutes each
+2025-10-06 21:05:01,974 - __main__ - INFO - Processing segment 1: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_001.mp4...
+2025-10-06 21:05:01,975 - __main__ - INFO - Processing segment 2: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_002.mp4...
+2025-10-06 21:05:01,976 - __main__ - INFO - Processing segment 3: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_003.mp4...
+2025-10-06 21:05:01,977 - __main__ - INFO - Processing segment 4: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_004.mp4...
+2025-10-06 21:05:01,981 - __main__ - INFO - Processing segment 5: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_005.mp4...
+2025-10-06 21:05:01,982 - __main__ - INFO - Processing segment 6: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_006.mp4...
+2025-10-06 21:05:01,983 - __main__ - INFO - Processing segment 7: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_007.mp4...
+2025-10-06 21:05:01,985 - __main__ - INFO - Processing segment 8: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_008.mp4...
+2025-10-06 21:08:28,092 - __main__ - INFO - Successfully created segment 8
+2025-10-06 21:10:18,324 - __main__ - INFO - Successfully created segment 6
+2025-10-06 21:11:26,673 - __main__ - INFO - Successfully created segment 5
+2025-10-06 21:11:39,698 - __main__ - INFO - Successfully created segment 4
+2025-10-06 21:11:48,072 - __main__ - INFO - Successfully created segment 3
+2025-10-06 21:12:27,789 - __main__ - INFO - Successfully created segment 7
+2025-10-06 21:12:27,786 - __main__ - INFO - Successfully created segment 2
+2025-10-06 21:12:30,302 - __main__ - INFO - Successfully created segment 1
+2025-10-06 21:12:30,314 - __main__ - INFO - Successfully created 8 video segments in output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA
+2025-10-06 21:12:30,321 - __main__ - INFO - compressing the output folder
+2025-10-06 21:12:44,577 - __main__ - INFO - OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA is done compressing 
+2025-10-06 21:12:44,578 - __main__ - INFO - done
+2025-10-06 21:12:44,578 - __main__ - INFO - uploading to the cloud
+2025-10-06 21:12:44,609 - storage.main - ERROR - An unexpected error occurred during bucket creation: File ../key.json was not found.
+2025-10-06 21:12:44,609 - storage.main - ERROR - Error uploading file: 'NoneType' object has no attribute 'blob'
+2025-10-06 21:12:44,610 - __main__ - INFO - Upload to cloud completed successfully.
+2025-10-06 21:12:50,041 - __main__ - INFO - Notification email sent successfully to jemolife69@gmail.com
+2025-10-06 21:19:22,000 - __main__ - INFO - Starting download...
+2025-10-06 21:19:47,704 - __main__ - INFO - Video Title: OCTOBER THANKSGVING SERVICE || PST OLADIIPO OMOPARIOLA
+2025-10-06 21:19:47,705 - __main__ - INFO - Video downloaded successfully: input/OCTOBER THANKSGVING SERVICE  PST OLADIIPO OMOPARIOLA.mp4
+2025-10-06 21:19:47,967 - __main__ - INFO - Video duration: 6782.46 seconds
+2025-10-06 21:19:47,967 - __main__ - INFO - Creating 8 segments of 15.0 minutes each
+2025-10-06 21:19:47,969 - __main__ - INFO - Processing segment 1: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_001.mp4...
+2025-10-06 21:19:47,970 - __main__ - INFO - Processing segment 2: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_002.mp4...
+2025-10-06 21:19:47,970 - __main__ - INFO - Processing segment 3: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_003.mp4...
+2025-10-06 21:19:47,971 - __main__ - INFO - Processing segment 4: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_004.mp4...
+2025-10-06 21:19:47,974 - __main__ - INFO - Processing segment 5: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_005.mp4...
+2025-10-06 21:19:47,976 - __main__ - INFO - Processing segment 6: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_006.mp4...
+2025-10-06 21:19:47,978 - __main__ - INFO - Processing segment 7: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_007.mp4...
+2025-10-06 21:19:47,981 - __main__ - INFO - Processing segment 8: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_008.mp4...
+2025-10-06 21:22:54,478 - __main__ - INFO - Successfully created segment 8
+2025-10-06 21:24:48,405 - __main__ - INFO - Successfully created segment 6
+2025-10-06 21:25:33,985 - __main__ - INFO - Successfully created segment 5
+2025-10-06 21:25:48,076 - __main__ - INFO - Successfully created segment 4
+2025-10-06 21:25:57,039 - __main__ - INFO - Successfully created segment 3
+2025-10-06 21:26:26,133 - __main__ - INFO - Successfully created segment 7
+2025-10-06 21:26:30,320 - __main__ - INFO - Successfully created segment 2
+2025-10-06 21:26:32,766 - __main__ - INFO - Successfully created segment 1
+2025-10-06 21:26:32,768 - __main__ - INFO - Successfully created 8 video segments in output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA
+2025-10-06 21:26:32,768 - __main__ - INFO - compressing the output folder
+2025-10-06 21:26:44,575 - __main__ - INFO - OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA is done compressing 
+2025-10-06 21:26:44,575 - __main__ - INFO - done
+2025-10-06 21:26:44,575 - __main__ - INFO - uploading to the cloud
+2025-10-06 21:26:59,502 - storage.main - INFO - Bucket movie-edit already exists.
+2025-10-06 21:29:53,427 - storage.main - INFO - File final_project/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_final_version.zip uploaded to OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_project_final_version.zip.
+2025-10-06 21:29:53,427 - __main__ - INFO - Upload to cloud completed successfully.
+2025-10-06 21:29:53,428 - __main__ - INFO - Download link: https://storage.googleapis.com/movie-edit/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_project_final_version.zip
+2025-10-06 21:29:53,428 - __main__ - ERROR - Error uploading to cloud: type object 'Video' has no attribute 'create'
+2025-10-06 21:29:56,072 - __main__ - INFO - Notification email sent successfully to jemolife69@gmail.com
+2025-10-06 21:34:23,889 - __main__ - INFO - Starting download...
+2025-10-06 21:34:49,085 - __main__ - INFO - Video Title: OCTOBER THANKSGVING SERVICE || PST OLADIIPO OMOPARIOLA
+2025-10-06 21:34:49,087 - __main__ - INFO - Video downloaded successfully: input/OCTOBER THANKSGVING SERVICE  PST OLADIIPO OMOPARIOLA.mp4
+2025-10-06 21:34:49,208 - __main__ - INFO - Video duration: 6782.46 seconds
+2025-10-06 21:34:49,209 - __main__ - INFO - Creating 8 segments of 15.0 minutes each
+2025-10-06 21:34:49,210 - __main__ - INFO - Processing segment 1: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_001.mp4...
+2025-10-06 21:34:49,210 - __main__ - INFO - Processing segment 2: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_002.mp4...
+2025-10-06 21:34:49,212 - __main__ - INFO - Processing segment 3: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_003.mp4...
+2025-10-06 21:34:49,214 - __main__ - INFO - Processing segment 4: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_004.mp4...
+2025-10-06 21:34:49,215 - __main__ - INFO - Processing segment 5: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_005.mp4...
+2025-10-06 21:34:49,215 - __main__ - INFO - Processing segment 6: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_006.mp4...
+2025-10-06 21:34:49,220 - __main__ - INFO - Processing segment 7: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_007.mp4...
+2025-10-06 21:34:49,223 - __main__ - INFO - Processing segment 8: Writing to output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_segment_008.mp4...
+2025-10-06 21:37:57,854 - __main__ - INFO - Successfully created segment 8
+2025-10-06 21:39:59,550 - __main__ - INFO - Successfully created segment 6
+2025-10-06 21:40:37,674 - __main__ - INFO - Successfully created segment 5
+2025-10-06 21:40:48,700 - __main__ - INFO - Successfully created segment 4
+2025-10-06 21:40:57,030 - __main__ - INFO - Successfully created segment 3
+2025-10-06 21:41:30,929 - __main__ - INFO - Successfully created segment 7
+2025-10-06 21:41:32,631 - __main__ - INFO - Successfully created segment 2
+2025-10-06 21:41:35,852 - __main__ - INFO - Successfully created segment 1
+2025-10-06 21:41:35,854 - __main__ - INFO - Successfully created 8 video segments in output/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA
+2025-10-06 21:41:35,855 - __main__ - INFO - compressing the output folder
+2025-10-06 21:41:47,703 - __main__ - INFO - OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA is done compressing 
+2025-10-06 21:41:47,704 - __main__ - INFO - done
+2025-10-06 21:41:47,704 - __main__ - INFO - uploading to the cloud
+2025-10-06 21:42:01,992 - storage.main - INFO - Bucket movie-edit already exists.
+2025-10-06 21:44:48,900 - storage.main - INFO - File final_project/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_final_version.zip uploaded to OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_project_final_version.zip.
+2025-10-06 21:44:48,901 - __main__ - INFO - Upload to cloud completed successfully.
+2025-10-06 21:44:48,901 - __main__ - INFO - Download link: https://storage.googleapis.com/movie-edit/OCTOBER-THANKSGVING-SERVICE-PST-OLADIIPO-OMOPARIOLA_project_final_version.zip
+2025-10-06 21:44:49,800 - __main__ - INFO - Video entry saved to database.
+2025-10-06 21:44:52,326 - __main__ - INFO - Notification email sent successfully to jemolife69@gmail.com
+2025-10-06 21:44:57,456 - __main__ - INFO - Notification email sent successfully to omoparioladavidola@gmail.com

@@ -1,19 +1,23 @@
-from tortoise.models import Model
-from tortoise import fields
+from sqlalchemy import Column, Integer, String, Text
+from database import Base
 
-class User(Model):
-    id = fields.IntField(pk=True)
-    name = fields.CharField(max_length=255)
-    email = fields.CharField(max_length=255, unique=True)
-    password_hash = fields.TextField()
+class User(Base):
+    __tablename__ = "users"
 
-    def __str__(self):
-        return self.name
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, index=True)
+    email = Column(String, unique=True, index=True)
+    password_hash = Column(Text)
 
-class Video(Model):
-    id = fields.IntField(pk=True)
-    video_name = fields.CharField(max_length=255)
-    project_link = fields.TextField()
+    def __repr__(self):
+        return f"<User(name={self.name}, email={self.email})>"
 
-    def __str__(self):
-        return self.video_name
+class Video(Base):
+    __tablename__ = "videos"
+
+    id = Column(Integer, primary_key=True, index=True)
+    video_name = Column(String, index=True)
+    project_link = Column(Text)
+
+    def __repr__(self):
+        return f"<Video(video_name={self.video_name})>"
