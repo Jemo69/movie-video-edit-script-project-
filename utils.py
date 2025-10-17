@@ -1,6 +1,11 @@
 from functools import wraps
 from typing import Generic, TypeVar, Union, Callable, Any, Literal
 import datetime
+import shutil
+from pathlib import Path
+from logger import get_logger
+
+logger = get_logger(__name__)
 
 # Define type variables for generic use
 T = TypeVar('T')
@@ -51,3 +56,25 @@ def time_it(func):
         print(f"Function '{func.__name__}' executed in {duration}")
         return result
     return wrapper
+
+
+def cleanup():
+    """
+    Cleans up the input, output, and final_project directories.
+    """
+    logger.info("Starting cleanup...")
+    dirs_to_clean = ["input", "output", "final_project"]
+    for directory in dirs_to_clean:
+        dir_path = Path(directory)
+        if dir_path.exists() and dir_path.is_dir():
+            logger.info(f"Cleaning up {directory} directory...")
+            for item in dir_path.iterdir():
+                try:
+                    if item.is_dir():
+                        shutil.rmtree(item)
+                    else:
+                        item.unlink()
+                except Exception as e:
+                    logger.error(f"Error removing {item}: {e}")
+            logger.info(f"Finished cleaning up {directory} directory.")
+    logger.info("Cleanup complete.")

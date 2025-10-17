@@ -16,3 +16,5 @@
   self     Manage the uv executable
   version  Display uv's version
   help     Display documentation for a command
+always use uv and use pep8 naming convention 
+

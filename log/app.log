@@ -5414,3 +5414,58 @@ Exiting normally, received signal 2.
 2025-10-06 21:44:49,800 - __main__ - INFO - Video entry saved to database.
 2025-10-06 21:44:52,326 - __main__ - INFO - Notification email sent successfully to jemolife69@gmail.com
 2025-10-06 21:44:57,456 - __main__ - INFO - Notification email sent successfully to omoparioladavidola@gmail.com
+2025-10-13 19:54:14,556 - __main__ - INFO - Starting download...
+2025-10-13 19:54:15,942 - __main__ - INFO - Video Title: IMPORTANCE OF PURITY || PST OLADIIPO OMOPARIOLA
+2025-10-13 19:59:24,287 - __main__ - INFO - Video downloaded successfully: input/IMPORTANCE OF PURITY  PST OLADIIPO OMOPARIOLA.mp4
+2025-10-13 19:59:24,862 - __main__ - INFO - Video duration: 5278.59 seconds
+2025-10-13 19:59:24,863 - __main__ - INFO - Creating 6 segments of 15.0 minutes each
+2025-10-13 19:59:24,871 - __main__ - INFO - Processing segment 1: Writing to output/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA_segment_001.mp4...
+2025-10-13 19:59:24,873 - __main__ - INFO - Processing segment 2: Writing to output/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA_segment_002.mp4...
+2025-10-13 19:59:24,874 - __main__ - INFO - Processing segment 3: Writing to output/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA_segment_003.mp4...
+2025-10-13 19:59:24,876 - __main__ - INFO - Processing segment 4: Writing to output/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA_segment_004.mp4...
+2025-10-13 19:59:24,877 - __main__ - INFO - Processing segment 5: Writing to output/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA_segment_005.mp4...
+2025-10-13 19:59:24,879 - __main__ - INFO - Processing segment 6: Writing to output/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA_segment_006.mp4...
+2025-10-13 20:03:06,438 - __main__ - INFO - Successfully created segment 6
+2025-10-13 20:03:43,067 - __main__ - INFO - Successfully created segment 5
+2025-10-13 20:03:52,310 - __main__ - INFO - Successfully created segment 3
+2025-10-13 20:03:56,706 - __main__ - INFO - Successfully created segment 4
+2025-10-13 20:04:21,620 - __main__ - INFO - Successfully created segment 2
+2025-10-13 20:04:28,010 - __main__ - INFO - Successfully created segment 1
+2025-10-13 20:04:28,012 - __main__ - INFO - Successfully created 6 video segments in output/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA
+2025-10-13 20:04:28,012 - __main__ - INFO - compressing the output folder
+2025-10-13 20:04:35,697 - __main__ - INFO - IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA is done compressing 
+2025-10-13 20:04:35,697 - __main__ - INFO - done
+2025-10-13 20:04:35,697 - __main__ - INFO - uploading to the cloud
+2025-10-13 20:04:37,694 - storage.main - INFO - Bucket movie-edit already exists.
+2025-10-13 20:07:53,069 - storage.main - ERROR - Error uploading file: Timeout of 120.0s exceeded, last exception: ('Connection aborted.', TimeoutError('The write operation timed out'))
+2025-10-13 20:07:53,070 - __main__ - INFO - Upload to cloud completed successfully.
+2025-10-13 20:07:55,701 - __main__ - INFO - Notification email sent successfully to jemolife69@gmail.com
+2025-10-13 20:24:42,504 - __main__ - INFO - Starting download...
+2025-10-13 20:24:44,396 - __main__ - INFO - Video Title: IMPORTANCE OF PURITY || PST OLADIIPO OMOPARIOLA
+2025-10-13 20:24:44,398 - __main__ - INFO - Video downloaded successfully: input/IMPORTANCE OF PURITY  PST OLADIIPO OMOPARIOLA.mp4
+2025-10-13 20:24:45,143 - __main__ - INFO - Video duration: 5278.59 seconds
+2025-10-13 20:24:45,143 - __main__ - INFO - Creating 6 segments of 15.0 minutes each
+2025-10-13 20:24:45,144 - __main__ - INFO - Processing segment 1: Writing to output/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA_segment_001.mp4...
+2025-10-13 20:24:45,145 - __main__ - INFO - Processing segment 2: Writing to output/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA_segment_002.mp4...
+2025-10-13 20:24:45,151 - __main__ - INFO - Processing segment 3: Writing to output/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA_segment_003.mp4...
+2025-10-13 20:24:45,153 - __main__ - INFO - Processing segment 4: Writing to output/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA_segment_004.mp4...
+2025-10-13 20:24:45,155 - __main__ - INFO - Processing segment 5: Writing to output/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA_segment_005.mp4...
+2025-10-13 20:24:45,156 - __main__ - INFO - Processing segment 6: Writing to output/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA_segment_006.mp4...
+2025-10-13 20:28:38,879 - __main__ - INFO - Successfully created segment 6
+2025-10-13 20:29:22,708 - __main__ - INFO - Successfully created segment 5
+2025-10-13 20:29:32,876 - __main__ - INFO - Successfully created segment 3
+2025-10-13 20:29:33,969 - __main__ - INFO - Successfully created segment 4
+2025-10-13 20:30:01,997 - __main__ - INFO - Successfully created segment 2
+2025-10-13 20:30:08,221 - __main__ - INFO - Successfully created segment 1
+2025-10-13 20:30:08,223 - __main__ - INFO - Successfully created 6 video segments in output/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA
+2025-10-13 20:30:08,223 - __main__ - INFO - compressing the output folder
+2025-10-13 20:30:19,657 - __main__ - INFO - IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA is done compressing 
+2025-10-13 20:30:19,657 - __main__ - INFO - done
+2025-10-13 20:30:19,658 - __main__ - INFO - uploading to the cloud
+2025-10-13 20:30:21,067 - storage.main - INFO - Bucket movie-edit already exists.
+2025-10-13 20:33:07,548 - storage.main - INFO - File final_project/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA_final_version.zip uploaded to IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA_project_final_version.zip.
+2025-10-13 20:33:07,549 - __main__ - INFO - Upload to cloud completed successfully.
+2025-10-13 20:33:07,549 - __main__ - INFO - Download link: https://storage.googleapis.com/movie-edit/IMPORTANCE-OF-PURITY-PST-OLADIIPO-OMOPARIOLA_project_final_version.zip
+2025-10-13 20:33:08,418 - __main__ - INFO - Video entry saved to database.
+2025-10-13 20:33:10,929 - __main__ - INFO - Notification email sent successfully to jemolife69@gmail.com
+2025-10-13 20:33:13,375 - __main__ - INFO - Notification email sent successfully to omoparioladavidola@gmail.com
