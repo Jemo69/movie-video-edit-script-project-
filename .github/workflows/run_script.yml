@@ -1,0 +1,35 @@
+name: Run Main Script
+
+on:
+  schedule:
+    - cron: "0 16 * * 1" # Runs every Monday at 4:00 PM UTC
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Set up Google Cloud credentials
+      run: |
+        echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON }}" > "${{ runner.temp }}/gcp-key.json"
+        echo "GOOGLE_APPLICATION_CREDENTIALS=${{ runner.temp }}/gcp-key.json" >> $GITHUB_ENV
+
+    - name: Run script
+      env:
+        YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+        SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
+      run: python main.py

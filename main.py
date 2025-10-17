@@ -5,7 +5,7 @@ import asyncio
 
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from utils import time_it 
+from utils import time_it, cleanup
 import os
 from database import init_db, SessionLocal
 from storage.main import   upload_blob
@@ -275,7 +275,7 @@ def video_notifier(project_name: str , download_link : str | None = None):
     download_body = f"The video project '{project_name}' has finished editing. the link to download it is : {download_link}" 
     if download_link :
 
-        emails: List[str] = ['jemolife69@gmail.com' , 'omoparioladavidola@gmail.com']
+        emails: List[str] = ['jemolife69@gmail.com' , 'omoparioladavidola@gmail.com', 'heritageadewumivictor@gmail.com']
         for email in emails:
             try:
                 msg = MIMEMultipart()
@@ -336,6 +336,7 @@ async def main():
                 compressor_out_dir(project_name=project_name)
                 download_link   = await upload_to_db(project_name=project_name)
                 video_notifier(project_name=project_name, download_link=download_link)
+    cleanup()
 
 if __name__ == "__main__":
     asyncio.run(main())
