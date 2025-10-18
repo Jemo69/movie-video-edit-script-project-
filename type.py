@@ -1,4 +1,5 @@
-from typing import TypedDict
+from typing import TypedDict, Dict, List
+
 # Define the types for the YouTube API response
 class Thumbnails(TypedDict):
     """

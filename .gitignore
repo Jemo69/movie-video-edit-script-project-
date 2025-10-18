@@ -1,5 +1,6 @@
 # Environment variables
 .env
+.env.local
 
 # Database files
 *.db
@@ -14,3 +15,25 @@ __pycache__/
 # IDE and editor files
 .vscode/
 .idea/
+
+# Logs
+log/
+*.log
+
+# Temporary directories
+input/
+output/
+final_project/
+
+# Google Cloud credentials
+key.json
+googlekey.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Pytest
+.pytest_cache/
+htmlcov/
+.coverage
