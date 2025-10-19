@@ -2,26 +2,32 @@ import requests
 import math
 import smtplib
 import asyncio
+import traceback
 
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from utils import time_it, cleanup
 import os
-from database import init_db, SessionLocal
-from storage.main import   upload_blob
+from database import init_db, get_session
+from storage.main import upload_blob
 from logger import get_logger
 from models import Video
+from exceptions import (
+    VideoDownloadError,
+    VideoEditingError,
+    VideoUploadError,
+    EmailNotificationError
+)
 
 import shutil
 import re
 from dotenv import load_dotenv
 from pathlib import Path
-from typing import List, Dict, Union, Any, Tuple 
+from typing import List, Dict, Union, Tuple
 import ffmpeg
 from pytubefix import YouTube
 import concurrent.futures
 
-# Load environment variables from .env file
 load_dotenv()
 logger = get_logger(__name__)
 
@@ -32,11 +38,13 @@ def video_getter() -> Union[str, None]:
 
     Returns:
         Union[str, None]: The URL of the latest video, or None if an error occurs.
+
+    Raises:
+        VideoDownloadError: If the API request fails
     """
     youtube_api_key = os.getenv('YOUTUBE_API_KEY')
     if not youtube_api_key:
-        logger.error("Error: YOUTUBE_API_KEY not found in environment variables.")
-        return None
+        raise VideoDownloadError("YOUTUBE_API_KEY not found in environment variables")
 
     target_id = 'UC-mvrwYr8tk6Gk8H3C8r1bg'
     base_url = 'https://www.googleapis.com/youtube/v3/search'
@@ -51,119 +59,107 @@ def video_getter() -> Union[str, None]:
     }
 
     try:
-        response = requests.get(base_url, params=params)
-        response.raise_for_status()  # Raise an exception for bad status codes (4xx or 5xx)
+        response = requests.get(base_url, params=params, timeout=30)
+        response.raise_for_status()
         data = response.json()
 
         if 'items' in data and data['items']:
             video_id = data['items'][0]['id']['videoId']
-            return f'https://www.youtube.com/watch?v={video_id}'
+            video_url = f'https://www.youtube.com/watch?v={video_id}'
+            logger.info(f"Found video: {video_url}")
+            return video_url
         else:
-            logger.info("No videos found for the specified channel.")
+            logger.warning("No videos found for the specified channel")
             return None
 
+    except requests.exceptions.Timeout:
+        logger.error("YouTube API request timed out")
+        raise VideoDownloadError("YouTube API request timed out")
     except requests.exceptions.RequestException as e:
-        logger.error(f"An error occurred with the YouTube API request: {e}")
-        return None
+        logger.error(f"YouTube API request failed: {e}")
+        raise VideoDownloadError(f"YouTube API request failed: {e}")
     except KeyError as e:
         logger.error(f"Error parsing YouTube API response: {e}")
-        return None
-    except Exception as e:
-        logger.error(f"An unexpected error occurred: {e}")
-        return None
+        raise VideoDownloadError(f"Invalid API response format: {e}")
 
 
-def video_downloader(url: str) -> Union[Tuple[str, str], None]:
+def video_downloader(url: str, max_retries: int = 3) -> Union[Tuple[str, str], None]:
     """
-    Downloads a video from a given YouTube URL.
+    Downloads a video from a given YouTube URL with retry logic.
 
     Args:
-        url (str): The URL of the YouTube video.
+        url (str): The URL of the YouTube video
+        max_retries (int): Maximum number of download attempts
 
     Returns:
-        Union[Tuple[str, str], None]: A tuple containing the file path and sanitized project title, or None if an error occurs.
+        Union[Tuple[str, str], None]: A tuple of (file_path, project_title) or None
+
+    Raises:
+        VideoDownloadError: If download fails after retries
     """
-    try:
-        logger.info("Starting download...")
-        yt = YouTube(url)
-        title = yt.title
-        logger.info(f"Video Title: {title}")
+    for attempt in range(max_retries):
+        try:
+            logger.info(f"Download attempt {attempt + 1}/{max_retries}...")
+            yt = YouTube(url)
+            title = yt.title
+            logger.info(f"Video Title: {title}")
 
-        sanitized_title = re.sub(r'[\\/:*?"<>|]', "", title)
-        project_title = re.sub(r'\s+', "-", sanitized_title)
-        
-        output_path = Path("input")
-        output_path.mkdir(exist_ok=True)
-        
-        filename = f"{sanitized_title}.mp4"
-        filepath = output_path / filename
+            sanitized_title = re.sub(r'[\\/:*?"<>|]', "", title)
+            project_title = re.sub(r'\s+', "-", sanitized_title)
 
-        stream = yt.streams.get_highest_resolution()
-        if stream:
+            output_path = Path("input")
+            output_path.mkdir(exist_ok=True)
+
+            filename = f"{sanitized_title}.mp4"
+            filepath = output_path / filename
+
+            # Check if file already exists
+            if filepath.exists():
+                logger.warning(f"File already exists: {filepath}")
+                filepath.unlink()
+
+            stream = yt.streams.get_highest_resolution()
+            if not stream:
+                raise VideoDownloadError("No suitable stream found for download")
+
             stream.download(output_path=str(output_path), filename=filename)
+
+            # Verify file exists and has content
+            if not filepath.exists() or filepath.stat().st_size == 0:
+                raise VideoDownloadError("Downloaded file is empty or missing")
+
             logger.info(f"Video downloaded successfully: {filepath}")
             return str(filepath), project_title
-        else:
-            logger.info("No suitable stream found for download.")
-            return None
-    except Exception as e:
-        logger.error(f"An error occurred during video download: {e}")
-        return None
 
+        except Exception as e:
+            logger.error(f"Download attempt {attempt + 1} failed: {e}")
+            if attempt == max_retries - 1:
+                raise VideoDownloadError(f"Failed to download after {max_retries} attempts: {e}")
+            logger.info("Retrying download...")
 
-def process_segment(
-    input_path: str,
-    output_path: str,
-    start_time: int,
-    segment_duration: int,
-    segment_index: int,
-):
-    """
-    Processes a single video segment using ffmpeg.
-    """
-    logger.info(f"Processing segment {segment_index + 1}: Writing to {output_path}...")
-    try:
-        (
-            ffmpeg.input(input_path, ss=start_time, t=segment_duration)
-            .output(
-                str(output_path),
-                vcodec="libx264",
-                acodec="aac",
-                preset="fast",
-                crf=23,
-                ac=2,
-                ar=44100,
-                ab="128k",
-                
-            )
-            .overwrite_output()
-            .run(capture_stdout=True, capture_stderr=True, quiet=True)
-        )
-        logger.info(f"Successfully created segment {segment_index + 1}")
-        return None
-    except ffmpeg.Error as e:
-        error_message = (
-            f"Error creating segment {segment_index + 1}: {e.stderr.decode()}"
-        )
-        logger.error(error_message)
-        return error_message
+    return None
 
 
 def video_editor(input_path: str, project_name: str) -> Union[Tuple[Path, str], None]:
     """
-    This function edits a video by cutting it into 15-minute segments in parallel
-    and saves them in the output folder using ffmpeg-python.
+    Edits a video by cutting it into 15-minute segments in parallel.
 
     Args:
-        input_path (str): The path to the input video file.
-        project_name (str): The name of the project.
+        input_path (str): Path to the input video file
+        project_name (str): Name of the project
 
     Returns:
-        Union[Tuple[Path, str], None]: A tuple containing the output directory and project name, or None if an error occurs.
+        Union[Tuple[Path, str], None]: Tuple of (output_dir, project_name) or None
+
+    Raises:
+        VideoEditingError: If editing fails
     """
     if not input_path:
-        logger.error("Error: Input path is not provided.")
-        return None
+        raise VideoEditingError("Input path is not provided")
+
+    input_file = Path(input_path)
+    if not input_file.exists():
+        raise VideoEditingError(f"Input file does not exist: {input_path}")
 
     try:
         output_dir = Path(f"output/{project_name}")
@@ -173,24 +169,20 @@ def video_editor(input_path: str, project_name: str) -> Union[Tuple[Path, str], 
         duration = float(probe["format"]["duration"])
 
         segment_duration = 15 * 60  # 15 minutes in seconds
-
         num_segments = math.ceil(duration / segment_duration)
 
         logger.info(f"Video duration: {duration:.2f} seconds")
-        logger.info(
-            f"Creating {num_segments} segments of {segment_duration / 60:.1f} minutes each"
-        )
+        logger.info(f"Creating {num_segments} segments of {segment_duration / 60:.1f} minutes each")
 
-        # this createe the thread the program use 
+        errors = []
+
         with concurrent.futures.ThreadPoolExecutor() as executor:
-            #
             futures = []
             for i in range(num_segments):
                 start_time = i * segment_duration
                 output_filename = f"{project_name}_segment_{i + 1:03d}.mp4"
                 output_path = output_dir / output_filename
                 futures.append(
-                    # the executor start the job 
                     executor.submit(
                         process_segment,
                         input_path,
@@ -201,142 +193,254 @@ def video_editor(input_path: str, project_name: str) -> Union[Tuple[Path, str], 
                     )
                 )
 
-            #  this wait for the task
-
             for future in concurrent.futures.as_completed(futures):
                 result = future.result()
                 if result:
-                    # Log errors but continue processing other segments
-                    logger.error(result)
+                    errors.append(result)
+
+        if errors:
+            error_msg = f"Failed to create {len(errors)} segments: {'; '.join(errors)}"
+            logger.error(error_msg)
+            raise VideoEditingError(error_msg)
 
         logger.info(f"Successfully created {num_segments} video segments in {output_dir}")
         return output_dir, project_name
 
     except ffmpeg.Error as e:
-        logger.error(f"An ffmpeg error occurred: {e.stderr.decode()}")
-        return None
+        error_msg = f"FFmpeg error: {e.stderr.decode() if e.stderr else str(e)}"
+        logger.error(error_msg)
+        raise VideoEditingError(error_msg)
     except Exception as e:
-        logger.error(f"An error occurred during video editing: {e}")
-        return None
-def compressor_out_dir(project_name:str):
-    logger.info('compressing the output folder')
-    input_path = f'output/{project_name}/' 
-    if not os.path.exists('final_project'):
-        os.mkdir('final_project')
-    output_name : str = f'final_project/{project_name}_final_version'
-    archive_format : str = 'zip'
-    try : 
-        shutil.make_archive(output_name , archive_format, input_path)
-        logger.info(f"{project_name} is done compressing ")
-    except Exception as e : 
-        logger.error(f'there was an error :{e}')
-    finally:
-        logger.info('done')
-async def upload_to_db( project_name:str):
-    logger.info('uploading to the cloud')
-    # Placeholder for cloud upload logic
-    try:
-        download_link = await upload_blob(f'final_project/{project_name}_final_version.zip', f'{project_name}_project_final_version.zip')
-        logger.info('Upload to cloud completed successfully.')
-        if download_link:
-            logger.info(f'Download link: {download_link}')
-            # Save to database
-            with SessionLocal() as session: # Get a session
-                new_video = Video(video_name=project_name, project_link=download_link) # Create Video object
-                session.add(new_video) # Add to session
-                session.commit() # Commit the session
-            logger.info('Video entry saved to database.')
-            return download_link
-
-    except Exception as e:
-        logger.error(f'Error uploading to cloud: {e}')
+        logger.error(f"Error during video editing: {e}")
+        raise VideoEditingError(f"Video editing failed: {e}")
 
 
-
-def video_notifier(project_name: str , download_link : str | None = None):
+def compressor_out_dir(project_name: str) -> str:
     """
-    Sends an email notification when the video processing is complete.
+    Compresses the output folder into a zip file.
 
     Args:
-        project_name (str): The name of the project to include in the email subject.
+        project_name: Name of the project
+
+    Returns:
+        str: Path to the compressed file
+
+    Raises:
+        VideoEditingError: If compression fails
+    """
+    logger.info('Compressing the output folder')
+    input_path = f'output/{project_name}/' 
+
+    if not os.path.exists('final_project'):
+        os.mkdir('final_project')
+
+    output_name = f'final_project/{project_name}_final_version'
+    archive_format = 'zip'
+
+    try:
+        archive_path = shutil.make_archive(output_name, archive_format, input_path)
+        logger.info(f"{project_name} compressed successfully")
+        return archive_path
+    except Exception as e:
+        logger.error(f'Compression error: {e}')
+        raise VideoEditingError(f'Failed to compress output: {e}')
+
+
+async def upload_to_db(project_name: str) -> str:
+    """
+    Uploads the compressed video to cloud storage and saves to database.
+
+    Args:
+        project_name: Name of the project
+
+    Returns:
+        str: Download link for the uploaded file
+
+    Raises:
+        VideoUploadError: If upload fails
+    """
+    logger.info('Uploading to the cloud')
+
+    try:
+        file_path = f'final_project/{project_name}_final_version.zip'
+
+        if not os.path.exists(file_path):
+            raise VideoUploadError(f"Compressed file not found: {file_path}")
+
+        download_link = await upload_blob(
+            file_path,
+            f'{project_name}_project_final_version.zip'
+        )
+
+        if not download_link:
+            raise VideoUploadError("Failed to get download link from cloud storage")
+
+        logger.info(f'Upload completed. Download link: {download_link}')
+
+        # Save to database
+        with get_session() as session:
+            new_video = Video(video_name=project_name, project_link=download_link)
+            session.add(new_video)
+            session.commit()
+
+        logger.info('Video entry saved to database')
+        return download_link
+
+    except Exception as e:
+        logger.error(f'Upload error: {e}', exc_info=True)
+        raise VideoUploadError(f'Failed to upload: {e}')
+
+
+def video_notifier(project_name: str, download_link: str | None = None):
+    """
+    Sends an email notification when video processing is complete.
+
+    Args:
+        project_name: Name of the project
+        download_link: Download link (None if upload failed)
+
+    Raises:
+        EmailNotificationError: If email sending fails
     """
     sender_email = os.getenv('SENDER_EMAIL')
     sender_password = os.getenv('SENDER_PASSWORD')
-    attachment = f'final_project/{project_name}_final_version.zip'
-    attachment_name = f'{project_name}_final_version.zip'
-    attachment_path = f'final_project'
 
     if not sender_email or not sender_password:
-        logger.error("Error: SENDER_EMAIL or SENDER_PASSWORD not found in environment variables.")
-        return
+        raise EmailNotificationError("SENDER_EMAIL or SENDER_PASSWORD not found")
         
-    error_body = f"The video project '{project_name}' has finished editing. the download likn was not found"
+    if download_link:
+        body = f"The video project '{project_name}' has finished editing.\n\nDownload link: {download_link}"
+        emails = ['jemolife69@gmail.com', 'omoparioladavidola@gmail.com', 'heritageadewumivictor@gmail.com']
+        subject = f'Your project is ready: {project_name}'
+    else:
+        body = f"The video project '{project_name}' has finished editing, but the download link was not generated."
+        emails = ['jemolife69@gmail.com']
+        subject = f'Error on project: {project_name}'
 
-    download_body = f"The video project '{project_name}' has finished editing. the link to download it is : {download_link}" 
-    if download_link :
+    errors = []
+    for email in emails:
+        try:
+            msg = MIMEMultipart()
+            msg['Subject'] = subject
+            msg['From'] = sender_email
+            msg['To'] = email
+            msg.attach(MIMEText(body, 'plain'))
 
-        emails: List[str] = ['jemolife69@gmail.com' , 'omoparioladavidola@gmail.com', 'heritageadewumivictor@gmail.com']
-        for email in emails:
-            try:
-                msg = MIMEMultipart()
-                msg['Subject'] = f'Your project is ready: {project_name}'
-                msg['From'] = sender_email
-                msg['To'] = email
-                msg.attach(MIMEText( download_body, 'plain' ))
+            with smtplib.SMTP_SSL('smtp.gmail.com', 465, timeout=30) as smtp:
+                smtp.login(sender_email, sender_password)
+                smtp.send_message(msg)
 
-                with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-                    smtp.login(sender_email, sender_password)
-                    smtp.send_message(msg)
-                logger.info(f"Notification email sent successfully to {email}")
-            except smtplib.SMTPAuthenticationError:
-                logger.error(f"Failed to send email to {email}: Authentication error. Please check your email and password.")
-            except Exception as e:
-                logger.error(f"An error occurred while sending the email to {email}: {e}")
-    else :
+            logger.info(f"Notification email sent successfully to {email}")
 
-        emails: List[str] = ['jemolife69@gmail.com']
-        for email in emails:
-            try:
-                msg = MIMEMultipart()
-                msg['Subject'] = f'error on the project : {project_name}'
-                msg['From'] = sender_email
-                msg['To'] = email
-                msg.attach(MIMEText( error_body, 'plain' ))
+        except smtplib.SMTPAuthenticationError:
+            error = f"Authentication error for {email}"
+            logger.error(error)
+            errors.append(error)
+        except Exception as e:
+            error = f"Failed to send email to {email}: {e}"
+            logger.error(error)
+            errors.append(error)
 
-                with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-                    smtp.login(sender_email, sender_password)
-                    smtp.send_message(msg)
-                logger.info(f"Notification email sent successfully to {email}")
-            except smtplib.SMTPAuthenticationError:
-                logger.error(f"Failed to send email to {email}: Authentication error. Please check your email and password.")
-            except Exception as e:
-                logger.error(f"An error occurred while sending the email to {email}: {e}")
-
-
-
-
+    if errors and len(errors) == len(emails):
+        raise EmailNotificationError(f"Failed to send all emails: {'; '.join(errors)}")
 
 
 @time_it
 async def main():
-
     """
     Main function to run the video processing pipeline.
     """
+    project_name = None
 
-    init_db()
-    url = video_getter()
-    if url:
+    try:
+        logger.info("=" * 50)
+        logger.info("Starting video processing pipeline")
+        logger.info("=" * 50)
+
+        # Initialize database
+        init_db()
+        logger.info("Database initialized")
+
+        # Get video URL
+        url = video_getter()
+        if not url:
+            logger.error("No video URL found. Exiting.")
+            return
+
+        # Download video
         download_info = video_downloader(url)
-        if download_info:
-            input_path, project_title = download_info
-            editor_output = video_editor(input_path, project_title)
-            if editor_output:
-                _, project_name = editor_output
-                compressor_out_dir(project_name=project_name)
-                download_link   = await upload_to_db(project_name=project_name)
-                video_notifier(project_name=project_name, download_link=download_link)
-    cleanup()
+        if not download_info:
+            logger.error("Video download failed. Exiting.")
+            return
+
+        input_path, project_name = download_info
+
+        # Edit video
+        editor_output = video_editor(input_path, project_name)
+        if not editor_output:
+            logger.error("Video editing failed. Exiting.")
+            return
+
+        _, project_name = editor_output
+
+        # Compress output
+        compressor_out_dir(project_name)
+
+        # Upload to cloud and database
+        download_link = await upload_to_db(project_name)
+
+        # Send success notification
+        video_notifier(project_name, download_link)
+
+        logger.info("=" * 50)
+        logger.info("Video processing completed successfully")
+        logger.info("=" * 50)
+
+    except VideoDownloadError as e:
+        logger.error(f"Download failed: {e}", exc_info=True)
+        if project_name:
+            try:
+                video_notifier(project_name, None)
+            except:
+                pass
+
+    except VideoEditingError as e:
+        logger.error(f"Editing failed: {e}", exc_info=True)
+        if project_name:
+            try:
+                video_notifier(project_name, None)
+            except:
+                pass
+
+    except VideoUploadError as e:
+        logger.error(f"Upload failed: {e}", exc_info=True)
+        if project_name:
+            try:
+                video_notifier(project_name, None)
+            except:
+                pass
+
+    except EmailNotificationError as e:
+        logger.error(f"Email notification failed: {e}", exc_info=True)
+
+    except Exception as e:
+        logger.error(f"Unexpected error in main: {e}", exc_info=True)
+        logger.error(f"Traceback: {traceback.format_exc()}")
+        if project_name:
+            try:
+                video_notifier(project_name, None)
+            except:
+                pass
+        raise
+
+    finally:
+        # Always cleanup temporary files
+        try:
+            cleanup()
+            logger.info("Cleanup completed")
+        except Exception as e:
+            logger.error(f"Cleanup failed: {e}")
+
 
 if __name__ == "__main__":
     asyncio.run(main())
