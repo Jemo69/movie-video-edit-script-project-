@@ -17,6 +17,7 @@ __pycache__/
 .idea/
 
 # Logs
+# Ignore log files, which are generated artifacts
 log/
 *.log
 
