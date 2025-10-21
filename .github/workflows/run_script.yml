@@ -2,7 +2,7 @@ name: Run Main Script
 
 on:
   schedule:
-    - cron: "13 14 * * 1" # Runs every Monday at 4:00 PM UTC
+    - cron: "0 12 * * 2" # Runs every Tuesday at 12:00 UTC
 
 jobs:
   build:
