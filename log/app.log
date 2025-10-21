@@ -5729,3 +5729,66 @@ exceptions.VideoDownloadError: Download failed
 2025-10-21 16:33:03 - main - INFO - Retrying download...
 2025-10-21 16:33:03 - main - INFO - Download attempt 3/3...
 2025-10-21 16:33:03 - main - ERROR - Download attempt 3 failed: Download failed
+2025-10-21 17:20:11 - main - INFO - ==================================================
+2025-10-21 17:20:11 - main - INFO - Starting video processing pipeline
+2025-10-21 17:20:11 - main - INFO - ==================================================
+2025-10-21 17:20:11 - main - INFO - Database initialized
+2025-10-21 17:20:11 - main - INFO - ==================================================
+2025-10-21 17:20:11 - main - INFO - Video processing completed successfully
+2025-10-21 17:20:11 - main - INFO - ==================================================
+2025-10-21 17:20:11 - main - INFO - Cleanup completed
+2025-10-21 17:20:11 - main - INFO - ==================================================
+2025-10-21 17:20:11 - main - INFO - Starting video processing pipeline
+2025-10-21 17:20:11 - main - INFO - ==================================================
+2025-10-21 17:20:11 - main - INFO - Database initialized
+2025-10-21 17:20:11 - main - ERROR - Download failed: Download failed
+Traceback (most recent call last):
+  File "/app/main.py", line 354, in main
+    download_info = video_downloader(url)
+                    ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jules/.pyenv/versions/3.12.11/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jules/.pyenv/versions/3.12.11/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jules/.pyenv/versions/3.12.11/lib/python3.12/unittest/mock.py", line 1198, in _execute_mock_call
+    raise effect
+exceptions.VideoDownloadError: Download failed
+2025-10-21 17:20:11 - main - INFO - Cleanup completed
+2025-10-21 17:20:11 - main - INFO - Found video: https://www.youtube.com/watch?v=test_video_id
+2025-10-21 17:20:11 - main - WARNING - No videos found for the specified channel
+2025-10-21 17:20:11 - main - ERROR - YouTube API request timed out
+2025-10-21 17:20:53 - main - INFO - ==================================================
+2025-10-21 17:20:53 - main - INFO - Starting video processing pipeline
+2025-10-21 17:20:53 - main - INFO - ==================================================
+2025-10-21 17:20:53 - main - INFO - Database initialized
+2025-10-21 17:20:53 - main - INFO - ==================================================
+2025-10-21 17:20:53 - main - INFO - Video processing completed successfully
+2025-10-21 17:20:53 - main - INFO - ==================================================
+2025-10-21 17:20:53 - main - INFO - Cleanup completed
+2025-10-21 17:20:53 - main - INFO - ==================================================
+2025-10-21 17:20:53 - main - INFO - Starting video processing pipeline
+2025-10-21 17:20:53 - main - INFO - ==================================================
+2025-10-21 17:20:53 - main - INFO - Database initialized
+2025-10-21 17:20:53 - main - ERROR - Download failed: Download failed
+Traceback (most recent call last):
+  File "/app/main.py", line 354, in main
+    download_info = video_downloader(url)
+                    ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jules/.pyenv/versions/3.12.11/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jules/.pyenv/versions/3.12.11/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jules/.pyenv/versions/3.12.11/lib/python3.12/unittest/mock.py", line 1198, in _execute_mock_call
+    raise effect
+exceptions.VideoDownloadError: Download failed
+2025-10-21 17:20:53 - main - INFO - Cleanup completed
+2025-10-21 17:20:53 - main - INFO - Found video: https://www.youtube.com/watch?v=test_video_id
+2025-10-21 17:20:53 - main - WARNING - No videos found for the specified channel
+2025-10-21 17:20:53 - main - ERROR - YouTube API request timed out
+2025-10-21 17:20:53 - main - INFO - Video downloaded successfully: input/Test Video Title.mp4
+2025-10-21 17:20:53 - main - ERROR - Download failed after 3 attempts: No suitable stream
+2025-10-21 17:20:53 - main - ERROR - Download failed after 3 attempts: Download failed
