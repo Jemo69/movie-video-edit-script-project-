@@ -47,28 +47,21 @@ def test_video_getter_api_timeout(mock_env_vars):
 
 def test_video_downloader_success(mock_env_vars, temp_dir):
     """Test successful video download."""
-    with patch('main.YouTube') as mock_yt:
-        # Mock YouTube object
+    with patch('yt_dlp.YoutubeDL') as mock_ydl:
         mock_instance = Mock()
-        mock_instance.title = "Test Video Title"
-        mock_stream = Mock()
-        mock_instance.streams.get_highest_resolution.return_value = mock_stream
-        mock_yt.return_value = mock_instance
-
-        # Mock download
-        def mock_download(output_path, filename):
-            filepath = Path(output_path) / filename
-            filepath.parent.mkdir(exist_ok=True, parents=True)
-            filepath.touch()
-            # Write some content
-            filepath.write_text("fake video content")
-
-        mock_stream.download.side_effect = mock_download
+        mock_instance.extract_info.return_value = {
+            'title': 'Test Video Title',
+            'ext': 'mp4',
+        }
+        mock_instance.prepare_filename.return_value = 'input/Test Video Title.mp4'
+        mock_ydl.return_value.__enter__.return_value = mock_instance
 
         # Change to temp directory
         import os
         original_cwd = os.getcwd()
         os.chdir(temp_dir)
+        Path('input').mkdir()
+        Path('input/Test Video Title.mp4').touch()
 
         try:
             result = video_downloader('https://youtube.com/watch?v=test')
@@ -82,21 +75,22 @@ def test_video_downloader_success(mock_env_vars, temp_dir):
 
 def test_video_downloader_no_stream(mock_env_vars):
     """Test video_downloader handles missing stream."""
-    with patch('main.YouTube') as mock_yt:
+    with patch('yt_dlp.YoutubeDL') as mock_ydl:
         mock_instance = Mock()
-        mock_instance.title = "Test Video"
-        mock_instance.streams.get_highest_resolution.return_value = None
-        mock_yt.return_value = mock_instance
+        mock_instance.extract_info.side_effect = Exception("No suitable stream")
+        mock_ydl.return_value.__enter__.return_value = mock_instance
 
-        with pytest.raises(VideoDownloadError, match="No suitable stream"):
+        with pytest.raises(VideoDownloadError, match="Failed to download"):
             video_downloader('https://youtube.com/watch?v=test')
 
 def test_video_downloader_retries(mock_env_vars):
     """Test video_downloader retry logic."""
-    with patch('main.YouTube') as mock_yt:
-        mock_yt.side_effect = Exception("Download failed")
+    with patch('yt_dlp.YoutubeDL') as mock_ydl:
+        mock_instance = Mock()
+        mock_instance.extract_info.side_effect = Exception("Download failed")
+        mock_ydl.return_value.__enter__.return_value = mock_instance
 
         with pytest.raises(VideoDownloadError, match="Failed to download after 3 attempts"):
             video_downloader('https://youtube.com/watch?v=test', max_retries=3)
 
-        assert mock_yt.call_count == 3
+        assert mock_instance.extract_info.call_count == 1

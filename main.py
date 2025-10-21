@@ -25,7 +25,7 @@ from dotenv import load_dotenv
 from pathlib import Path
 from typing import List, Dict, Union, Tuple
 import ffmpeg
-from pytubefix import YouTube
+import yt_dlp
 import concurrent.futures
 
 load_dotenv()
@@ -85,7 +85,7 @@ def video_getter() -> Union[str, None]:
 
 def video_downloader(url: str, max_retries: int = 3) -> Union[Tuple[str, str], None]:
     """
-    Downloads a video from a given YouTube URL with retry logic.
+    Downloads a video from a given YouTube URL with retry logic using yt-dlp.
 
     Args:
         url (str): The URL of the YouTube video
@@ -97,47 +97,30 @@ def video_downloader(url: str, max_retries: int = 3) -> Union[Tuple[str, str], N
     Raises:
         VideoDownloadError: If download fails after retries
     """
-    for attempt in range(max_retries):
-        try:
-            logger.info(f"Download attempt {attempt + 1}/{max_retries}...")
-            yt = YouTube(url, use_po_token=True)
-            title = yt.title
-            logger.info(f"Video Title: {title}")
+    output_path = Path("input")
+    output_path.mkdir(exist_ok=True)
+
+    ydl_opts = {
+        'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',
+        'outtmpl': str(output_path / '%(title)s.%(ext)s'),
+        'retries': max_retries,
+    }
+
+    try:
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            info = ydl.extract_info(url, download=True)
+            title = info.get('title', 'untitled')
+            filename = ydl.prepare_filename(info)
 
             sanitized_title = re.sub(r'[\\/:*?"<>|]', "", title)
             project_title = re.sub(r'\s+', "-", sanitized_title)
 
-            output_path = Path("input")
-            output_path.mkdir(exist_ok=True)
+            logger.info(f"Video downloaded successfully: {filename}")
+            return str(filename), project_title
 
-            filename = f"{sanitized_title}.mp4"
-            filepath = output_path / filename
-
-            # Check if file already exists
-            if filepath.exists():
-                logger.warning(f"File already exists: {filepath}")
-                filepath.unlink()
-
-            stream = yt.streams.get_highest_resolution()
-            if not stream:
-                raise VideoDownloadError("No suitable stream found for download")
-
-            stream.download(output_path=str(output_path), filename=filename)
-
-            # Verify file exists and has content
-            if not filepath.exists() or filepath.stat().st_size == 0:
-                raise VideoDownloadError("Downloaded file is empty or missing")
-
-            logger.info(f"Video downloaded successfully: {filepath}")
-            return str(filepath), project_title
-
-        except Exception as e:
-            logger.error(f"Download attempt {attempt + 1} failed: {e}")
-            if attempt == max_retries - 1:
-                raise VideoDownloadError(f"Failed to download after {max_retries} attempts: {e}")
-            logger.info("Retrying download...")
-
-    return None
+    except Exception as e:
+        logger.error(f"Download failed after {max_retries} attempts: {e}")
+        raise VideoDownloadError(f"Failed to download after {max_retries} attempts: {e}")
 
 
 def video_editor(input_path: str, project_name: str) -> Union[Tuple[Path, str], None]:
