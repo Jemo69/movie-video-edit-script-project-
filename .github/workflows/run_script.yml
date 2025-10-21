@@ -1,6 +1,7 @@
 name: Run Main Script
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: "0 12 * * 2" # Runs every Tuesday at 12:00 UTC
 
