@@ -26,7 +26,7 @@ load_dotenv()
 logger = get_logger(__name__)
 
 
-def video_getter() -> Union[str, None]:
+def video_getter() -> str | None:
     """
     Fetches the URL of the latest completed video from a specified YouTube channel.
 
@@ -73,7 +73,7 @@ def video_getter() -> Union[str, None]:
         return None
 
 
-def video_downloader(url: str) -> Union[Tuple[str, str], None]:
+def video_downloader(url: str) -> Tuple[str, str]| None:
     """
     Downloads a video from a given YouTube URL.
 
@@ -117,7 +117,7 @@ def process_segment(
     start_time: int,
     segment_duration: int,
     segment_index: int,
-):
+) -> str  |  None:
     """
     Processes a single video segment using ffmpeg.
     """
@@ -149,7 +149,7 @@ def process_segment(
         return error_message
 
 
-def video_editor(input_path: str, project_name: str) -> Union[Tuple[Path, str], None]:
+def video_editor(input_path: str, project_name: str) -> Tuple[Path, str]| None:
     """
     This function edits a video by cutting it into 15-minute segments in parallel
     and saves them in the output folder using ffmpeg-python.
@@ -325,7 +325,8 @@ async def main():
     """
 
     init_db()
-    url = video_getter()
+    # url = video_getter()
+    url : str =  input("enter the url of the video you want to edit : ")
     if url:
         download_info = video_downloader(url)
         if download_info:
