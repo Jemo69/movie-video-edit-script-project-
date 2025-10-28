@@ -100,7 +100,7 @@ def video_downloader(url: str, max_retries: int = 3) -> Union[Tuple[str, str], N
     for attempt in range(max_retries):
         try:
             logger.info(f"Download attempt {attempt + 1}/{max_retries}...")
-            yt = YouTube(url, use_po_token=True)
+            yt = YouTube(url,'WEB')
             title = yt.title
             logger.info(f"Video Title: {title}")
 
