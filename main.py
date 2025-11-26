@@ -325,8 +325,8 @@ async def main():
     """
 
     init_db()
-    # url = video_getter()
-    url : str =  input("enter the url of the video you want to edit : ")
+    url = video_getter()
+    # url : str =  input("enter the url of the video you want to edit : ")
     if url:
         download_info = video_downloader(url)
         if download_info:
