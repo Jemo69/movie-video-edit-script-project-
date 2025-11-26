@@ -101,8 +101,12 @@ def video_downloader(url: str) -> Tuple[str, str]| None:
         stream = yt.streams.get_highest_resolution()
         if stream:
             stream.download(output_path=str(output_path), filename=filename)
+            total_size = stream.filesize
+            logger.info(f"Video downloaded successfully: {filepath} with size {total_size}")
             logger.info(f"Video downloaded successfully: {filepath}")
+            print(total_size)
             return str(filepath), project_title
+
         else:
             logger.info("No suitable stream found for download.")
             return None
