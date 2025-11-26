@@ -32,7 +32,7 @@ load_dotenv()
 logger = get_logger(__name__)
 
 
-def video_getter() -> Union[str, None]:
+def video_getter() -> str | None:
     """
     Fetches the URL of the latest completed video from a specified YouTube channel.
 
@@ -83,7 +83,9 @@ def video_getter() -> Union[str, None]:
         raise VideoDownloadError(f"Invalid API response format: {e}")
 
 
-def video_downloader(url: str, max_retries: int = 3) -> Union[Tuple[str, str], None]:
+
+def video_downloader(url: str) -> Tuple[str, str]| None:
+
     """
     Downloads a video from a given YouTube URL with retry logic.
 
@@ -137,10 +139,45 @@ def video_downloader(url: str, max_retries: int = 3) -> Union[Tuple[str, str], N
                 raise VideoDownloadError(f"Failed to download after {max_retries} attempts: {e}")
             logger.info("Retrying download...")
 
-    return None
+def process_segment(
+    input_path: str,
+    output_path: str,
+    start_time: int,
+    segment_duration: int,
+    segment_index: int,
+) -> str  |  None:
+    """
+    Processes a single video segment using ffmpeg.
+    """
+    logger.info(f"Processing segment {segment_index + 1}: Writing to {output_path}...")
+    try:
+        (
+            ffmpeg.input(input_path, ss=start_time, t=segment_duration)
+            .output(
+                str(output_path),
+                vcodec="libx264",
+                acodec="aac",
+                preset="fast",
+                crf=23,
+                ac=2,
+                ar=44100,
+                ab="128k",
+                
+            )
+            .overwrite_output()
+            .run(capture_stdout=True, capture_stderr=True, quiet=True)
+        )
+        logger.info(f"Successfully created segment {segment_index + 1}")
+        return None
+    except ffmpeg.Error as e:
+        error_message = (
+            f"Error creating segment {segment_index + 1}: {e.stderr.decode()}"
+        )
+        logger.error(error_message)
+        return error_message
 
 
-def video_editor(input_path: str, project_name: str) -> Union[Tuple[Path, str], None]:
+def video_editor(input_path: str, project_name: str) -> Tuple[Path, str]| None:
     """
     Edits a video by cutting it into 15-minute segments in parallel.
 
@@ -367,7 +404,10 @@ async def main():
             logger.error("No video URL found. Exiting.")
             return
 
-        # Download video
+    init_db()
+    url = video_getter()
+    # url : str =  input("enter the url of the video you want to edit : ")
+    if url:
         download_info = video_downloader(url)
         if not download_info:
             logger.error("Video download failed. Exiting.")
