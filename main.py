@@ -84,7 +84,7 @@ def video_getter() -> str | None:
 
 
 
-def video_downloader(url: str) -> Tuple[str, str]| None:
+def video_downloader(url: str, max_retries: int = 3) -> Tuple[str, str]| None:
 
     """
     Downloads a video from a given YouTube URL with retry logic.
@@ -404,37 +404,35 @@ async def main():
             logger.error("No video URL found. Exiting.")
             return
 
-    init_db()
-    url = video_getter()
-    # url : str =  input("enter the url of the video you want to edit : ")
-    if url:
-        download_info = video_downloader(url)
-        if not download_info:
-            logger.error("Video download failed. Exiting.")
-            return
+        # url : str =  input("enter the url of the video you want to edit : ")
+        if url:
+            download_info = video_downloader(url)
+            if not download_info:
+                logger.error("Video download failed. Exiting.")
+                return
 
-        input_path, project_name = download_info
+            input_path, project_name = download_info
 
-        # Edit video
-        editor_output = video_editor(input_path, project_name)
-        if not editor_output:
-            logger.error("Video editing failed. Exiting.")
-            return
+            # Edit video
+            editor_output = video_editor(input_path, project_name)
+            if not editor_output:
+                logger.error("Video editing failed. Exiting.")
+                return
 
-        _, project_name = editor_output
+            _, project_name = editor_output
 
-        # Compress output
-        compressor_out_dir(project_name)
+            # Compress output
+            compressor_out_dir(project_name)
 
-        # Upload to cloud and database
-        download_link = await upload_to_db(project_name)
+            # Upload to cloud and database
+            download_link = await upload_to_db(project_name)
 
-        # Send success notification
-        video_notifier(project_name, download_link)
+            # Send success notification
+            video_notifier(project_name, download_link)
 
-        logger.info("=" * 50)
-        logger.info("Video processing completed successfully")
-        logger.info("=" * 50)
+            logger.info("=" * 50)
+            logger.info("Video processing completed successfully")
+            logger.info("=" * 50)
 
     except VideoDownloadError as e:
         logger.error(f"Download failed: {e}", exc_info=True)
