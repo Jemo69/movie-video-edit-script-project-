@@ -1,0 +1,47 @@
+name: Run Main Script
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 12 * * 2" # Runs every Tuesday at 12:00 UTC
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.12'
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v5
+      with:
+        enable-cache: true
+        version: "latest"
+
+    - name: Install dependencies
+      run: uv sync
+
+    - name: Install ffmpeg
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y ffmpeg
+
+    - name: Set up Google Cloud credentials
+      run: |
+        echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON }}" > "${{ runner.temp }}/gcp-key.json"
+        echo "GOOGLE_APPLICATION_CREDENTIALS=${{ runner.temp }}/gcp-key.json" >> $GITHUB_ENV
+
+    - name: Run script
+      env:
+        YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+        SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
+        TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+        TURSO_TOKEN: ${{ secrets.TURSO_TOKEN }}
+      run: uv run main.py

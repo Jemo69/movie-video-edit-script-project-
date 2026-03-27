@@ -1,0 +1,39 @@
+# Environment variables
+.env
+.env.local
+
+# Database files
+*.db
+*.sqlite3
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE and editor files
+.vscode/
+.idea/
+
+# Logs
+log/
+*.log
+
+# Temporary directories
+input/
+output/
+final_project/
+
+# Google Cloud credentials
+key.json
+googlekey.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Pytest
+.pytest_cache/
+htmlcov/
+.coverage
